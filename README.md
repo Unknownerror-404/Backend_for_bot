@@ -85,7 +85,7 @@ Move onto installation selecting a basic server configuration when prompted.
 upon completion, close out of the setup, and go to your local cmd prompt to perform sql cmommands on it, type the following:
 ```
 ======================= cmd prompt ============================
-> sqlcmd -S .\SQLEXPRESS -E
+sqlcmd -S .\SQLEXPRESS -E
 ================== end of cmd prompt ===========================
 
 
