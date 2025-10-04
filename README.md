@@ -52,7 +52,6 @@ main_directory/
 struture your directory as shown above:
 
 Ensure you have a python version from 3.8 to 3.11 as rasa is incompatible with recent 3.11 > versions.
-For convinience do python --version or python3 --version in your terminal (Windows).
 After ensure you have a compatible version most favourably python 3.11, install the following packages from  requirements.txt
 ```
 =============== required packages ===================
