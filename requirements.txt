@@ -1,4 +1,4 @@
-python python-3.11.8
+
 rasa==3.7.1      
 rasa-sdk==3.7.1
 
