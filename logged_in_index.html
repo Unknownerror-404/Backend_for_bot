@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarogya Ai</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/health.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div id="nav-bar">
+        <a href="#1">Languages</a>
+        <a href="chat_logged_in.html"> Chat </a>
+        <a href="logout.html"><h4>Logout</h4></a>
+    </div>
+    <div id="nav-bar-2">
+        
+    </div>
+    <div class="image-box">
+            <div class="image-content">
+            <img src="{{ url_for('static', filename='images/healthcare.png') }}" alt="Healthcare_png">
+                <div class="overlay-content">
+                <h2>Your Health Matters</h2>
+                <a href="chat_logged_in.html"><button>Welcome, {{name}}</button></a>
+            </div>
+        </div>
+    </div>
+    <div id="slide">
+        <button class="button-left"></button>
+        <span>2/5</span>
+        <button class="button-right">></button>
+    </div>
+    <div id="footer">
+        <h3>Languages supported: English</h3>
+    </div>
+    <div class="footer-info">
+        <div>
+            <h3>Learn</h3>
+            <ul>
+                <li>What is Healthcare Chatbot</li>
+                <li>What's New</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Developers</h3>
+            <ul>
+                <li>Aniket Kuyate</li>
+                <li>Parth Lad</li>
+                <li>Ram Mantri</li>
+                <li>Shubham Lijade</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Resourses</h3>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Python</li>
+            </ul>
+        </div><div>
+            <h3>Help</h3>
+            <ul>
+                <li>Contact Us</li>
+                <li>Knowledge Center</li>
+                <li>Overview</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+    {% if message %}
+        alert("{{ message }}");
+    {% endif %}
+    </script>
+</body>
+</html>

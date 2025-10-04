@@ -1,0 +1,120 @@
+:root {
+  --bg: #343541;
+  --card: #202123;
+  --accent: #19c37d;
+  --accent-hover: #17b36d;
+  --muted: #6b6b6b;
+  --text: #ffffff;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.card {
+  background: var(--card);
+  padding: 40px 30px;
+  border-radius: 16px;
+  width: 350px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+}
+
+.card h2 {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.card .sub {
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+input {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #444654;
+  background: #2a2a37;
+  color: var(--text);
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+input::placeholder {
+  color: var(--muted);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #3a3a4a;
+}
+
+.btn {
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--accent-hover);
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.login-link a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+  .card {
+    width: 90%;
+    padding: 30px 20px;
+  }
+}

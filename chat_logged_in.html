@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Chatbot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style_chat.css') }}">
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <header>
+        <h2>Health Chatbot</h2>
+        <p class="sub">AI Healthcare Assistant</p>
+      </header>
+      <div class="meta-top">
+        <p><strong>Today</strong></p>
+        <p>New Chat</p>
+      </div>
+      <div class="credits">
+        Made by Our Team
+      </div>
+    </aside>
+
+    <!-- Chat Area -->
+    <main class="chat-area">
+      <div class="chat-header">
+        <div>
+          <div class="title">Chat</div>
+          <div class="status">Online</div>
+        </div>
+        <button class="btn small" onclick="clearChat()">Add</button>
+      </div>
+
+      <ul class="messages" id="messages">
+        <li class="msg in">
+          <div class="bubble">
+            Hello 👋 I'm your healthcare assistant.<br>
+            Tell me your symptoms and I'll suggest causes & remedies.
+            <div class="meta"><span class="who">Bot</span> <span class="time">10:00 AM</span></div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="composer">
+        <input type="text" id="inputMsg" placeholder="Type your message..." onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault(); sendMsg();}">
+        <button class="btn" onclick="sendMsg()">Send</button>
+      </div>
+    </main>
+  </div>
+
+<script>
+const messages = document.getElementById("messages");
+const input = document.getElementById("inputMsg");
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function sendMsg() {
+  const text = input.value.trim();
+  if (!text) return;
+
+  const userLi = document.createElement("li");
+  userLi.className = "msg out";
+  userLi.innerHTML = `<div class="bubble">${escapeHtml(text)}
+      <div class="meta"><span class="who">You</span> <span class="time">${getCurrentTime()}</span></div>
+    </div>`;
+  messages.appendChild(userLi);
+  scrollToBottom();
+  input.value = "";
+  input.focus();
+
+  try {
+    await fetch("/save_message", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: text, sender: "user" })
+    });
+  } catch (err) {
+    console.error("Error saving user message:", err);
+  }
+  sendMessageToRasa(text);
+}
+
+
+async function sendMessageToRasa(text) {
+  try {
+    const response = await fetch("http://localhost:5005/webhooks/rest/webhook", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ sender: "user1", message: text })
+    });
+
+    const data = await response.json();
+
+    await delay(2000);
+
+    for (const reply of data) {
+      if (reply.text) {
+        const botLi = document.createElement("li");
+        botLi.className = "msg in";
+        botLi.innerHTML = `<div class="bubble">${escapeHtml(reply.text)}
+            <div class="meta"><span class="who">Bot</span> <span class="time">${getCurrentTime()}</span></div>
+          </div>`;
+        messages.appendChild(botLi);
+        scrollToBottom();
+
+        try {
+          await fetch("/save_message", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: reply.text, sender: "bot" })
+          });
+        } catch (err) {
+          console.error("Error saving bot message:", err);
+        }
+      }
+    }
+  } catch (err) {
+    console.error("Error talking to Rasa:", err);
+  }
+}
+
+async function loadChatHistory() {
+  try {
+    const response = await fetch("/get_chat_history");
+    const data = await response.json();
+    const messages = document.getElementById("messages");
+
+    data.all_chats.forEach(session => {
+      const sessionDiv = document.createElement("div");
+      sessionDiv.className = "session-block";
+
+      session.forEach(([user_msg, bot_msg]) => {
+        if (user_msg) {
+          const userLi = document.createElement("li");
+          userLi.className = "msg out";
+          userLi.innerHTML = `<div class="bubble">${escapeHtml(user_msg)}
+            <div class="meta"><span class="who">You</span> <span class="time">${getCurrentTime()}</span></div></div>`;
+          sessionDiv.appendChild(userLi);
+        }
+        if (bot_msg) {
+          const botLi = document.createElement("li");
+          botLi.className = "msg in";
+          botLi.innerHTML = `<div class="bubble">${escapeHtml(bot_msg)}
+            <div class="meta"><span class="who">Bot</span> <span class="time">${getCurrentTime()}</span></div></div>`;
+          sessionDiv.appendChild(botLi);
+        }
+      });
+
+      messages.appendChild(sessionDiv);
+    });
+
+    scrollToBottom();
+  } catch (err) {
+    console.error("Error loading chat history:", err);
+  }
+}
+window.onload = loadChatHistory;
+
+
+function clearChat() {
+  while (messages.children.length > 1) {
+    messages.removeChild(messages.lastChild);
+  }
+  input.focus();
+}
+
+function scrollToBottom() {
+  messages.scrollTop = messages.scrollHeight;
+}
+
+function getCurrentTime() {
+  const now = new Date();
+  let hours = now.getHours();
+  const minutes = now.getMinutes().toString().padStart(2,'0');
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12 || 12;
+  return `${hours}:${minutes} ${ampm}`;
+}
+
+function escapeHtml(text) {
+  const div = document.createElement("div");
+  div.textContent = text;
+  return div.innerHTML.replace(/\n/g,"<br>");
+}
+
+</script>
+</body>
+</html>

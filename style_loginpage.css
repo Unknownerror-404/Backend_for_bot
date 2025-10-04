@@ -1,0 +1,173 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar {
+  height: 60px;
+  width: 100%;
+  background-color: #1C1C1C;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;      
+  top: 0;               
+  left: 0;
+  z-index: 1000;        
+}
+
+
+/* .navbar-2 {
+  height: 45px;
+  width: 100%;
+  background-color: #4C4D4B;
+  color: white;
+  font-size: 18px;
+  font-weight: 100em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;     
+  top: 60px;           
+  left: 0;
+  z-index: 999;
+} */
+
+
+main {
+  margin-top: 105px;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: url("../images/blurred_bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+}
+
+/* Optional: add overlay for readability */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4); /* dark transparent overlay */
+    z-index: -1;
+}
+
+.login-box {
+  background-color: rgba(0, 5, 4, 0.7216);
+  /* border: 2px solid #ffffff; */
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(51, 51, 51, 0.6); 
+  padding: 40px 30px;
+  width: 300px;
+  text-align: center;
+  color: white;
+}
+
+
+.login-box .icon {
+  font-size: 40px;
+  color: #1abc9c;
+  margin-bottom: 10px;
+}
+
+.login-box h2 {
+  margin-bottom: 30px;
+  font-weight: normal;
+}
+
+.login-box input[type="email"],
+.login-box input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 4px;
+  background-color: #d0e0dd;
+  color: #333;
+  font-size: 14px;
+  display: block;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background-color: #1abc9c;
+  border: none;
+  border-radius: 6px;
+  color: white;  
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+.login-box button:hover {
+  background-color: #17a589;
+}
+
+.login-box .forgot {
+  margin-top: 15px;
+  font-size: 12px;
+  color: #b0cfc9;
+}
+
+.login-box .forgot a  {
+  color: #b0cfc9;
+  text-decoration: underline;
+}
+
+/* Add this to your existing CSS */
+.login-box .create {
+  margin-top: 15px;
+  font-size: 12px;
+  color: #b0cfc9;
+  text-align: center;
+}
+
+.login-box .create a {
+  color: #b0cfc9;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.login-box .create a:hover {
+  color: #1abc9c; /* Optional hover color like button */
+}
+
+
+.footer {
+  width: 100%;
+  padding: 15px 0;
+  text-align: center;
+  background-color: #1C1C1C;
+  color: white;
+  font-size: 14px;
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+
+.footer a {
+  color: #6dd5ed;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}

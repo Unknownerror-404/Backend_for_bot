@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_loginpage.css') }}">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Login Page</title>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="nav-logo"></div>
+            <h1>Login</h1>
+        </div>
+        <div class="navbar-2">
+            <p>To Join Us...!</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="login-box">
+            <div class="icon">
+                <i class="fa-solid fa-people-line"></i>
+            </div>
+            <h2>Member Login</h2>
+            <form action="/login" method="post">
+                <input type="email" name="email" placeholder="username">
+                <input type="password" name="password" placeholder="Password">
+                <button type="submit">LOGIN</button>
+    
+                <p class="forgot">Forgot Password? <a href="#">Click to reset</a></p>
+    
+                <p class="create">Don't have an account? <a href="createacc.html">Create one</a></p>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Aarogya</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms</a> |
+            <a href="#">Help</a>
+        </div>
+    </footer>
+    <script>
+    const msg = {{ message | default('', true) | tojson }};
+    if(msg) {
+        alert(msg);
+    }
+    </script>    
+</body>
+</html>

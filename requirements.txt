@@ -1,4 +1,4 @@
-
-rasa==3.7.1      
-rasa-sdk==3.7.1
-
+pyodbc
+bcrypt
+Flask
+Flask-Session

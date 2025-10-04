@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style_createacc.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>Create Your Account</h2>
+      <p class="sub">Sign up to start using Health Chatbot</p>
+        <form id="signupForm" action="/submit" method="POST">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" name="confirm" placeholder="Confirm password" required>
+
+          <button type="submit" class="btn">Create Account</button>
+        </form>
+
+      <p class="login-link">Already have an account? <a href="/loginpage.html">Login</a></p>
+    </div>
+  </div>
+
+<script>
+  //const form = document.getElementById('signupForm');
+  //form.addEventListener('submit', function(e) {
+//e.preventDefault();
+//  const name = form.name.value.trim();
+    //const email = form.email.value.trim();
+    //const password = form.password.value;
+    //const confirmPassword = form.confirmPassword.value;
+
+    //if(password !== confirmPassword) {
+      //alert("Passwords do not match!");
+      //return;
+    //}
+    //alert(`Account created successfully!\nName: ${name}\nEmail: ${email}`);
+    //form.reset();
+  //});
+  //form.submit();
+  const form = document.getElementById('signupForm');
+
+    form.addEventListener('submit', function(e) {
+      const password = form.password.value;
+      const confirmPassword = form.confirm.value;
+
+      if(password !== confirmPassword) {
+        //e.preventDefault(); 
+      }
+    });
+
+    {% if message %}
+      alert({{ message|tojson|safe }});
+    {% endif %}
+</script>
+</body>
+</html>

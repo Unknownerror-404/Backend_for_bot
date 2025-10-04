@@ -1,0 +1,98 @@
+/* Updated CSS for AarogyaAI About Us Page */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  color: #1e293b;
+  line-height: 1.8;
+}
+
+.navbar {
+  height: 60px;
+  width: 100%;
+  background-color: #1C1C1C;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+main {
+  margin-top: 60px;
+  padding: 30px 10%;
+ background: linear-gradient(to right, #1FA2FF, #12D8FA, #A6FFCB);
+
+}
+
+.part-1, .part-2, .part-3, .part-4, .part-5, .part-6 {
+  padding: 30px 0;
+  text-align: left;
+  border-bottom: 2px solid #dcdcdc;
+}
+
+h3 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+p, li {
+  font-size: 18px;
+  color: #334155;
+  margin-bottom: 10px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+
+h3::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+.part-6 {
+  border-bottom: none;
+}
+.footer {
+  width: 100%;
+  padding: 15px 0;
+  text-align: center;
+  background-color: #1C1C1C;
+  color: white;
+  font-size: 14px;
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+
+.footer a {
+  color: #6dd5ed;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
