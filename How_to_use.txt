@@ -110,6 +110,11 @@ upon completion, close out of the setup, and go to your local cmd prompt to perf
 >    CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
 >    CONSTRAINT FK_Chat_User FOREIGN KEY (UserId) REFERENCES Users(UserID)
 > );
+ ======================= sqlcmd prompt =========================
+
+This should create the required sql tables to work properly with the remaining code.
+
+3] Creating a local host-server for testing using app.py
 
 
 
