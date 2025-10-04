@@ -115,6 +115,9 @@ upon completion, close out of the setup, and go to your local cmd prompt to perf
 This should create the required sql tables to work properly with the remaining code.
 
 3] Creating a local host-server for testing using app.py
+Once you have the rasa and sql servers up and running, go to your code editor, and execute the app.py file from this repo, 
+e.g. if you are using vs code, go to your working directory, and play the python script with python app.py.
 
+This should redirect you to a site which provide a glimpse at our clinical chatbot.
 
 
