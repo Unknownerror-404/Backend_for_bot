@@ -7,6 +7,7 @@
 
 To use this instance of rasa, install rasa and rasa.sdk from the requirements.txt file.
 Initially make sure all files have been installed properly and setup the structrue correctly as:
+
 main_directory/
 │
 ├── config.yml
