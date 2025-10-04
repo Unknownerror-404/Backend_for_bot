@@ -1,0 +1,501 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - intent: deny
+  - action: utter_goodbye
+
+- story: FAQ_What_is_fever?
+  steps:
+  - intent: what_is_fever
+  - action: utter_what_is_fever?
+
+- story: Greet_FAQ_What_is_fever?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: what_is_fever
+  - action: utter_what_is_fever?
+
+- story: FAQ_how_does_fever_work?
+  steps:
+  - intent: how_does_fever_work
+  - action: utter_how_does_fever_work?
+
+- story: Greet_FAQ_how_fever_works?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: how_does_fever_work
+  - action: utter_how_does_fever_work?
+
+- story: FAQ_fever_symptomps?
+  steps:
+  - intent: fever_symptomps
+  - action: utter_fever_symptomps
+
+- story: Greet_FAQ_fever_symptomps?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: fever_symptomps
+  - action: utter_fever_symptomps
+
+- story: FAQ_fever_treatment?
+  steps:
+  - intent: fever_treatment
+  - action: utter_fever_treatment_advice
+
+- story: Greet_FAQ_fever_treatment?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: fever_treatment
+  - action: utter_fever_treatment_advice
+
+- story: FAQ_What_is_cold?
+  steps:
+  - intent: what_is_cold?
+  - action: utter_what_is_cold?
+
+- story: Greet_FAQ_What_is_cold?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: what_is_cold?
+  - action: utter_what_is_cold?
+
+- story: FAQ_how_does_cold_work?
+  steps:
+  - intent: how_does_cold_work?
+  - action: utter_how_does_cold_work?
+
+- story: Greet_FAQ_how_cold_works?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: how_does_cold_work?
+  - action: utter_how_does_cold_work?
+
+- story: FAQ_cold_symptomps?
+  steps:
+  - intent: cold_symptomps
+  - action: utter_cold_symptomps
+
+- story: Greet_FAQ_cold_symptomps?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: cold_symptomps
+  - action: utter_cold_symptomps
+
+- story: FAQ_cold_symptomps?
+  steps:
+  - intent: cold_treatment
+  - action: utter_cold_treatment_advice
+
+- story: Greet_FAQ_cold_symptomps
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: cold_treatment
+  - action: utter_cold_treatment_advice
+
+- story: FAQ_what_is_headache?
+  steps:
+  - intent: what_is_headache
+  - action: utter_what_is_headache
+
+- story: Greet_FAQ_What_is_headache?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: what_is_headache
+  - action: utter_what_is_headache
+
+- story: FAQ_how_does_headache_work?
+  steps:
+  - intent: how_do_headaches_work?
+  - action: utter_how_do_headaches_work?
+
+- story: Greet_FAQ_how_headache_works?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: how_do_headaches_work?
+  - action: utter_how_do_headaches_work?
+
+- story: FAQ_headache_symptomps?
+  steps:
+  - intent: headache_symptomps
+  - action: utter_headache_symptomps
+
+- story: Greet_FAQ_headache_symptomps?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: headache_symptomps
+  - action: utter_headache_symptomps
+
+- story: FAQ_headache_treatment?
+  steps:
+  - intent: headache_treatment
+  - action: utter_headache_treatment_advice
+
+- story: Greet_FAQ_headache_treatment?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: headache_treatment
+  - action: utter_headache_treatment_advice
+
+- story: FAQ_what_is_Hepatitis-A?
+  steps:
+  - intent: What_is_Hepatitis-A
+  - action: utter_what_is_Hepatatis-A
+
+- story: Greet_FAQ_What_is_Hepatitis-A?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: What_is_Hepatitis-A
+  - action: utter_what_is_Hepatatis-A
+
+- story: FAQ_how_does_Hepatitis-A_work?
+  steps:
+  - intent: How_does_Hepatitis_A_work?
+  - action: utter_How_does_Hepatitis_A_work?
+
+- story: Greet_FAQ_how_Hepatitis-A_works?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: How_does_Hepatitis_A_work?
+  - action: utter_How_does_Hepatitis_A_work?
+
+- story: FAQ_Hepatitis_A_symptomps?
+  steps:
+  - intent: Hepatitis_A_symptomps
+  - action: utter_Hepatitis_A_symptomps
+
+- story: Greet_FAQ_Hepatitis_A__symptomps?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: Hepatitis_A_symptomps
+  - action: utter_Hepatitis_A_symptomps
+
+- story: FAQ_Hepatitis_A_treatment?
+  steps:
+  - intent: Hepatitis_A_treatment_advice
+  - action: utter_Hepatitis_A_treatment_advice
+
+- story: Greet_FAQ_Hepatitis_A_treatment?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: Hepatitis_A_treatment_advice
+  - action: utter_Hepatitis_A_treatment_advice
+
+- story: FAQ_what_is_malaria?
+  steps:
+  - intent: What_is_malaria
+  - action: utter_What_is_malaria
+
+- story: Greet_FAQ_What_is_malaria?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: What_is_malaria
+  - action: utter_What_is_malaria
+
+- story: FAQ_how_does_malaria_work?
+  steps:
+  - intent: How_does_malaria_work?
+  - action: utter_How_does_malaria_work?
+
+- story: Greet_FAQ_how_malaria_works?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: How_does_malaria_work?
+  - action: utter_How_does_malaria_work?
+
+- story: FAQ_malaria_symptomps?
+  steps:
+  - intent: malaria_symptomps
+  - action: utter_malaria_symptomps
+
+- story: Greet_FAQ_malaria_symptomps?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: malaria_symptomps
+  - action: utter_malaria_symptomps
+
+- story: FAQ_malaria_treatment?
+  steps:
+  - intent: malaria_treatment_advice
+  - action: utter_malaria_treatment_advice
+
+- story: Greet_malaria_treatment?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: malaria_treatment_advice
+  - action: utter_malaria_treatment_advice
+  
+- story: FAQ_what_is_heat_stroke?
+  steps:
+  - intent: What_is_heat_stroke
+  - action: utter_what_is_heat_stroke
+
+- story: Greet_FAQ_What_is_heat_stroke?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: What_is_heat_stroke
+  - action: utter_what_is_heat_stroke
+
+- story: FAQ_how_does_heat_stroke_work?
+  steps:
+  - intent: How_does_heat_stroke_work?  
+  - action: utter_How_does_heat_stroke_work?
+
+- story: Greet_FAQ_how_heat_stroke_works?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: How_does_heat_stroke_work?
+  - action: utter_How_does_heat_stroke_work?
+
+- story: FAQ_heat_stroke_symptomps?
+  steps:
+  - intent: Heat_stroke_symptomps
+  - action: utter_Heat_stroke_symptomps
+
+- story: Greet_FAQ_heat_stroke_symptomps?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: Heat_stroke_symptomps
+  - action: utter_Heat_stroke_symptomps
+
+- story: FAQ_heat_stroke_treatment?
+  steps:
+  - intent: Heat_Stroke_Treatment_advice
+  - action: utter_Heat_Stroke_Treatment_advice
+
+- story: Greet_heat_stroke_treatment?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: Heat_Stroke_Treatment_advice
+  - action: utter_Heat_Stroke_Treatment_advice
+
+- story: FAQ_what_is_food_poisioning?
+  steps:
+  - intent: What_is_food_poisoning
+  - action: utter_what_is_food_poisoning
+
+- story: Greet_FAQ_What_is_food_poisoning?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: What_is_food_poisoning
+  - action: utter_what_is_food_poisoning
+
+- story: FAQ_how_does_food_poisoning_work?
+  steps:
+  - intent: How_does_food_poisoning_work?  
+  - action: utter_how_does_food_poisoning_work
+
+- story: Greet_FAQ_how_food_poisoning_works?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: How_does_food_poisoning_work?
+  - action: utter_how_does_food_poisoning_work
+
+- story: FAQ_food_poisoning_symptomps?
+  steps:
+  - intent: Food_poisoning_symptomps
+  - action: utter_food_poisoning_symptoms
+
+- story: Greet_FAQ_food_poisoning_symptomps?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: Food_poisoning_symptomps
+  - action: utter_food_poisoning_symptoms
+
+- story: FAQ_food_poison_treatment?
+  steps:
+  - intent: Food_poisoning_treatment_advice
+  - action: utter_food_poisoning_treatment_advice
+
+- story: Greet_food_poison_treatment?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: Food_poisoning_treatment_advice
+  - action: utter_food_poisoning_treatment_advice
+
+- story: FAQ_what_is_asthma?
+  steps:
+  - intent: What_is_asthma
+  - action: utter_what_is_asthma
+
+- story: Greet_FAQ_What_is_asthma?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: What_is_asthma
+  - action: utter_what_is_asthma
+
+- story: FAQ_how_does_asthma_work?
+  steps:
+  - intent: How_asthma_works  
+  - action: utter_how_asthma_works
+
+- story: Greet_FAQ_how_asthma_works?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: How_asthma_works
+  - action: utter_how_asthma_works
+
+- story: FAQ_asthma_symptomps?
+  steps:
+  - intent: asthma_symptomps
+  - action: utter_asthma_symptomps
+
+- story: Greet_FAQ_asthma_symptomps?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: asthma_symptomps
+  - action: utter_asthma_symptomps
+
+- story: FAQ_asthma_treatment?
+  steps:
+  - intent: asthma_treatments
+  - action: utter_asthma_treatments
+
+- story: Greet_asthma_treatment?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: asthma_treatments
+  - action: utter_asthma_treatments
+
+
+- story: FAQ_what_is_burn?
+  steps:
+  - intent: What_is_A_Minor_burn
+  - action: utter_what_is_a_minor_burn
+
+- story: Greet_FAQ_What_is_pneumonia?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: What_is_A_Minor_burn
+  - action: utter_what_is_a_minor_burn
+
+- story: FAQ_how_does_burns_work?
+  steps:
+  - intent: How_Minor_burn_works  
+  - action: utter_how_minor_burn_works
+
+- story: Greet_FAQ_how_burns_works?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: How_Minor_burn_works
+  - action: utter_how_minor_burn_works
+
+- story: FAQ_burn_symptomps?
+  steps:
+  - intent: Minor_burn_symptomps
+  - action: utter_minor_burn_symptomps
+
+- story: Greet_FAQ_burn_symptomps?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: Minor_burn_symptomps
+  - action: utter_minor_burn_symptomps
+
+- story: FAQ_burn_treatment?
+  steps:
+  - intent: Minor_burn_treatment
+  - action: utter_minor_burn_treatment
+
+- story: Greet_burn_treatment?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: Minor_burn_treatment
+  - action: utter_minor_burn_treatment
+
+
+- story: FAQ_What_is_pneumonia
+  steps:
+  - intent: What_is_pneumonia
+  - action: utter_what_is_pneumonia
+
+- story: Greet_FAQ_What_is_pneumonia
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: What_is_pneumonia
+  - action: utter_what_is_pneumonia
+
+- story: FAQ_how_does_pneumonia_work?
+  steps:
+  - intent: How_pneumonia_works
+  - action: utter_how_pneumonia_works
+
+- story: Greet_FAQ_how_pneumonia_works?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: How_pneumonia_works
+  - action: utter_how_pneumonia_works
+
+- story: FAQ_pneumonia_symptomps?
+  steps:
+  - intent: pneumonia_symptomps
+  - action: utter_pneumonia_symptomps
+
+- story: Greet_FAQ_pneumonia_symptomps?
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: pneumonia_symptomps
+  - action: utter_pneumonia_symptomps
+
+- story: FAQ_pneumonia_treatment
+  steps:
+  - intent: pneumonia_treatment
+  - action: utter_pneumonia_treatment
+
+- story: Greet_FAQ_pneumonia_treatment
+  steps: 
+  - intent: greet
+  - action: utter_greet
+  - intent: pneumonia_treatment
+  - action: utter_pneumonia_treatment

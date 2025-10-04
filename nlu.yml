@@ -1,0 +1,1414 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - greetings
+    - salutations
+    - how do you do
+    - what's good
+    - yo
+    - sup
+    - peace be upon you
+    - good day
+    - g'day mate
+    - how's it going
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - see you soon
+    - asta la vista
+    - catch you later 
+    - see ya
+    - take care
+    - that's it
+    - that's all for today
+    - see you
+    - talk to you later
+    - have a good day
+    - have a great day
+    - later
+    - peace out
+    - I'm out
+    - I'm leaving now
+    - that's all, thanks
+    - farewell
+    - cya
+    - adios
+    - au revoir
+    - till next time
+    - cheerio
+    - I am off
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - yeah
+    - yup
+    - absolutely
+    - definitely
+    - sure
+    - sounds good
+    - that's right
+    - I agree
+    - agreed
+    - totally
+    - for sure
+    - ok
+    - okay
+    - sure thing
+    - indeed
+    - that work
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - nope
+    - nah
+    - no thanks
+    - no thank you
+    - never
+    - absolutely not
+    - no way
+    - not at all
+    - I'd rather not
+    - I'm okay
+    - don't think so
+    - not interested
+    - not now
+    - maybe later
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+    - I'm feeling great
+    - I'm good
+    - amazing!
+    - fantastic
+    - I'm doing well
+    - couldn't be better
+    - I'm happy
+    - I'm awesome
+    - everything's perfect
+    - I feel excellent
+    - life is good
+    - I'm chill
+    - I'm really good today
+    - things are going well
+    - I'm in a good mood
+    - loving today!
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+    - I'm not feeling well
+    - not great
+    - feeling down
+    - I'm sad
+    - this sucks
+    - I'm upset
+    - not my day
+    - I'm tired
+    - I've had better days
+    - I feel terrible
+    - I'm stressed
+    - I'm not okay
+    - feeling low
+    - things are rough
+    - I feel off today
+    - not feeling it today
+    - having a hard time
+
+- intent: thankyou
+  examples: |
+    - thanks
+    - thank you
+    - thank you very much
+    - thanks a lot
+    - thanks a bunch
+    - I appreciate it
+    - many thanks
+    - cheers
+    - thanks for your help
+    - thank you so much
+    - I owe you one
+    - you're the best
+    - I really appreciate it
+    - thanks for everything
+    - thanks for your assitance
+    - mucho gracias
+    - arigato
+    - thanks for that
+    - grateful for your help
+    - that's helpful, thanks
+    - I appreciate it
+    - big thanks
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - are you real?
+    - who made you?
+    - what are you?
+    - is this a real person?
+    - am I talking to a robot?
+    - you're not a human, are you?
+    - are you AI?
+    - who built you?
+    - was this made by a company?
+    - are you a real person?
+    - are tou a chatbot?
+    - are you a real chatbot?
+    - are you artificially intelligent?
+    - are you a real bot?
+
+- intent: book_appointment
+  examples: |
+    - I would like to book an appointment
+    - I want to schedule an appointment
+    - Can I book an appointment?
+    - I need to make an appointment
+    - Please help me schedule a visit
+    - I'd like to arrange an appointment
+    - I wish to book a consultation
+    - Can you schedule a meeting for me?
+    - I want to set up an appointment
+    - Please book me a doctor's appointment
+    - I need to arrange a visit
+    - I'd like to make an appointment
+    - Can I set up a consultation?
+    - I wish to schedule a doctor's visit
+    - I want to reserve an appointment
+    - Please help me make an appointment
+    - I need to book a consultation
+    - Can I arrange a visit with the doctor?
+    - I'd like to schedule a meeting
+    - I want to organize an appointment
+    - Please set up an appointment for me
+    - I wish to make a consultation appointment
+    - Can you book an appointment for me?
+    - I want to fix a doctor's appointment
+    - I need to schedule a medical visit
+    - Please arrange an appointment
+    - I'd like to reserve a time for a consultation
+    - I want to secure an appointment
+    - Can I organize a visit?
+    - I need to fix a consultation
+    - I'd like to set up a medical appointment
+    - Please help me arrange a doctor's visit
+    - I wish to reserve a consultation slot
+    - I want to make a medical appointment
+    - Can you schedule a consultation for me
+    - I'd like to book a doctor's meeting
+    - I need to arrange a checkup
+    - Please help me schedule a doctor's appointment
+    - I wish to set up a consultation
+    - I want to organize a medical visit
+    - Can I reserve a time slot for an appointment?
+    - I'd like to fix an appointment
+    - I need to set up a consultation session
+    - Please book a medical consultation for me
+    - I want to arrange a checkup with the doctor
+    - I wish to organize a visit to the doctor
+    - Can you set up a medical appointment for me?
+    - I'd like to secure a consultation slot
+    - I need to schedule a checkup
+    - Please help me book a consultation
+    - I want to schedule a doctor's visit
+
+- intent: what_is_fever
+  examples: |
+    - What is fever?
+    - Can you tell me about fever?
+    - Explain fever
+    - Define fever
+    - Tell me what fever is
+    - I want to know about fever
+    - What does fever mean?
+    - Give me information on fever
+    - How would you describe fever?
+    - What exactly is a fever?
+    - Can you explain what fever is?
+    - I want to learn about fever
+    - What is the definition of fever?
+    - Tell me the meaning of fever
+    - What happens in the body during a fever?
+
+- intent: how_does_fever_work
+  examples: |
+    - How does fever happen?
+    - Why do we get a fever?
+    - How does the body develop a fever?
+    - Explain the mechanism of fever
+    - How does fever work in the body?
+    - What causes body temperature to rise during fever?
+    - How does the immune system cause fever?
+    - What is happening in the body during a fever?
+    - How does the body fight infections with fever?
+    - Why does the body temperature increase during illness?
+    - What processes cause fever?
+    - How does fever help fight germs?
+    - What biological changes occur during fever?
+    - How does fever signal illness in the body?
+    - What triggers the body to develop a fever?
+
+- intent: fever_symptomps
+  examples: |
+    - What are the symptomps of fever?
+    - How can I tell if I have a fever?
+    - Signs of having a fever
+    - Fever symptomps
+    - How does a fever feel?
+    - What happens when someone has a fever?
+    - Common symptomps when you have fever
+    - How to recognize fever
+    - How do I know if I have a fever?
+    - What are the warning signs of fever?
+    - How can I tell fever is coming?
+    - What are the early signs of a fever?
+    - How does fever affect the body?
+    - What are typical fever symptomps?
+    - How do I check for a fever?
+
+- intent: fever_treatment
+  examples: |
+    - How do I treat fever?
+    - What are the treatments for fever?
+    - How can fever be treated?
+    - Ways to reduce fever
+    - How to bring down a fever
+    - What should I do if I have a fever?
+    - Home remedies for fever
+    - Medicines for fever
+    - How to manage a fever at home
+    - Best ways to deal with fever
+    - How can I lower my fever quickly?
+    - Treatment options for fever
+    - What is the proper care for someone with a fever?
+    - How to handle fever in adults/children
+    - How can I recover from fever faster?
+
+- intent: what_is_cold?
+  examples: |
+    - What is cold?
+    - Can you tell me what a cold is?
+    - Explain the common cold
+    - Define cold
+    - What does cold mean in medical terms?
+    - I want to know about cold
+    - Tell me what the common cold is
+    - What happens when someone has a cold?
+    - How would you describe a cold?
+    - Give me information on cold
+    - What exactly is a cold?
+    - What does it mean to have a cold?
+    - Is cold a disease?
+    - What does it mean when I catch a cold?
+    - Can you explain what the common cold is?
+    - What does it mean to suffer from cold?
+    - Describe the common cold
+    - What does cold do to the body?
+    - What the definition of common cold?
+    - How do doctors define a cold?
+    - What is meant by a cold?
+    - Please explain cold in simple terms
+    - What's the meaning of cold?
+    - Could you explain what cold is?
+    - Tell me about the illness called cold
+
+- intent: how_does_cold_work?
+  examples: |
+    - How does a cold happen?
+    - Why do we get a cold?
+    - How does the body catch a cold?
+    - Explain how cold develops
+    - How does the common cold work?
+    - What happens in the body during a cold?
+    - How does a cold start?
+    - How does my body get infected with cold?
+    - Describe the mechanism of a cold
+    - Why do people get colds?
+    - How do cold viruses affect the body?
+    - What causes the symptomps of cold?
+    - How does catching a cold happen?
+    - How does the virus cause cold symptomps?
+    - Explain how the body reacts to a cold
+    - How does a cold affect my respiratory system?
+    - How does the immune system respond to cold?
+    - How does cold virus spread in the body?
+    - What occurs when someone gets a cold?
+    - How does the common cold develop in humans?
+    - How does the body fight off a cold?
+    - How does infection from cold begin?
+    - How do colds work in the body?
+    - What is the process of getting a cold?
+    - Explain what happens when I catch a cold
+
+- intent: cold_symptomps
+  examples: |
+    - What are the symptomps of a cold?
+    - How can I tell if I have a cold?
+    - Signs of having a cold
+    - Cold symptomps
+    - How does a cold feel?
+    - What happens when someone has a cold?
+    - Common symptomps when you have a cold
+    - How to recognize a cold
+    - How do I know if I caught a cold?
+    - What indicates that I have a cold?
+    - What are the typical cold symptomps?
+    - How does a cold manifest?
+    - What are the early signs of a cold?
+    - How can I identify a cold?
+    - How to spot a cold in its early stage?
+    - How do colds usually present?
+    - What are common cold indicators?
+    - How does my body react to a cold?
+    - What are warning signs of a cold?
+    - How do I know I'm getting a cold?
+    - What physical signs show I have a cold?
+    - How do cold symptomps start?
+    - What changes in the body indicate a cold?
+    - How do I detect a cold early?
+    - What are the main signs of catching a cold? 
+
+- intent: cold_treatment
+  examples: |
+    - How do I treat a cold?
+    - What are the treatments for a cold?
+    - How can a cold be treated?
+    - How to get rid of a cold?
+    - What should I do if I have a cold?
+    - Ways to cure a cold
+    - Remedies for a cold
+    - How can I recover from a cold quickly?
+    - What helps relieve cold symptomps?
+    - How to manage a cold at home?
+    - How do doctors treat colds?
+    - What is the best way to handle a cold?
+    - Tips to get over a cold
+    - How can I relieve cold symptomps?
+    - Home treatments for a cold
+    - How to reduce cold discomfort?
+    - Effective ways to treat a cold
+    - How do I fight off a cold?
+    - What medicine can help with a cold?
+    - How to recover from cold faster?
+    - Natural remedies for cold
+    - How to soothe a cold?
+    - What actions help with cold recovery?
+    - How to relieve a cold naturally?
+    - How to treat cold symptomps effectively?
+
+- intent: what_is_headache
+  examples: |
+    - What is a headache?
+    - Can you explain headaches?
+    - Tell me about headaches.
+    - I want to know what a headache is.
+    - What causes headaches?
+    - How do headaches happen?
+    - Give me information on headaches.
+    - Define headache for me.
+    - What does it mean to have a headache?
+    - Can you describe a headache?
+    - How would you define a headache?
+    - What are the symptoms of a headache?
+    - I'm feeling pain in my head, what is it?
+    - Explain the meaning of headache.
+    - Can you tell me about different types of headaches?
+    - Why do people get headaches?
+    - I need to know what a headache is.
+    - What happens during a headache?
+    - What is the medical definition of headache?
+    - Can you provide details on headaches?
+
+- intent: how_do_headaches_work?
+  examples: |
+    - How do headaches happen?
+    - What causes headaches?
+    - Why do I get headaches?
+    - Explain how headaches work.
+    - What is happening in my head during a headache?
+    - Can you tell me the mechanism of headaches?
+    - How does a headache occur?
+    - What triggers headaches?
+    - How do different types of headaches work?
+    - I want to understand why headaches occur.
+    - How do migraines and tension headaches differ?
+    - What happens in the brain during a headache?
+    - Why do some people get frequent headaches?
+    - How is a headache produced in the body?
+    - Can you explain the physiology of a headache?
+    - What is the biological reason for headaches?
+    - How do stress and hormones cause headaches?
+    - Explain the science behind headaches.
+    - How does blood flow or nerves cause headaches?
+    - What happens inside the head when I have a headache?
+
+- intent: headache_symptomps
+  examples: |
+    - What are the symptoms of a headache?
+    - How do I know if I have a headache?
+    - Can you tell me the signs of a headache?
+    - What does a headache feel like?
+    - How can I recognize a headache?
+    - What are common headache symptoms?
+    - How does a migraine feel compared to a normal headache?
+    - What are the warning signs of a severe headache?
+    - How can I tell the difference between a headache and a migraine?
+    - What physical symptoms come with headaches?
+    - Are there any early signs of a headache?
+    - What does a tension headache feel like?
+    - Can headaches cause nausea or dizziness?
+    - What symptoms indicate a headache is serious?
+    - How do headaches affect the body?
+    - What are typical headache signs?
+    - How do I know if it's a cluster headache?
+    - Can headaches cause vision problems?
+    - What sensations should I expect with a headache?
+    - Are there neurological symptoms with headaches?
+
+- intent: headache_treatment
+  examples: |
+    - How can I treat a headache?
+    - What are the remedies for headaches?
+    - Can you suggest ways to get rid of a headache?
+    - How do I relieve a headache quickly?
+    - What treatments are available for headaches?
+    - Are there home remedies for headaches?
+    - What medicine works for headaches?
+    - How can I manage migraine pain?
+    - What are effective headache treatments?
+    - Can lifestyle changes help with headaches?
+    - How do I stop a tension headache?
+    - Are there natural treatments for headaches?
+    - What should I do when I have a severe headache?
+    - How can I prevent headaches?
+    - Which medications are used for headaches?
+    - Can hydration help relieve headaches?
+    - How can I reduce headache pain without medicine?
+    - Are there therapies for chronic headaches?
+    - What is the best way to treat a headache at home?
+    - How do I know which headache treatment is right for me?
+
+- intent: What_is_Hepatitis-A
+  examples: |
+    - What is Hepatitis A?
+    - Can you explain Hepatitis A?
+    - Tell me about Hepatitis A.
+    - I want to know what Hepatitis A is.
+    - What causes Hepatitis A?
+    - How do people get Hepatitis A?
+    - Give me information on Hepatitis A.
+    - Define Hepatitis A for me.
+    - What are the symptoms of Hepatitis A?
+    - Can you describe Hepatitis A disease?
+    - What is the meaning of Hepatitis A?
+    - How is Hepatitis A different from other types of hepatitis?
+    - Explain Hepatitis A in simple terms.
+    - I heard about Hepatitis A, what is it exactly?
+    - What is Hepatitis A infection?
+    - Can Hepatitis A be serious?
+    - How does Hepatitis A affect the liver?
+    - Tell me about the Hepatitis A virus.
+    - What is the medical definition of Hepatitis A?
+    - How is Hepatitis A transmitted?
+
+- intent: How_does_Hepatitis_A_work?
+  examples: |
+    - How does Hepatitis A affect the body?
+    - How does Hepatitis A infection work?
+    - What happens in the body during Hepatitis A?
+    - Can you explain how Hepatitis A affects the liver?
+    - How does the Hepatitis A virus spread and act?
+    - How does Hepatitis A infection occur?
+    - What is the process of Hepatitis A infection in humans?
+    - How does the body respond to Hepatitis A?
+    - Explain the mechanism of Hepatitis A.
+    - How does Hepatitis A virus cause illness?
+    - What happens inside the body when someone gets Hepatitis A?
+    - How does Hepatitis A work in the liver?
+    - Can you describe the life cycle of Hepatitis A in the body?
+    - How does Hepatitis A infection progress?
+    - What is the effect of Hepatitis A on liver cells?
+    - How does the immune system respond to Hepatitis A?
+    - How does Hepatitis A lead to symptoms?
+    - Can Hepatitis A damage the liver?
+    - How does the virus enter and affect the body?
+    - Explain how Hepatitis A infection develops.
+
+- intent: Hepatitis_A_symptomps
+  examples: |
+    - What are the symptoms of Hepatitis A?
+    - How do I know if I have Hepatitis A?
+    - Can you list the signs of Hepatitis A?
+    - What does Hepatitis A feel like?
+    - How can I recognize Hepatitis A infection?
+    - What are common symptoms of Hepatitis A?
+    - How do symptoms of Hepatitis A show up?
+    - What early signs indicate Hepatitis A?
+    - How do I know if someone has Hepatitis A?
+    - Can you explain the warning signs of Hepatitis A?
+    - What physical symptoms come with Hepatitis A?
+    - How can Hepatitis A be detected from symptoms?
+    - What does a person experience during Hepatitis A?
+    - Can Hepatitis A cause fever or fatigue?
+    - What are the first signs of Hepatitis A?
+    - How does Hepatitis A affect the body at the symptom level?
+    - Can Hepatitis A cause nausea or stomach pain?
+    - What are the visible symptoms of Hepatitis A?
+    - Does Hepatitis A cause yellowing of the skin or eyes?
+    - Can Hepatitis A make you tired or weak?
+
+- intent: Hepatitis_A_treatment_advice
+  examples: |
+    - How is Hepatitis A treated?
+    - What is the treatment for Hepatitis A?
+    - How do you cure Hepatitis A?
+    - Can Hepatitis A be treated at home?
+    - What should I do if I have Hepatitis A?
+    - How can I recover from Hepatitis A?
+    - What helps in the healing of Hepatitis A?
+    - Is there a cure for Hepatitis A?
+    - What are the ways to manage Hepatitis A?
+    - How do doctors treat Hepatitis A?
+    - Can you explain treatment options for Hepatitis A?
+    - What lifestyle changes help with Hepatitis A recovery?
+    - How long does treatment for Hepatitis A take?
+    - What should I avoid during Hepatitis A?
+    - What home remedies help in Hepatitis A recovery?
+    - How to take care of someone with Hepatitis A?
+    - What is the best way to support recovery from Hepatitis A?
+    - How do people usually get better from Hepatitis A?
+    - Can Hepatitis A go away on its own?
+    - What steps are needed for Hepatitis A treatment?
+    - How can Hepatitis A patients take care of their liver?
+    - Does Hepatitis A need medical treatment?
+    - What kind of rest is required for Hepatitis A?
+    - How do you manage Hepatitis A symptoms at home?
+    - What is the standard recovery plan for Hepatitis A?
+
+- intent: What_is_malaria
+  examples: |
+    - What is malaria?
+    - Can you explain malaria?
+    - Tell me about malaria.
+    - I want to know what malaria is.
+    - Define malaria for me.
+    - What does malaria mean?
+    - Explain the disease malaria.
+    - Give me details about malaria.
+    - What is the illness called malaria?
+    - How would you describe malaria?
+    - What kind of disease is malaria?
+    - Could you tell me what malaria is?
+    - Can you describe malaria?
+    - I need information about malaria.
+    - Please explain the illness malaria.
+    - What is malaria disease?
+    - Share details about malaria.
+    - Malaria - what is it?
+    - What exactly is malaria?
+    - I'd like to know more about malaria.
+
+- intent: How_does_malaria_work?
+  examples: |
+    - How does malaria work?
+    - Can you explain how malaria affects the body?
+    - What happens in the body when someone has malaria?
+    - How does malaria infection develop?
+    - How does the malaria parasite work?
+    - Can you describe the process of malaria infection?
+    - How does malaria spread and affect humans?
+    - What is the mechanism of malaria?
+    - How does the malaria parasite attack the body?
+    - How does malaria progress inside the human body?
+    - What happens after a mosquito bite that carries malaria?
+    - How does malaria damage the body?
+    - How does malaria affect red blood cells?
+    - What role does the mosquito play in malaria infection?
+    - Can you explain the life cycle of malaria in humans?
+    - How does the malaria parasite enter and grow in the body?
+    - How does malaria make people sick?
+    - How does malaria affect blood and organs?
+    - What process causes malaria symptoms in the body?
+    - How does malaria infection work step by step?
+
+- intent: malaria_symptomps
+  examples: |
+    - What are the symptoms of malaria?
+    - How do I know if I have malaria?
+    - Can you tell me the signs of malaria?
+    - What does malaria feel like?
+    - What are the early symptoms of malaria?
+    - How can I recognize malaria infection?
+    - What symptoms appear in malaria?
+    - What are the common symptoms of malaria?
+    - How does malaria show up in the body?
+    - What are the warning signs of malaria?
+    - Can malaria cause fever and chills?
+    - Does malaria cause headaches or weakness?
+    - How does a person feel when they have malaria?
+    - What physical symptoms are linked to malaria?
+    - How can malaria be detected through symptoms?
+    - What are the main signs of malaria infection?
+    - What do people experience when they get malaria?
+    - Does malaria always cause fever?
+    - How can I tell if someone has malaria?
+    - What health problems appear with malaria?
+
+- intent: malaria_treatment_advice
+  examples: |
+    - How is malaria treated?
+    - What is the treatment for malaria?
+    - How do you cure malaria?
+    - Can malaria be treated at home?
+    - What should I do if I have malaria?
+    - How can I recover from malaria?
+    - What helps in the healing of malaria?
+    - What are the ways to manage malaria?
+    - How do doctors treat malaria?
+    - Can you explain treatment options for malaria?
+    - What lifestyle changes help with malaria recovery?
+    - How long does treatment for malaria take?
+    - What should I avoid during malaria?
+    - What home care steps help with malaria?
+    - How do you take care of someone with malaria?
+    - What is the best way to support recovery from malaria?
+    - How do people usually get better from malaria?
+    - Can malaria go away on its own?
+    - What steps are needed for malaria treatment?
+    - How can malaria patients take care of their health?
+    - Does malaria need medical treatment?
+    - What kind of rest is required for malaria?
+    - How do you manage malaria symptoms at home?
+    - What is the standard recovery plan for malaria?
+
+
+- intent: What_is_heat_stroke
+  examples: |
+    - What is heat stroke?
+    - Can you explain heat stroke?
+    - Tell me about heat stroke.
+    - I want to know what heat stroke is.
+    - Define heat stroke for me.
+    - What causes heat stroke?
+    - How would you describe heat stroke?
+    - Explain the condition heat stroke.
+    - Give me information on heat stroke.
+    - What does heat stroke mean?
+    - How does heat stroke happen?
+    - Can you describe heat stroke in simple terms?
+    - I heard about heat stroke, what is it exactly?
+    - What is the medical definition of heat stroke?
+    - How is heat stroke different from heat exhaustion?
+    - Explain heat stroke in humans.
+    - What are the main effects of heat stroke?
+    - How does heat stroke affect the body?
+    - What does it mean to have heat stroke?
+    - What is the meaning of heat stroke?
+    - How serious is heat stroke?
+    - What happens during heat stroke?
+    - Can you tell me what heat stroke is?
+    - What is heat stroke illness?
+
+- intent: How_does_heat_stroke_work?
+  examples: |
+    - How does heat stroke work?
+    - Can you explain how heat stroke affects the body?
+    - What happens in the body during heat stroke?
+    - How does heat stroke develop?
+    - How does heat stroke happen?
+    - What is the mechanism of heat stroke?
+    - How does the body respond to heat stroke?
+    - Explain the process of heat stroke in humans.
+    - How does heat stroke affect organs?
+    - What occurs in the body during heat stroke?
+    - How does prolonged heat exposure lead to heat stroke?
+    - What changes happen in the body during heat stroke?
+    - Can you describe how heat stroke occurs?
+    - How does the body fail during heat stroke?
+    - How does heat stroke damage the body?
+    - What physiological processes are involved in heat stroke?
+    - How does heat stroke affect temperature regulation?
+    - What triggers heat stroke in humans?
+    - How does the body overheat in heat stroke?
+    - How does dehydration contribute to heat stroke?
+    - What happens to the heart and brain during heat stroke?
+    - How does heat stroke cause serious complications?
+    - How does heat stroke impact the nervous system?
+    - Can you explain heat stroke in simple terms?
+
+- intent: Heat_stroke_symptomps
+  examples: |
+    - What are the symptoms of heat stroke?
+    - How can I tell if someone has heat stroke?
+    - What does heat stroke feel like?
+    - Can you list the signs of heat stroke?
+    - How do I recognize heat stroke?
+    - What are common symptoms of heat stroke?
+    - What happens when someone has heat stroke?
+    - How does heat stroke manifest?
+    - What are warning signs of heat stroke?
+    - How can I detect heat stroke early?
+    - Does heat stroke cause dizziness or confusion?
+    - Can heat stroke cause nausea or vomiting?
+    - How does the body show heat stroke?
+    - What physical symptoms appear in heat stroke?
+    - What are the early signs of heat stroke?
+    - How can heat stroke affect the skin and temperature?
+    - What are the main indicators of heat stroke?
+    - Can heat stroke cause headaches or rapid heartbeat?
+    - How do you know if it's heat stroke and not heat exhaustion?
+    - What are the dangerous symptoms of heat stroke?
+    - How can you spot heat stroke in children or elderly?
+    - What are the typical signs of severe heat stroke?
+    - How does heat stroke affect consciousness?
+    - What are the health effects of heat stroke on the body?
+
+- intent: Heat_Stroke_Treatment_advice
+  examples: |
+    - How is heat stroke treated?
+    - What should I do if someone has heat stroke?
+    - Can heat stroke be treated at home?
+    - What is the treatment for heat stroke?
+    - How do doctors treat heat stroke?
+    - What steps should I take during heat stroke?
+    - How can heat stroke be managed safely?
+    - What is the recovery plan for heat stroke?
+    - How do you help someone with heat stroke?
+    - Can heat stroke be serious and require medical attention?
+    - What first aid should be given for heat stroke?
+    - How do I cool down someone with heat stroke?
+    - What lifestyle changes help after heat stroke?
+    - How long does it take to recover from heat stroke?
+    - What precautions are needed during heat stroke recovery?
+    - How do you prevent complications from heat stroke?
+    - Should I see a doctor for heat stroke?
+    - What supportive care is needed for heat stroke?
+    - How do you treat heat stroke without medicine?
+    - What actions should be taken immediately for heat stroke?
+    - How to handle heat stroke in children or elderly?
+    - What home care steps are safe for heat stroke patients?
+    - How do you manage heat stroke symptoms safely?
+
+- intent: What_is_food_poisoning
+  examples: |
+    - What is food poisoning?
+    - Can you explain food poisoning?
+    - Tell me about food poisoning.
+    - I want to know what food poisoning is.
+    - Define food poisoning for me.
+    - What causes food poisoning?
+    - How would you describe food poisoning?
+    - Explain the condition food poisoning.
+    - Give me details about food poisoning.
+    - What does food poisoning mean?
+    - How does food poisoning occur?
+    - Can you describe food poisoning simply?
+    - I heard about food poisoning, what is it exactly?
+    - What is the medical definition of food poisoning?
+    - How is food poisoning different from a stomach flu?
+    - Explain food poisoning in humans.
+    - What are the main effects of food poisoning?
+    - How does food poisoning impact the digestive system?
+    - What does it mean to have food poisoning?
+    - What is the meaning of food poisoning?
+    - How serious is food poisoning?
+    - What happens during food poisoning?
+    - Can you tell me what food poisoning is?
+    - What is food poisoning illness?
+
+- intent: How_does_food_poisoning_work?
+  examples: |
+    - How does food poisoning happen?
+    - Can you explain how food poisoning affects the body?
+    - What occurs in the digestive system during food poisoning?
+    - How does food poisoning develop?
+    - What causes food poisoning to occur?
+    - How does the bacteria or virus in food make you sick?
+    - Can you describe the process of food poisoning?
+    - How does contaminated food affect the stomach?
+    - How does food poisoning affect digestion?
+    - What happens in the body when someone has food poisoning?
+    - How do toxins in food cause illness?
+    - How does the infection from spoiled food work?
+    - How does eating contaminated food lead to symptoms?
+    - What is the mechanism of food poisoning?
+    - How does the stomach respond to food poisoning?
+    - How does the body fight off food poisoning?
+    - How does bacteria or virus in food cause symptoms?
+    - How does food poisoning affect health?
+    - Can you explain food poisoning in simple terms?
+    - How does food poisoning make a person feel sick?
+    - What changes happen in the body during food poisoning?
+    - How quickly does food poisoning develop?
+    - How does food poisoning lead to nausea or vomiting?
+    - How does contaminated food trigger illness?
+
+- intent: Food_poisoning_symptomps
+  examples: |
+    - What are the symptoms of food poisoning?
+    - How do I know if I have food poisoning?
+    - What signs indicate food poisoning?
+    - How can I recognize food poisoning?
+    - What are the common symptoms of food poisoning?
+    - How does food poisoning feel?
+    - What physical signs appear in food poisoning?
+    - Can food poisoning cause nausea?
+    - Does food poisoning lead to vomiting or diarrhea?
+    - How do I detect food poisoning early?
+    - What are warning signs of food poisoning?
+    - How can I tell if someone has food poisoning?
+    - Can food poisoning cause stomach cramps?
+    - What are the main indicators of food poisoning?
+    - How does food poisoning affect the digestive system?
+    - What are the early symptoms of food poisoning?
+    - Can food poisoning cause fever?
+    - How quickly do symptoms appear after eating contaminated food?
+    - Does food poisoning cause weakness or fatigue?
+    - What are the mild and severe symptoms of food poisoning?
+    - How does food poisoning affect appetite?
+    - Can dehydration occur from food poisoning?
+    - What gastrointestinal symptoms are linked to food poisoning?
+    - How does food poisoning affect children or the elderly?
+
+- intent: Food_poisoning_treatment_advice
+  examples: |
+    - How do you treat food poisoning?
+    - What should I do if I have food poisoning?
+    - Advice for recovering from food poisoning?
+    - How can I manage food poisoning at home?
+    - What steps help with food poisoning recovery?
+    - How to take care of someone with food poisoning?
+    - Can food poisoning be treated at home?
+    - What home remedies are safe for food poisoning?
+    - How long does food poisoning last?
+    - How do I prevent dehydration during food poisoning?
+    - When should I see a doctor for food poisoning?
+    - How can I stay hydrated while recovering?
+    - What foods or drinks are safe after food poisoning?
+    - How can rest help during food poisoning recovery?
+    - What supportive care is needed for food poisoning?
+    - How do I ease stomach discomfort from food poisoning?
+    - Is it safe to eat after vomiting or diarrhea?
+    - How can I monitor my symptoms during food poisoning?
+    - What precautions should I take after food poisoning?
+    - How do I prevent food poisoning from recurring?
+    - Can children recover from food poisoning at home?
+    - How to help elderly people recover from food poisoning safely?
+    - What steps reduce the risk of complications?
+    - How can I ensure a comfortable recovery environment?
+
+- intent: What_is_asthma
+  examples: |
+    - What is asthma?
+    - Can you tell me about asthma?
+    - Explain asthma to me.
+    - I want to know what asthma is.
+    - Define asthma.
+    - Give me information on asthma.
+    - Tell me about asthma.
+    - How would you describe asthma?
+    - What does asthma mean?
+    - Could you explain what asthma is?
+    - I need details about asthma.
+    - What is the definition of asthma?
+    - Help me understand asthma.
+    - Describe asthma for me.
+    - What are asthma symptoms?
+    - How does asthma work?
+    - Can you explain asthma in simple words?
+    - I want a brief explanation of asthma.
+    - What happens in asthma?
+    - How does asthma affect the lungs?
+    - Why do people get asthma?
+    - Give me a detailed explanation of asthma.
+    - Can you teach me about asthma?
+    - What is the medical meaning of asthma?
+    - Explain the condition called asthma.
+
+- intent: How_asthma_works
+  examples: |
+    - How does asthma work?
+    - Explain how asthma affects the body.
+    - How does asthma affect the lungs?
+    - Can you tell me what happens in asthma?
+    - How does asthma cause breathing problems?
+    - What happens in the airways during asthma?
+    - How does asthma affect breathing?
+    - Explain the mechanism of asthma.
+    - How does asthma flare up?
+    - What triggers asthma attacks in the body?
+    - How do asthma symptoms develop?
+    - How does inflammation occur in asthma?
+    - Describe what happens during an asthma attack.
+    - How does the immune system react in asthma?
+    - How does asthma make breathing difficult?
+    - Can you explain asthma in simple terms?
+    - How does asthma affect oxygen flow?
+    - What goes wrong in the lungs during asthma?
+    - How do the airways narrow in asthma?
+    - How does asthma cause wheezing and coughing?
+    - How does asthma affect daily life?
+    - What is the process behind an asthma attack?
+    - How do allergens trigger asthma?
+    - How does the body respond to asthma triggers?
+    - Explain how asthma causes shortness of breath.
+
+- intent: asthma_symptomps
+  examples: |
+    - What are the symptoms of asthma?
+    - How can I tell if someone has asthma?
+    - Signs of asthma?
+    - What does asthma feel like?
+    - How does asthma affect the body?
+    - What are common asthma symptoms?
+    - How do you recognize asthma?
+    - Wheezing and coughing - are these asthma symptoms?
+    - Shortness of breath - is it asthma?
+    - What are the warning signs of asthma?
+    - Difficulty breathing - is that asthma?
+    - Chest tightness and asthma?
+    - How does asthma show up in children?
+    - Symptoms of an asthma attack?
+    - Persistent cough - could it be asthma?
+    - Fatigue due to asthma?
+    - Rapid breathing - is that related to asthma?
+    - How do symptoms vary in mild vs severe asthma?
+    - Noisy breathing - is it asthma?
+    - Trouble sleeping because of asthma?
+    - Can asthma cause wheezing and shortness of breath?
+    - What physical signs indicate asthma?
+    - How does asthma affect exercise?
+    - Are there early signs of asthma?
+    - How can I monitor asthma symptoms?
+
+- intent: asthma_treatments
+  examples: |
+    - How is asthma treated?
+    - What are asthma treatments?
+    - Can asthma be cured?
+    - How do you manage asthma?
+    - What medications help asthma?
+    - How do inhalers work for asthma?
+    - What are the common asthma therapies?
+    - Can lifestyle changes help asthma?
+    - How do you prevent asthma attacks?
+    - Are there natural remedies for asthma?
+    - What is the role of corticosteroids in asthma?
+    - How do doctors treat asthma?
+    - Can exercise help with asthma?
+    - What are quick-relief treatments for asthma?
+    - How do long-term asthma medications work?
+    - How do bronchodilators help asthma?
+    - What should someone do during an asthma attack?
+    - Are there ways to avoid asthma triggers?
+    - How do allergy treatments affect asthma?
+    - How do you control chronic asthma?
+    - Can diet impact asthma symptoms?
+    - How do nebulizers help asthma patients?
+    - How do asthma action plans work?
+    - What is the most effective asthma treatment?
+    - How do doctors personalize asthma treatment?
+
+
+- intent: What_is_pneumonia
+  examples: |
+    - What is pneumonia?
+    - Can you tell me about pneumonia?
+    - Explain pneumonia to me.
+    - I want to know what pneumonia is.
+    - Define pneumonia.
+    - Give me information on pneumonia.
+    - Tell me about pneumonia.
+    - How would you describe pneumonia?
+    - What does pneumonia mean?
+    - Could you explain pneumonia?
+    - I need details about pneumonia.
+    - What is the medical definition of pneumonia?
+    - Help me understand pneumonia.
+    - Describe pneumonia for me.
+    - What is a pneumonia infection?
+    - How does pneumonia affect the lungs?
+    - What is pneumonia in simple terms?
+    - Explain the disease pneumonia.
+    - Give me a detailed explanation of pneumonia.
+    - Can you teach me about pneumonia?
+    - What happens when someone has pneumonia?
+    - What is the meaning of pneumonia?
+    - How serious is pneumonia?
+    - What is the condition called pneumonia?
+    - How would you define pneumonia medically?
+
+- intent: How_pneumonia_works
+  examples: |
+    - How does pneumonia work?
+    - Explain how pneumonia affects the lungs.
+    - What happens in the body during pneumonia?
+    - How does pneumonia cause illness?
+    - How does infection lead to pneumonia?
+    - Can you tell me what happens in pneumonia?
+    - How does pneumonia affect breathing?
+    - What is the process behind pneumonia?
+    - How do bacteria or viruses cause pneumonia?
+    - How does the body react to pneumonia infection?
+    - Describe what happens in the lungs during pneumonia.
+    - How does pneumonia cause fluid buildup?
+    - How does inflammation occur in pneumonia?
+    - How does pneumonia make it hard to breathe?
+    - Explain the mechanism of pneumonia.
+    - How do symptoms develop in pneumonia?
+    - How does the immune system respond to pneumonia?
+    - What goes wrong in the lungs during pneumonia?
+    - How does pneumonia lead to cough and fever?
+    - How does pneumonia progress in the body?
+    - How does pneumonia affect oxygen intake?
+    - How does pneumonia trigger chest pain?
+    - How does pneumonia flare up?
+    - Explain pneumonia in simple words.
+    - How does pneumonia impact daily life?
+
+- intent: pneumonia_symptomps
+  examples: |
+    - What are the symptoms of pneumonia?
+    - How can I tell if someone has pneumonia?
+    - Signs of pneumonia?
+    - What does pneumonia feel like?
+    - How does pneumonia affect the body?
+    - What are common pneumonia symptoms?
+    - How do you recognize pneumonia?
+    - Fever and cough - are these pneumonia symptoms?
+    - Shortness of breath - could it be pneumonia?
+    - What are the warning signs of pneumonia?
+    - Chest pain and pneumonia?
+    - Difficulty breathing - is that pneumonia?
+    - Persistent cough - could it be pneumonia?
+    - Fatigue due to pneumonia?
+    - Rapid breathing - is that related to pneumonia?
+    - How do symptoms vary in mild vs severe pneumonia?
+    - Chills and sweating - are these pneumonia symptoms?
+    - Trouble sleeping because of pneumonia?
+    - How does pneumonia show up in children?
+    - Can pneumonia cause wheezing and coughing?
+    - What physical signs indicate pneumonia?
+    - How does pneumonia affect daily activities?
+    - Are there early signs of pneumonia?
+    - How can I monitor pneumonia symptoms?
+    - How serious are pneumonia symptoms?
+
+- intent: pneumonia_treatment
+  examples: |
+    - How is pneumonia treated?
+    - What are pneumonia treatments?
+    - Can pneumonia be cured?
+    - How do you manage pneumonia?
+    - What medications help pneumonia?
+    - How do antibiotics work for pneumonia?
+    - What are common pneumonia therapies?
+    - Can lifestyle changes help pneumonia?
+    - How do you prevent pneumonia complications?
+    - Are there natural remedies for pneumonia?
+    - What is the role of medication in pneumonia treatment?
+    - How do doctors treat pneumonia?
+    - Can rest help in pneumonia recovery?
+    - What are quick-relief treatments for pneumonia?
+    - How do oxygen therapy and inhalers help pneumonia patients?
+    - How do long-term pneumonia treatments work?
+    - What should someone do during a pneumonia attack?
+    - Are there ways to avoid pneumonia triggers?
+    - How do vaccinations help prevent pneumonia?
+    - How do doctors personalize pneumonia treatment?
+    - How is severe pneumonia treated in the hospital?
+    - How do antibiotics help fight pneumonia?
+    - What home care is recommended for pneumonia?
+    - How do you recover from pneumonia quickly?
+    - What is the most effective pneumonia treatment?
+
+
+- intent: What_is_A_Minor_burn
+  examples: |
+    - What is a minor burn?
+    - Can you tell me about minor burns?
+    - Explain a minor burn to me.
+    - I want to know what a minor burn is.
+    - Define a minor burn.
+    - Give me information on minor burns.
+    - Tell me about minor burns.
+    - How would you describe a minor burn?
+    - What does a minor burn mean?
+    - Could you explain minor burns?
+    - I need details about minor burns.
+    - What is the medical definition of a minor burn?
+    - Help me understand minor burns.
+    - Describe a minor burn for me.
+    - What is a first-degree burn?
+    - How does a minor burn affect the skin?
+    - What is a mild burn?
+    - Explain the condition minor burn.
+    - Give me a detailed explanation of minor burns.
+    - Can you teach me about minor burns?
+    - What happens when someone has a minor burn?
+    - What is the meaning of minor burns?
+    - How serious is a minor burn?
+    - What is a minor skin burn?
+    - How would you define a minor burn medically?
+
+- intent: How_Minor_burn_works
+  examples: |
+    - How does a minor burn happen?
+    - Explain how minor burns affect the skin.
+    - What happens to the skin during a minor burn?
+    - How does a minor burn cause pain?
+    - How do burns damage the skin?
+    - Can you tell me what happens in a minor burn?
+    - How does heat cause minor burns?
+    - What is the process behind a minor burn?
+    - How does the skin react to minor burns?
+    - How do symptoms develop in a minor burn?
+    - Describe the mechanism of a minor burn.
+    - How does the skin heal after a minor burn?
+    - How does inflammation occur in minor burns?
+    - How does a minor burn affect nerves in the skin?
+    - Explain a minor burn in simple terms.
+    - How does a burn happen from heat or friction?
+    - How does the body respond to a minor burn?
+    - What goes wrong in the skin during a burn?
+    - How does a minor burn cause redness and pain?
+    - How does a burn affect the skin layers?
+    - How does a minor burn lead to blistering sometimes?
+    - How does the body repair a minor burn?
+    - How does a burn affect skin sensitivity?
+    - How does a minor burn impact daily activities?
+    - How do burns trigger skin healing processes?
+
+- intent: Minor_burn_symptomps
+  examples: |
+    - What are the symptoms of a minor burn?
+    - How can I tell if I have a minor burn?
+    - Signs of a minor burn?
+    - What does a minor burn feel like?
+    - How does a minor burn affect the skin?
+    - What are common minor burn symptoms?
+    - How do you recognize a minor burn?
+    - Redness and pain - are these minor burn symptoms?
+    - Blistering - could it be a minor burn?
+    - What are the warning signs of a minor burn?
+    - Skin peeling and minor burns?
+    - Sensitivity to touch - is that a minor burn?
+    - Pain and mild swelling - could it be a minor burn?
+    - Burning sensation - is that related to a minor burn?
+    - How do symptoms vary in mild burns?
+    - Red, tender skin - is that a minor burn?
+    - Minor burn itching symptoms?
+    - How does a minor burn show up on children?
+    - What physical signs indicate a minor burn?
+    - How does a minor burn affect daily activities?
+    - Are there early signs of a minor burn?
+    - How do I monitor a minor burn?
+    - Minor burn pain and discomfort?
+    - How severe are minor burn symptoms?
+    - How does a minor burn heal over time?
+
+- intent: Minor_burn_treatment
+  examples: |
+    - How is a minor burn treated?
+    - What are minor burn treatments?
+    - Can a minor burn be cured quickly?
+    - How do you manage a minor burn?
+    - What medications help minor burns?
+    - How do ointments and creams help minor burns?
+    - What are common minor burn therapies?
+    - Can home care help minor burns?
+    - How do you prevent infection in a minor burn?
+    - Are there natural remedies for minor burns?
+    - What is the role of aloe vera in minor burn treatment?
+    - How do doctors treat minor burns?
+    - Can cooling the burn help?
+    - What first aid steps are needed for a minor burn?
+    - How do you care for minor burn blisters?
+    - How do you protect minor burns while healing?
+    - How do over-the-counter creams help minor burns?
+    - How do you relieve pain from a minor burn?
+    - How do you keep minor burns clean?
+    - How do you prevent scarring from minor burns?
+    - How do you promote healing in minor burns?
+    - How should I care for a minor burn at home?
+    - How do you treat redness and swelling from a minor burn?
+    - How do you manage itching in a healing minor burn?
+    - In short, what is the treatment for a minor burn?
+
+- intent: What_is_Muscle_strain
+  examples: |
+    - What is a muscle strain?
+    - Can you tell me about muscle strains?
+    - Explain a muscle strain to me.
+    - I want to know what a muscle strain is.
+    - Define a muscle strain.
+    - Give me information on muscle strains.
+    - Tell me about muscle strains.
+    - How would you describe a muscle strain?
+    - What does a muscle strain mean?
+    - Could you explain muscle strains?
+    - I need details about muscle strains.
+    - What is the medical definition of a muscle strain?
+    - Help me understand muscle strains.
+    - Describe a muscle strain for me.
+    - What is a pulled muscle?
+    - How does a muscle strain affect the body?
+    - What is a mild muscle injury?
+    - Explain the condition muscle strain.
+    - Give me a detailed explanation of muscle strains.
+    - Can you teach me about muscle strains?
+    - What happens when someone has a muscle strain?
+    - What is the meaning of a muscle strain?
+    - How serious is a muscle strain?
+    - What is a minor muscle injury?
+    - How would you define a muscle strain medically?
+
+- intent: How_Muscle_strain_works
+  examples: |
+    - How does a muscle strain happen?
+    - Explain how muscle strains occur.
+    - What happens to the muscle during a strain?
+    - How does a muscle get injured?
+    - How do muscles get overstretched or torn?
+    - Can you tell me what happens in a muscle strain?
+    - How does exercise cause muscle strains?
+    - What is the process behind a muscle strain?
+    - How does the muscle react to overuse?
+    - How do symptoms develop in a muscle strain?
+    - Describe the mechanism of a muscle strain.
+    - How does the muscle heal after a strain?
+    - How does inflammation occur in a muscle strain?
+    - How does a strain cause pain and stiffness?
+    - Explain a muscle strain in simple terms.
+    - How does sudden movement cause a strain?
+    - How does the body respond to a muscle strain?
+    - What goes wrong in the muscle during a strain?
+    - How does a strain lead to swelling or bruising?
+    - How does a muscle strain affect daily activities?
+    - How does the injury affect muscle function?
+    - How do muscle fibers get damaged?
+    - How does a strain affect mobility?
+    - How do muscles repair after a strain?
+    - How does a muscle strain impact performance?
+
+- intent: Muscle_strain_symptomps
+  examples: |
+    - What are the symptoms of a muscle strain?
+    - How can I tell if I have a muscle strain?
+    - Signs of a muscle strain?
+    - What does a muscle strain feel like?
+    - How does a muscle strain affect the body?
+    - What are common muscle strain symptoms?
+    - How do you recognize a muscle strain?
+    - Pain and stiffness - are these muscle strain symptoms?
+    - Swelling - could it be a muscle strain?
+    - What are the warning signs of a muscle strain?
+    - Bruising and muscle strain?
+    - Weakness in the muscle - is that a strain?
+    - Pain with movement - could it be a strain?
+    - Muscle spasms - is that related to a strain?
+    - How do symptoms vary in mild vs severe muscle strains?
+    - Tenderness in the muscle - is that a strain?
+    - Difficulty moving - is that a sign of muscle strain?
+    - How does a muscle strain show up in athletes?
+    - What physical signs indicate a muscle strain?
+    - How does a muscle strain affect daily activities?
+    - Are there early signs of a muscle strain?
+    - How do I monitor muscle strain symptoms?
+    - Muscle strain pain and discomfort?
+    - How severe are muscle strain symptoms?
+    - How does swelling develop in a muscle strain?
+
+- intent: Muscle_strain_treatment
+  examples: |
+    - How is a muscle strain treated?
+    - What are muscle strain treatments?
+    - Can a muscle strain be healed quickly?
+    - How do you manage a muscle strain?
+    - What medications help muscle strains?
+    - How do rest and ice help muscle strains?
+    - What are common therapies for muscle strains?
+    - Can physical therapy help muscle strains?
+    - How do you prevent further injury in a muscle strain?
+    - Are there home remedies for muscle strains?
+    - What is the role of heat in muscle strain treatment?
+    - How do doctors treat muscle strains?
+    - Can stretching help recovery?
+    - What first aid steps are needed for a muscle strain?
+    - How do you care for muscle strain pain?
+    - How do you protect the muscle while healing?
+    - How do over-the-counter pain relievers help?
+    - How do you relieve swelling from a muscle strain?
+    - How do you keep the muscle mobile safely?
+    - How do you promote healing in a muscle strain?
+    - How should I care for a muscle strain at home?
+    - How do you treat tenderness and stiffness?
+    - How do you manage discomfort in a strained muscle?
+    - In short, what is the treatment for a muscle strain?
+    - How do you recover fully from a muscle strain?
