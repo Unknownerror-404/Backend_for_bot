@@ -1,7 +1,8 @@
-#!/usr/bin/env bash
+python3.11 -m venv .venv
+source .venv/bin/activate
 
-# Train the model
+pip install --upgrade pip
+pip install -r requirements.txt
+
 rasa train
-
-# Run the Rasa server
 rasa run --enable-api --cors "*" --debug
