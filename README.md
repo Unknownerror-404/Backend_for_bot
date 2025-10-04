@@ -123,4 +123,4 @@ This should create the required sql tables to work properly with the remaining c
 Once you have the rasa and sql servers up and running, go to your code editor, and execute the app.py file from this repo, 
 e.g. if you are using vs code, go to your working directory, and play the python script with python app.py.
 
-This should redirect you to a site which provide a glimpse at our clinical chatbot.
+This should redirect you to a site which provides a glimpse at our clinical chatbot.
