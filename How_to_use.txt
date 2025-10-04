@@ -73,4 +73,18 @@ and perform the following commands:
 2] Creating a sql server:
 
 After creating the rasa server, to access all features from our website please go to the following link:
+https://www.microsoft.com/en-in/sql-server/sql-server-downloads/
+
+scroll down a bit and ensure that you download sql server express 2022. 
+Move onto installation selecting a basic server configuration when prompted.
+upon completion, close out of the setup, and go to your local cmd prompt to perform sql cmommands on it, type the following:
+
+======================= cmd prompt ============================
+> sqlcmd -S .\SQLEXPRESS -E
+================== end of cmd prompt ===========================
+
+
+
+======================= sqlcmd prompt =========================
+> 
 
