@@ -1,0 +1,1267 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - thankyou
+  - book_appointment
+  - what_is_fever
+  - how_does_fever_work
+  - fever_symptomps
+  - fever_treatment
+  - what_is_cold?
+  - how_does_cold_work?
+  - cold_symptomps
+  - cold_treatment
+  - what_is_headache
+  - how_do_headaches_work?
+  - headache_symptomps
+  - headache_treatment
+  - What_is_Hepatitis-A
+  - How_does_Hepatitis_A_work?
+  - Hepatitis_A_symptomps
+  - Hepatitis_A_treatment_advice
+  - What_is_malaria
+  - How_does_malaria_work?
+  - malaria_symptomps
+  - malaria_treatment_advice
+  - What_is_heat_stroke
+  - How_does_heat_stroke_work? 
+  - Heat_stroke_symptomps
+  - Heat_Stroke_Treatment_advice
+  - What_is_food_poisoning
+  - How_does_food_poisoning_work? 
+  - Food_poisoning_symptomps
+  - Food_poisoning_treatment_advice
+  - What_is_asthma
+  - How_asthma_works
+  - asthma_symptomps
+  - asthma_treatments
+  - What_is_A_Minor_burn
+  - How_Minor_burn_works
+  - Minor_burn_symptomps
+  - Minor_burn_treatment
+  - pneumonia_treatment
+  - pneumonia_symptomps
+  - What_is_pneumonia
+  - How_pneumonia_works
+
+responses:
+  utter_default:
+    - text: "Sorry, I didn't quite catch that. Could you rephrase?"
+    - text: "Hmm, I'm not sure I understood. Can you try saying it another way?"
+    - text: "Apologies, I didn't get that. Want to reword it for me?"
+    - text: "I might have missed your meaning. Can you clarify?"
+    - text: "Could you provide more details so I can help better?"
+    - text: "That's a bit unclear to me. Can you explain differently?"
+    - text: "Sorry, I didn't follow. Would you mind repeating?"
+    - text: "I'm not certain I understood. Can you say it in simpler words?"
+    - text: "That doesn't seem familiar. Can you try again?"
+    - text: "I didn't quite understand that. Could you rephrase your message?"
+    - text: "Hmm, I may need more context to help you. Can you expand?"
+    - text: "Sorry, I don't have an answer for that. Want to try another question?"
+    - text: "I didn't catch that properly. Please reword your request."
+    - text: "Could you try asking that in a different way?"
+    - text: "I may not understand this yet. Can you simplify your request?"
+    - text: "That input confuses me a bit 😅. Can you explain differently?"
+    - text: "I'm not sure how to respond. Maybe try rephrasing?"
+    - text: "I don't have enough info. Can you provide more details?"
+    - text: "Sorry, I'm still learning. Could you phrase it another way?"
+    - text: "I didn't get that. Want to try asking in a different way?"
+
+
+  utter_greet:
+  - text: "Hey! How are you?"
+  - text: "Hey! How are you doing today?"
+  - text: "Hi there! What can I do for you?"
+  - text: "Hello! I'm happy to help."
+  - text: "Greetings! Ready to chat?"
+  - text: "Hey! Need assistance with something?"
+  - text: "Hi! How can I assist you today?"
+  - text: "Hello there! Let's get started."
+  - text: "Good to see you! How may I help?"
+  - text: "Hey! How's everything going?"
+  - text: "Hi! I'm here if you need me."
+  - text: "Welcome! What would you like to know?"
+  - text: "Hey! Ask me anything you'd like."
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+  - text: "Here's something to brighten your day!"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+  - text: "Keep your head up! You've got this 😊"
+    image: "https://i.imgur.com/ZXBtVw7.jpg"
+  - text: "Sending some positive vibes your way 🌟"
+    image: "https://i.imgur.com/u7y4E0J.jpg"
+  - text: "Cheer up! Better days are coming 🌈"
+    image: "https://i.imgur.com/aIXGg2P.jpg"
+  - text: "Here's a little smile for you 😄"
+    image: "https://i.imgur.com/YW1FfZb.jpg"
+  - text: "Remember: you're stronger than you think 💪"
+    image: "https://i.imgur.com/1J3H8Kf.jpg"
+  - text: "Tough times don't last. You do. ❤️"
+    image: "https://i.imgur.com/H9B1rHd.jpg"
+  - text: "Hope this makes you smile today!"
+    image: "https://i.imgur.com/N8kzGvO.jpg"
+  - text: "Hang in there, you're doing great!"
+    image: "https://i.imgur.com/38RWRpQ.jpg"
+  - text: "Sending digital hugs 🤗"
+    image: "https://i.imgur.com/jM3R3Hj.jpg"
+  - text: "You are amazing. Don't forget that!"
+    image: "https://i.imgur.com/FtR6A7y.jpg"
+  - text: "Take a deep breath. You're not alone 💙"
+    image: "https://i.imgur.com/BF6xQ9p.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+  - text: "Was that helpful?"
+  - text: "Does that answer your question?"
+  - text: "Did that clear things up?"
+  - text: "Hope that helped. Let me know!"
+  - text: "Was that useful for you?"
+  - text: "Did I explain that clearly?"
+  - text: "Is that what you needed?"
+  - text: "Is everything clear now?"
+  - text: "Did I get that right?"
+  - text: "Was that the info you were looking for?"
+  - text: "Let me know if that helped!"
+
+  utter_happy:
+  - text: "Great, carry on!"
+  - text: "Awesome! Keep it up 😄"
+  - text: "That's wonderful to hear!"
+  - text: "Glad you're feeling good!"
+  - text: "Yay! Stay positive and keep smiling 😊"
+  - text: "Fantastic! Keep that energy going!"
+  - text: "Love the enthusiasm! 😎"
+  - text: "Perfect! Let's keep that momentum."
+  - text: "Sounds like you're doing great!"
+  - text: "Great vibes! Let's keep the good mood rolling 🎉"
+  - text: "Excellent! Keep rocking!"
+  - text: "Happy to hear that! Keep it going 🌟"
+
+  utter_goodbye:
+  - text: "Bye"
+  - text: "Bye!"
+  - text: "Goodbye! Take care."
+  - text: "See you later!"
+  - text: "Catch you next time!"
+  - text: "Farewell!"
+  - text: "Talk to you soon!"
+  - text: "See you around!"
+  - text: "Until next time!"
+  - text: "Later! Stay safe."
+  - text: "Goodbye! I'm always here if you need me."
+  - text: "Take care! Come back anytime."
+  - text: "Have a great day! Bye for now."
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+  - text: "I'm a virtual assistant built with Rasa!"
+  - text: "Yep, I'm a bot — powered by Rasa."
+  - text: "I'm not human, I run on Rasa's smart engine."
+  - text: "I'm a Rasa-based assistant here to help!"
+  - text: "I'm your helpful chatbot, built with Rasa."
+  - text: "I'm an AI assistant created using Rasa."
+  - text: "Just a friendly bot running on Rasa!"
+  - text: "Rasa powers me — I'm a conversational bot."
+  - text: "Indeed, I'm a bot designed to assist you."
+  - text: "I'm an automated assistant trained with Rasa."
+  - text: "Rasa's behind the scenes making me smarter!"
+  - text: "No human here, just a Rasa-trained assistant!"
+
+  utter_you_are_welcome:
+  - text: "You're welcome!"
+  - text: "No problem."
+  - text: "Happy to help!"
+  - text: "Always happy to help."
+  - text: "Welcome! ;)"
+  - text: "Anytime!"
+
+  utter_insufficient_help:
+  - text: "I'm sorry that wasn't helpful. Can you tell me more so I can assist better?"
+  - text: "Apologies! Let's try again — could you clarify your question?"
+  - text: "I'm sorry for the confusion. Let me try to explain differently."
+  - text: "My apologies! I want to make sure I understand you correctly."
+  - text: "Sorry about that. Can you give me more details so I can help?"
+  - text: "I apologize if my previous answer wasn't clear. Let's try again."
+  - text: "Oops! I didn't get that right. Can you tell me more?"
+  - text: "I'm here to help — let me try answering that in another way."
+  - text: "I'm sorry, I might have misunderstood. Could you rephrase your question?"
+  - text: "Apologies! I'll do my best to provide a better answer this time."
+  - text: "I'm sorry, I don't want to give you wrong information. Can you clarify your question?"
+  - text: "Sorry for the inconvenience! Let's try to get this right together."
+  - text: "I apologize — I want to make sure I provide accurate guidance."
+  - text: "My apologies, I might have misunderstood. Can you elaborate a bit more?"
+
+  utter_what_is_fever?:
+  - text: Fever is a temporary increase in body temperature, usually due to an underlying infection or illness. It is a common symptom and part of the body's natural defense system.
+  - text: Normally, human body temperature hovers around 36-37°C (96.8-98.6°F). Fever occurs when the body's internal thermostat, located in the hypothalamus, raises the set point.
+  - text: The hypothalamus increases body temperature in response to pyrogens, which are substances released by bacteria, viruses, or even the body itself.
+  - text: Fever is often a protective mechanism, as many pathogens cannot survive or reproduce efficiently at higher body temperatures.
+  - text: Common causes of fever include viral infections like influenza, colds, or COVID-19, and bacterial infections such as pneumonia, strep throat, or urinary tract infections.
+  - text: Fever may also result from non-infectious causes, including autoimmune diseases, certain cancers, heatstroke, or reactions to medications.
+  - text: symptomps accompanying fever can include chills, sweating, headache, muscle aches, fatigue, and general weakness.
+  - text: In children, fever is common and often indicates a mild infection, but very high fevers may require medical attention to rule out serious conditions.
+  - text: In adults, a low-grade fever is typically not dangerous and can be managed at home with rest, fluids, and light clothing.
+  - text: High-grade fevers, generally above 40°C (104°F), can be dangerous and may require immediate medical intervention.
+  - text: Fever patterns can vary, intermittent (temperature rises and falls), continuous (remains high), or relapsing (comes and goes over days).
+  - text: Body temperature naturally fluctuates throughout the day; however, a consistent rise above the normal range indicates a fever.
+  - text: Fever can trigger dehydration because the body loses more water through sweating. Drinking fluids is crucial during a fever.
+  - text: Over-the-counter medications like paracetamol or ibuprofen can help reduce fever and relieve discomfort, but they do not treat the underlying cause.
+  - text: In many cases, fever is beneficial because it stimulates the immune system to fight infections more effectively.
+  - text: Fever may also increase heart rate and metabolism temporarily as the body works harder to combat infection.
+  - text: Persistent fever lasting more than 3 days may indicate a more serious underlying condition and requires evaluation by a healthcare professional.
+  - text: In addition to infections, fever can be caused by inflammatory conditions such as rheumatoid arthritis or lupus.
+  - text: Fever may sometimes cause mild confusion or irritability, particularly in very young children or elderly individuals.
+  - text: Body temperature measurement methods include oral, rectal, ear (tympanic), and forehead (temporal) thermometers, each with slightly different normal ranges.
+  - text: Febrile seizures are a rare complication of high fever in young children but are usually not harmful long-term.
+  - text: Fever should be monitored alongside other symptomps, such as breathing difficulties, rash, or persistent vomiting, to assess the severity of illness.
+  - text: Not every elevated body temperature is considered a fever; slight rises due to exercise or heat exposure are normal.
+  - text: Fever is a sign, not a disease, and understanding its pattern and accompanying symptomps helps determine when medical care is necessary.
+  - text: Overall, fever is an important signal from the body that something is wrong and often plays a helpful role in fighting infections while alerting us to underlying health issues.
+
+  utter_how_does_fever_work?:
+  - text: Fever is commonly caused by infections, such as viruses, bacteria, fungi, or parasites, which trigger the immune system to raise body temperature.
+  - text: Viral infections, including influenza, common cold, COVID-19, or dengue, often cause mild to moderate fever as the body fights off the virus.
+  - text: Bacterial infections like pneumonia, strep throat, urinary tract infections, or tuberculosis can produce higher fevers that sometimes require antibiotics.
+  - text: Fungal infections such as candidiasis or histoplasmosis may also trigger fever, especially in people with weakened immune systems.
+  - text: Parasitic infections, for example malaria, are notorious for causing cyclic high fevers due to the parasite's life cycle.
+  - text: Fever can occur due to autoimmune or inflammatory conditions, where the body attacks its own tissues, such as lupus or rheumatoid arthritis.
+  - text: Some cancers, including leukemia and lymphoma, may cause prolonged fever without obvious infection, called “fever of unknown origin.
+  - text: Fever may be triggered by heat-related illnesses, such as heat exhaustion or heatstroke, where body temperature rises due to environmental heat.
+  - text: Certain medications can cause drug-induced fever, including antibiotics, antihistamines, or vaccines in rare cases.
+  - text: Tissue injury or trauma, such as surgery, burns, or heart attack, can sometimes lead to a fever as part of the body's inflammatory response.
+  - text: Endocrine disorders, such as hyperthyroidism, may occasionally result in a mild increase in body temperature.
+  - text: Allergic reactions can sometimes trigger a low-grade fever, especially when inflammation is involved.
+  - text: Fever may be caused by immune system activation in response to toxins produced by bacteria, called exotoxins or endotoxins.
+  - text: Post-vaccination fever is common and usually mild, indicating that the immune system is responding to the vaccine.
+  - text: Viral gastroenteritis, or stomach flu, often causes fever along with nausea, vomiting, and diarrhea.
+  - text: Respiratory infections, such as bronchitis or sinusitis, frequently cause low-grade fever due to inflammation in the respiratory tract.
+  - text: Urinary tract infections often produce fever in addition to pain, burning sensations, or frequent urination.
+  - text: Sepsis, a severe body-wide response to infection, leads to high fever and requires urgent medical attention.
+  - text: Fever can also be caused by chronic inflammatory diseases, such as inflammatory bowel disease or sarcoidosis.
+  - text: Some neurological conditions, like encephalitis or meningitis, trigger fever along with other serious symptomps such as headache or confusion.
+  - text: Travel-related infections, such as typhoid fever or Zika virus, can cause fever due to exposure to unfamiliar pathogens.
+  - text: Lifestyle factors, including excessive alcohol or drug use, can sometimes contribute to fever by affecting liver or metabolic function.
+  - text: Post-operative fever is a common cause of short-term elevated temperature due to the body's healing process.
+  - text: Fever may be triggered by blood clots or deep vein thrombosis, where inflammation occurs in the affected area.
+  - text: Rarely, genetic or inherited conditions, such as familial Mediterranean fever, can cause recurrent episodes of high fever without infection.
+
+  utter_fever_symptomps:
+  - text: "Fever often causes elevated body temperature above 38°C (100.4°F)."
+  - text: "People with fever commonly experience chills and shivering."
+  - text: "Sweating is another frequent symptom, especially when the fever starts to break."
+  - text: "Headache often accompanies fever due to inflammation."
+  - text: "Muscle aches and joint pain can occur as the immune system fights infection."
+  - text: "Fever may lead to fatigue and weakness."
+  - text: "Loss of appetite is common during fever."
+  - text: "Dehydration may happen if fever is accompanied by sweating, vomiting, or diarrhea."
+  - text: "Rapid heartbeat or palpitations may occur with high fever."
+  - text: "Irritability or mood changes can occur in both children and adults."
+  - text: "Confusion or disorientation may occur in elderly patients or with very high fever."
+  - text: "Flushed skin or warmth on the face and neck is a visible symptom."
+  - text: "Cold hands and feet may appear in early stages of fever."
+  - text: "Chills alternating with sweating are common as body temperature rises and falls."
+  - text: "Febrile seizures can occur in children during high fever."
+  - text: "Sensitivity to light and sound may accompany fever."
+  - text: "Nausea or vomiting can occur, especially with digestive infections."
+  - text: "Dizziness or lightheadedness may happen if dehydration occurs."
+  - text: "Rapid breathing can accompany high fever."
+  - text: "Rashes sometimes appear along with fever."
+  - text: "Sleep disturbances can occur as fever affects circadian rhythm."
+  - text: "Swollen lymph nodes may appear when fighting infections."
+  - text: "Coughing or sore throat may be present with respiratory infections."
+  - text: "Body aches and stiffness are common during fever."
+  - text: "Extreme weakness or collapse can occur in severe infections with persistent high fever."
+
+  utter_fever_treatment_advice:
+  - text: "Seek medical attention if your fever is above 40°C (104°F)."
+  - text: "Persistent fever lasting more than 3 days should be evaluated by a doctor."
+  - text: "Difficulty breathing or shortness of breath with fever requires urgent care."
+  - text: "Seek help if you have chest pain or tightness alongside a fever."
+  - text: "Persistent vomiting, dehydration, or inability to keep fluids down is a warning sign."
+  - text: "Confusion, disorientation, or extreme drowsiness with fever needs immediate medical attention."
+  - text: "Severe headache or stiff neck together with fever can indicate serious infection and should be checked promptly."
+  - text: "Rash appearing with fever, especially if widespread or rapidly spreading, should be evaluated."
+  - text: "Extreme weakness, collapse, or inability to stand with fever is dangerous — seek help immediately."
+  - text: "Seizures or convulsions during fever, particularly in children, require urgent medical assessment."
+
+  utter_what_is_cold?:
+  - text: The common cold is a mild viral infection that primarily affects your nose and throat.
+  - text: A cold is caused by viruses, most often rhinoviruses, that spread easily from person to person.
+  - text: It's an upper respiratory tract infection that usually resolves on its own within a week or two.
+  - text: The common cold is one of the most frequent illnesses worldwide, especially in children.
+  - text: A cold leads to symptomps like runny nose, sneezing, sore throat, and mild cough.
+  - text: Unlike the flu, colds are generally mild and don't usually cause severe complications.
+  - text: The infection spreads through droplets from coughing, sneezing, or touching contaminated surfaces.
+  - text: Colds can happen any time of year but are more common in winter months.
+  - text: There are over 200 viruses that can cause the common cold.
+  - text: symptomps usually appear 1-3 days after exposure to the virus.
+  - text: A cold typically lasts 7-10 days, though cough may linger a little longer.
+  - text: Children often get more colds than adults because their immune systems are still developing.
+  - text: While uncomfortable, the common cold usually doesn't require medical treatment.
+  - text: Rest, hydration, and over-the-counter remedies often help ease symptomps.
+  - text: Colds rarely cause high fever — if you have one, it might be flu instead.
+  - text: Most people recover fully from a cold without complications.
+  - text: Smoking or exposure to smoke can make cold symptomps worse.
+  - text: Stress and lack of sleep may increase the risk of catching a cold.
+  - text: Washing your hands regularly helps reduce the chance of catching or spreading a cold.
+  - text: Antibiotics don't treat colds because they're caused by viruses, not bacteria.
+  - text: In some cases, a cold can lead to secondary infections like sinusitis or ear infections.
+  - text: The nasal congestion in colds is due to inflammation of the nasal passages.
+  - text: A sore throat from a cold is usually mild and improves in a few days.
+  - text: Sneezing during a cold is the body's way of clearing irritants and mucus.
+  - text: Colds are self-limiting, meaning your immune system fights them off naturally.
+
+  utter_how_does_cold_work?:
+  - text: "The common cold is caused by viruses, most often rhinoviruses, which infect the upper respiratory tract."
+  - text: "A cold starts when viruses enter your nose or throat and trigger your immune system."
+  - text: "Viruses attach to the cells lining your nasal passages and throat, causing inflammation."
+  - text: "Your immune system reacts to the viral infection, leading to nasal congestion and sore throat."
+  - text: "The virus spreads through droplets from coughs or sneezes and multiplies in your respiratory cells."
+  - text: "Your body releases chemicals called cytokines in response to the infection, causing inflammation."
+  - text: "Sneezing, runny nose, and mild fatigue occur as your immune system fights off the virus."
+  - text: "The virus invades the cells in your nose and throat, prompting your body to respond and produce symptomps."
+  - text: "symptomps appear 1-3 days after exposure to the virus as the immune system activates."
+  - text: "The immune response, rather than the virus itself, is responsible for most cold symptomps."
+  - text: "Viral replication in the respiratory tract triggers your body to produce mucus, causing a runny nose."
+  - text: "Inflammation of the nasal passages and throat is your body's defense against the invading virus."
+  - text: "The virus irritates the lining of your respiratory tract, prompting coughing and sneezing."
+  - text: "Colds develop as the body's immune system releases chemicals to fight the virus, which produces typical symptomps."
+  - text: "Your nasal passages become congested because blood vessels swell and mucus production increases during infection."
+  - text: "The common cold progresses as your immune cells attack virus-infected cells in the upper airway."
+  - text: "symptomps like sore throat and mild headache appear as part of the body's defense against the viral infection."
+  - text: "Colds work by the virus entering respiratory cells, multiplying, and activating your immune response."
+  - text: "Inflammation caused by your immune system is what leads to sneezing, congestion, and a runny nose."
+  - text: "Your body reacts to the viral invasion, which may cause fatigue and slight fever in some cases."
+  - text: "Coughing and throat irritation occur as your body tries to clear the virus from the airways."
+  - text: "The immune system produces antibodies that eventually eliminate the virus and resolve the symptomps."
+  - text: "Most cold symptomps are the result of your body's efforts to fight off the viral infection."
+  - text: "A cold develops as your respiratory tract becomes inflamed due to the virus and your immune response."
+  - text: "Overall, a cold is your body's natural reaction to a viral infection in the upper respiratory system."
+
+  utter_cold_symptomps:
+  - text: "Common cold symptomps include a runny nose, sneezing, sore throat, and mild cough."
+  - text: "You might experience nasal congestion, mild fatigue, and a scratchy throat during a cold."
+  - text: "Typical signs of a cold are sneezing, watery eyes, and a runny nose."
+  - text: "A cold usually causes sore throat, coughing, and mild headache."
+  - text: "Other symptomps include slight fever, fatigue, and general discomfort."
+  - text: "You may notice congestion, post-nasal drip, and mild chills with a cold."
+  - text: "Common cold often leads to sneezing, coughing, and watery eyes."
+  - text: "Throat irritation, runny nose, and mild fatigue are usual symptomps."
+  - text: "You might feel tired, have a scratchy throat, and frequent sneezing."
+  - text: "Cold symptomps typically include coughing, mild headache, and congestion."
+  - text: "Nasal stuffiness, sneezing, and mild body aches often accompany a cold."
+  - text: "Some people may experience a slight fever along with sore throat."
+  - text: "You may also have watery eyes and a tickling cough in the throat."
+  - text: "A common cold can cause mild fatigue and discomfort in the chest."
+  - text: "symptomps are usually mild and include sneezing and runny nose."
+  - text: "Other possible signs are a scratchy throat and slight muscle aches."
+  - text: "Congestion and mild cough often appear in the early stages of a cold."
+  - text: "Throat irritation, fatigue, and watery eyes are commonly reported."
+  - text: "Sneezing fits and runny nose are classic signs of a cold."
+  - text: "Some people may feel slightly feverish or chilled during a cold."
+  - text: "Coughing and mild headache often accompany the early stages."
+  - text: "Post-nasal drip and nasal congestion are typical cold symptomps."
+  - text: "Mild body aches and fatigue can also occur with a common cold."
+  - text: "Overall, symptomps are usually mild but uncomfortable."
+  - text: "Most colds produce a combination of runny nose, sneezing, and sore throat."
+
+  utter_cold_treatment_advice:
+  - text: "Most colds resolve on their own. Rest and hydration are the best treatments."
+  - text: "You can ease cold symptomps with plenty of fluids and rest."
+  - text: "Over-the-counter medications like pain relievers and decongestants may help."
+  - text: "Warm teas, soups, and staying hydrated can help you feel better."
+  - text: "Getting enough sleep boosts your immune system to fight the cold."
+  - text: "Saltwater gargles can soothe a sore throat caused by a cold."
+  - text: "Using a humidifier or inhaling steam may relieve nasal congestion."
+  - text: "Mild exercise is fine, but avoid overexertion when you have a cold."
+  - text: "Vitamin C, zinc, and honey may help reduce cold symptomps for some people."
+  - text: "Avoid smoking and second-hand smoke, as it can worsen cold symptomps."
+  - text: "Most colds last about a week, so take it easy and let your body recover."
+  - text: "Over-the-counter decongestants can relieve nasal stuffiness temporarily."
+  - text: "Warm compresses and nasal saline sprays may help with sinus pressure."
+  - text: "Drink warm liquids to ease throat irritation and reduce coughing."
+  - text: "Frequent hand washing helps prevent spreading your cold to others."
+  - text: "If symptomps worsen or last longer than two weeks, consult a doctor."
+  - text: "Avoid antibiotics, as colds are caused by viruses and antibiotics don't help."
+  - text: "Lozenges or throat sprays can relieve minor throat pain from a cold."
+  - text: "Stay home and rest to allow your immune system to fight off the infection."
+  - text: "Light meals, hydration, and rest are key to recovering from a cold."
+  - text: "Using a warm shower or steam can help clear nasal passages."
+  - text: "Take over-the-counter pain relievers for headache or body aches if needed."
+  - text: "Avoid excessive caffeine or alcohol as they can dehydrate you."
+  - text: "Monitor your symptomps, and if a high fever develops, seek medical advice."
+  - text: "Gentle stretching and relaxation can help you feel more comfortable during a cold."
+  
+  utter_what_is_headache:
+  - text: "A headache is pain or discomfort in the head or upper neck."
+  - text: "Headaches can range from mild to severe and may affect one or both sides of your head."
+  - text: "There are different types of headaches, such as tension headaches, migraines, and cluster headaches."
+  - text: "A headache is often a symptom of stress, dehydration, fatigue, or illness."
+  - text: "Headaches occur when nerves, blood vessels, or muscles in the head are irritated or strained."
+  - text: "Most headaches are temporary and not a sign of a serious condition."
+  - text: "Migraines are a type of headache that can cause intense pain and sensitivity to light and sound."
+  - text: "Tension headaches often feel like a tight band around your head."
+  - text: "Cluster headaches are very painful and usually occur in cycles on one side of the head."
+  - text: "Common triggers for headaches include stress, lack of sleep, dehydration, and certain foods."
+  - text: "A headache is your body's way of signaling that something may be off, like low energy or tension."
+  - text: "Understanding the type and cause of a headache helps in finding the right relief."
+  - text: "Some headaches are caused by sinus issues or infections."
+  - text: "Hormonal changes, especially in women, can trigger headaches or migraines."
+  - text: "Skipping meals or not drinking enough water can sometimes cause headaches."
+  - text: "Environmental factors like bright lights, noise, or strong smells can trigger headaches."
+  - text: "Poor posture and prolonged screen time are common contributors to tension headaches."
+  - text: "Certain medications or withdrawal from caffeine can also lead to headaches."
+  - text: "Headaches can vary in duration from a few minutes to several days."
+  - text: "While most headaches are harmless, sudden severe headaches should be checked by a doctor."
+  - text: "Headaches are a common experience and affect nearly everyone at some point."
+  - text: "Relaxation techniques, hydration, and proper rest can help reduce headache frequency."
+  - text: "Keeping track of headache triggers can help in preventing future episodes."
+  - text: "Headaches are complex, involving nerves, blood vessels, and brain chemicals."
+  - text: "If headaches become frequent or severe, it's important to consult a healthcare professional."
+
+  utter_how_do_headaches_work?:
+  - text: "Headaches occur when nerves, blood vessels, or muscles in the head and neck are irritated or strained."
+  - text: "Different types of headaches have different mechanisms. For example, migraines involve changes in brain chemicals and blood flow."
+  - text: "Tension headaches are usually caused by muscle tightness in the neck and scalp."
+  - text: "Cluster headaches are thought to involve the hypothalamus, which affects the timing and severity of attacks."
+  - text: "Some headaches are triggered by stress, dehydration, or lack of sleep, which affect your nervous system."
+  - text: "Headaches often happen as a response to inflammation, chemical changes, or tension in the head."
+  - text: "Migraines involve the release of certain neurotransmitters that cause blood vessels to expand and nerves to become more sensitive."
+  - text: "Tension-type headaches result from prolonged muscle contraction or stress on the neck and scalp."
+  - text: "Cluster headaches produce intense pain usually around one eye and may involve changes in blood flow and nerve activity."
+  - text: "Hormonal changes, particularly in women, can trigger headache mechanisms in the brain."
+  - text: "Skipping meals, dehydration, or caffeine withdrawal can disturb normal brain function and lead to headaches."
+  - text: "Environmental factors such as bright lights, noise, or strong odors can stimulate nerves that cause headaches."
+  - text: "Pain signals from irritated nerves or blood vessels in the head travel to the brain, creating the sensation of a headache."
+  - text: "Headaches are complex events involving interactions between nerves, blood vessels, and brain chemicals."
+  - text: "Chronic headaches may involve changes in brain structure or sensitivity of pain pathways."
+  - text: "During a migraine, blood vessels in the brain may expand and trigger nearby nerves, causing pain."
+  - text: "Tension headaches feel like pressure because the muscles around the head tighten and compress nerves."
+  - text: "Cluster headaches follow a biological clock in the hypothalamus, explaining why they often occur at the same time of day."
+  - text: "Inflammation in sinuses or other areas can also stimulate nerves and result in headaches."
+  - text: "Headaches can be a warning signal that something in your body needs attention, such as stress or fatigue."
+  - text: "Certain medications or medical conditions can alter nerve or blood vessel function, causing headaches."
+  - text: "Headaches happen when the normal balance of chemicals and blood flow in the brain is disrupted."
+  - text: "Pain during a headache comes from the activation of pain-sensitive structures in the head, not the brain itself."
+  - text: "Understanding the type of headache helps identify which biological mechanisms are involved."
+  - text: "Preventing headaches often involves managing triggers that disturb nerve and blood vessel activity in the head."
+
+  utter_headache_symptomps:
+  - text: "Common headache symptoms include throbbing or constant pain in the head."
+  - text: "Headaches can cause pressure, tightness, or a dull ache in different areas of the head."
+  - text: "Migraines often come with sensitivity to light, sound, or smells."
+  - text: "Nausea and vomiting can sometimes accompany severe headaches or migraines."
+  - text: "Tension headaches usually feel like a tight band around the forehead or back of the head."
+  - text: "Cluster headaches can cause intense pain around one eye and swelling or redness in that area."
+  - text: "Some headaches may cause dizziness or blurred vision."
+  - text: "Irritability and fatigue can be associated with frequent headaches."
+  - text: "A sudden, severe headache may feel like a sharp, explosive pain."
+  - text: "Throbbing pain on one or both sides of the head is a common headache symptom."
+  - text: "Sensitivity to movement or physical activity may worsen headache pain."
+  - text: "Headaches can sometimes cause pressure behind the eyes or sinuses."
+  - text: "Some people experience tingling or numbness in the face or limbs during a headache."
+  - text: "Difficulty concentrating or mental fog can be linked to headaches."
+  - text: "Migraines can include visual disturbances, such as flashing lights or blind spots."
+  - text: "Pain intensity can vary from mild discomfort to debilitating pain."
+  - text: "Some headaches come with a feeling of tightness or squeezing around the skull."
+  - text: "Fatigue, weakness, or mood changes may occur with chronic headaches."
+  - text: "A persistent headache that lasts for days may indicate an underlying issue."
+  - text: "Sinus headaches often produce pressure and pain around the forehead, cheeks, and eyes."
+  - text: "Cluster headaches may occur in cycles, with severe attacks followed by symptom-free periods."
+  - text: "Some people experience a pulsing or throbbing sensation during a headache."
+  - text: "Pain may be localized to one area or spread across the whole head."
+  - text: "Mild headaches can appear gradually, while severe ones may strike suddenly."
+  - text: "Tracking symptoms and triggers helps in managing headache frequency and severity."
+
+  utter_headache_treatment_advice:
+  - text: "Resting in a quiet, dark room can help relieve a headache."
+  - text: "Drinking plenty of water may help if dehydration is causing your headache."
+  - text: "Getting enough sleep is important for preventing and reducing headaches."
+  - text: "Taking short breaks from screens or bright lights can ease headache discomfort."
+  - text: "Relaxation techniques, such as deep breathing, meditation, or gentle stretching, can help."
+  - text: "Maintaining good posture and stretching your neck and shoulders may reduce tension headaches."
+  - text: "Avoiding known headache triggers, such as stress, certain foods, or strong odors, can help prevent headaches."
+  - text: "Applying a cold or warm compress to your forehead or neck may relieve pain."
+  - text: "Gentle massage of the neck, shoulders, and head can sometimes ease headache tension."
+  - text: "Regular exercise and a healthy diet may reduce the frequency of headaches over time."
+  - text: "Limiting caffeine or alcohol intake can help prevent headaches."
+  - text: "Keeping a headache diary can help identify triggers and patterns."
+  - text: "Practicing mindfulness or yoga may help relieve headache stress."
+  - text: "Reducing noise and bright lights in your environment can help manage headache pain."
+  - text: "Taking breaks and relaxing during stressful activities can prevent tension headaches."
+  - text: "Some headaches improve when you maintain consistent sleep and meal schedules."
+  - text: "Applying gentle pressure or massage to temples may provide temporary relief."
+  - text: "Hydration and balanced nutrition are simple ways to prevent headaches."
+  - text: "For frequent or severe headaches, it's important to consult a doctor."
+  - text: "Avoiding prolonged screen time or taking regular screen breaks can help reduce eye strain headaches."
+  - text: "Engaging in light outdoor activity or walking can improve blood flow and ease headaches."
+  - text: "Stress management techniques, like journaling or relaxation exercises, can prevent headaches."
+  - text: "Sometimes, simply lying down in a dark, quiet space is enough to relieve a headache."
+  - text: "Avoid skipping meals, as low blood sugar can trigger headaches."
+  - text: "If headaches persist or worsen, it's best to seek advice from a healthcare professional."
+
+
+  utter_what_is_Hepatatis-A:
+  - text: "Hepatitis A is a viral infection that mainly affects the liver."
+  - text: "It's a contagious liver infection caused by the Hepatitis A virus."
+  - text: "Hepatitis A is an illness that can cause liver inflammation and discomfort."
+  - text: "It is a liver disease spread by the Hepatitis A virus, often through contaminated food or water."
+  - text: "Hepatitis A is a short-term infection of the liver caused by a virus."
+  - text: "It's a type of viral hepatitis that usually doesn't become chronic."
+  - text: "Hepatitis A is an infection that affects how the liver functions for a short period."
+  - text: "It is a contagious liver condition that often spreads through poor hygiene or unsafe food."
+  - text: "Hepatitis A is a disease that causes the liver to swell and can make people feel sick for weeks."
+  - text: "It's a common viral infection of the liver that usually resolves with rest and care."
+  - text: "Hepatitis A is a virus-caused illness that temporarily affects the liver."
+  - text: "It's a viral disease that can make the skin and eyes turn yellow, known as jaundice."
+  - text: "Hepatitis A is different from Hepatitis B and C, as it usually doesn't cause long-term liver damage."
+  - text: "It is an infection of the liver that spreads mainly by eating or drinking contaminated food and water."
+  - text: "Hepatitis A is a liver infection that can cause fever, nausea, and tiredness."
+  - text: "It's a viral infection that most people recover from fully, without lasting liver problems."
+  - text: "Hepatitis A is a contagious disease, but it usually heals on its own with time and care."
+  - text: "It is an illness caused by the Hepatitis A virus, which inflames the liver."
+  - text: "Hepatitis A is a short-term liver disease that does not usually lead to chronic illness."
+  - text: "It's a viral infection of the liver that spreads mostly through contaminated water and food."
+  - text: "Hepatitis A is a disease that affects the liver and is preventable through good hygiene and vaccination."
+  - text: "It is a temporary infection of the liver caused by the Hepatitis A virus."
+
+  utter_How_does_Hepatitis_A_work?:
+  - text: "Hepatitis A works by infecting the liver, causing it to become swollen and irritated."
+  - text: "The Hepatitis A virus enters the body, usually through contaminated food or water, and targets the liver."
+  - text: "Once inside, the virus reaches the liver and causes inflammation that leads to symptoms like fatigue and nausea."
+  - text: "Hepatitis A spreads through the bloodstream to the liver, where it disrupts normal liver functions temporarily."
+  - text: "The virus infects liver cells, leading to swelling and reduced ability to process waste properly."
+  - text: "Hepatitis A does not usually cause long-term damage but can make the liver inflamed for several weeks."
+  - text: "When the virus affects the liver, it can cause symptoms like jaundice, fatigue, and loss of appetite."
+  - text: "The infection triggers the body's immune system, which fights the virus but also causes liver inflammation."
+  - text: "Hepatitis A works by multiplying inside the liver, disturbing its normal function for a limited time."
+  - text: "The virus disrupts liver cells and causes the body to show signs like yellow skin and dark urine."
+  - text: "Hepatitis A spreads through poor sanitation, but once inside, it mainly targets the liver."
+  - text: "The virus causes short-term liver inflammation, but most people recover fully after some weeks."
+  - text: "Hepatitis A infection is controlled by the immune system, which clears it out after a few weeks or months."
+  - text: "The way Hepatitis A works is by infecting liver tissue, leading to swelling and temporary illness."
+  - text: "Hepatitis A does not stay in the body permanently; it usually clears up on its own with rest and care."
+  - text: "The infection affects how the liver processes toxins and nutrients, which is why people feel sick."
+  - text: "Hepatitis A is different from other forms of hepatitis because it doesn't cause long-term liver damage."
+  - text: "Once the virus is cleared, people develop lifelong immunity and won't get Hepatitis A again."
+  - text: "The virus is usually short-lived in the body, but while active, it disrupts normal liver functions."
+  - text: "Hepatitis A multiplies in the liver and is then passed out of the body through stool, which can spread the virus."
+  - text: "The immune response to Hepatitis A infection is what causes many of the symptoms people feel."
+  - text: "In simple terms, Hepatitis A infects the liver temporarily, causing inflammation and illness before recovery."
+
+  utter_Hepatitis_A_symptomps:
+  - text: "Common symptoms of Hepatitis A include fatigue, nausea, and stomach discomfort."
+  - text: "People with Hepatitis A often experience fever, loss of appetite, and tiredness."
+  - text: "One of the most visible symptoms is jaundice, where the skin and eyes turn yellow."
+  - text: "Dark urine and pale stools can also be signs of Hepatitis A."
+  - text: "Many people feel weak, lose appetite, and may have nausea or vomiting."
+  - text: "Hepatitis A can cause mild fever, stomach pain, and discomfort in the liver area."
+  - text: "Symptoms usually appear a few weeks after infection and can last for several weeks."
+  - text: "In some cases, Hepatitis A causes itchy skin, along with tiredness and fever."
+  - text: "Yellowing of the skin and eyes is a clear sign of Hepatitis A infection."
+  - text: "People may feel very tired and weak while their liver is inflamed by the virus."
+  - text: "Loss of appetite and sudden nausea are common with Hepatitis A."
+  - text: "Hepatitis A can cause abdominal pain, especially on the right side of the stomach."
+  - text: "Mild flu-like symptoms such as fever and fatigue are often the first signs."
+  - text: "Some people may also notice dark-colored urine as an early warning sign."
+  - text: "Itching and discomfort in the body may appear during infection."
+  - text: "Headaches, body aches, and feeling generally unwell are possible symptoms."
+  - text: "Most symptoms fade gradually as the liver heals."
+  - text: "Not everyone shows obvious symptoms, especially young children."
+  - text: "Adults are more likely to develop noticeable signs like jaundice and fatigue."
+  - text: "Symptoms can range from mild tiredness to more severe liver-related signs."
+  - text: "Even though Hepatitis A symptoms can be uncomfortable, they usually go away with time and rest."
+  - text: "The illness may start with fever and nausea before jaundice appears."
+  - text: "Some people experience digestive upset, like nausea or changes in stool color."
+  - text: "Overall, Hepatitis A symptoms are temporary but can make daily life difficult for a few weeks."
+
+  utter_Hepatitis_A_treatment_advice:
+  - text: "There is no specific medicine for Hepatitis A, but most people recover fully with rest and care."
+  - text: "The best treatment for Hepatitis A is plenty of rest, hydration, and a healthy diet."
+  - text: "Doctors often recommend resting and drinking lots of fluids to support recovery from Hepatitis A."
+  - text: "Most cases of Hepatitis A heal on their own, but it's important to avoid alcohol and take care of your liver."
+  - text: "Getting enough sleep and rest helps your body fight off the Hepatitis A virus."
+  - text: "A balanced diet with light, nutritious foods can ease recovery from Hepatitis A."
+  - text: "People with Hepatitis A should drink plenty of water to stay hydrated."
+  - text: "Avoiding alcohol is very important because the liver is already under stress."
+  - text: "Recovery from Hepatitis A usually takes a few weeks to months, depending on the person's health."
+  - text: "Good hygiene practices can prevent spreading the virus to others during recovery."
+  - text: "Your doctor may advise you on the best rest and diet plan while you heal from Hepatitis A."
+  - text: "There's no long-term damage in most cases, and the liver heals completely after recovery."
+  - text: "Taking small, frequent meals can help if nausea is part of your symptoms."
+  - text: "It's best to avoid fatty and heavy foods that make the liver work harder."
+  - text: "Mild physical activity may be resumed only after you feel stronger and your doctor approves."
+  - text: "During recovery, listen to your body—rest when tired, and eat when you feel able."
+  - text: "In severe cases, medical supervision may be needed, so regular check-ups are important."
+  - text: "People with Hepatitis A should practice handwashing and hygiene to avoid spreading the virus."
+  - text: "Family and friends should avoid sharing utensils and ensure clean food and water during recovery."
+  - text: "Most people recover completely without lasting liver problems if they follow rest and care advice."
+  - text: "If symptoms feel very strong or don't improve, visiting a doctor is strongly recommended."
+  - text: "Supportive care like fluids, rest, and good nutrition is the main way to treat Hepatitis A."
+  - text: "Taking time off work or school may be needed to allow proper healing."
+  - text: "Your body builds lifelong immunity after recovering from Hepatitis A, so you won't get it again."
+
+  utter_What_is_malaria:
+  - text: "Malaria is a disease caused by parasites that infect red blood cells."
+  - text: "It's a serious illness spread through the bite of infected mosquitoes."
+  - text: "Malaria is a mosquito-borne disease caused by Plasmodium parasites."
+  - text: "It affects the blood and can cause fever, chills, and fatigue."
+  - text: "Malaria is an infection that mainly targets red blood cells and the liver."
+  - text: "It is a tropical disease that spreads through mosquito bites carrying parasites."
+  - text: "Malaria is a preventable disease caused by tiny parasites transmitted by mosquitoes."
+  - text: "It's a serious illness that can make you very sick if not treated promptly."
+  - text: "Malaria is caused when certain parasites enter the bloodstream through a mosquito bite."
+  - text: "The disease affects the red blood cells and may cause repeated fevers and weakness."
+  - text: "Malaria is common in tropical and subtropical regions where mosquitoes are present."
+  - text: "It's a parasitic disease that can lead to serious complications if untreated."
+  - text: "Malaria spreads through mosquito bites carrying the parasite Plasmodium."
+  - text: "It's an illness that causes fever, body aches, chills, and sometimes nausea."
+  - text: "Malaria is caused by parasites that multiply in the liver and red blood cells."
+  - text: "It is a vector-borne disease transmitted by Anopheles mosquitoes."
+  - text: "Malaria affects millions of people worldwide, particularly in tropical countries."
+  - text: "It is a disease where parasites invade red blood cells, causing symptoms like fever."
+  - text: "Malaria is a life-threatening disease if left untreated but can be managed with proper care."
+  - text: "The infection is transmitted when a mosquito carrying the parasite bites a person."
+  - text: "Malaria is a disease that temporarily disrupts red blood cells and the immune system."
+  - text: "It's a parasitic infection that can cause high fever, chills, and fatigue."
+  - text: "Malaria occurs when Plasmodium parasites enter the body and infect red blood cells."
+  - text: "It's a disease spread by mosquitoes, causing illness that affects blood and the liver."
+
+  utter_How_does_malaria_work?:
+  - text: "Malaria works when parasites called Plasmodium enter the body through a mosquito bite."
+  - text: "The parasite infects red blood cells and the liver, causing fever and other symptoms."
+  - text: "After a mosquito bite, malaria parasites travel to the liver, multiply, and then infect red blood cells."
+  - text: "Malaria causes the red blood cells to break down, leading to fatigue and fever."
+  - text: "The disease progresses as the parasite multiplies inside red blood cells and spreads throughout the body."
+  - text: "Malaria works by disrupting normal blood and liver functions with the parasite infection."
+  - text: "The parasite triggers the immune system, which causes symptoms like chills and high fever."
+  - text: "After entering the bloodstream, malaria parasites invade red blood cells and multiply."
+  - text: "The infection cycles between the liver and blood, which leads to the recurring fevers common in malaria."
+  - text: "Malaria is transmitted by mosquitoes, and once in the body, the parasites multiply in blood cells."
+  - text: "The parasites destroy red blood cells, causing weakness, fatigue, and anemia."
+  - text: "Malaria parasites first grow in the liver before infecting red blood cells, which leads to symptoms."
+  - text: "The infection works in cycles, with parasites breaking out of red blood cells and causing fever spikes."
+  - text: "Mosquito bites introduce the parasites, which then invade and multiply in the liver and blood."
+  - text: "The way malaria works is by attacking red blood cells and causing the body to respond with fever and chills."
+  - text: "Malaria parasites reproduce in red blood cells, leading to the classic symptoms of the disease."
+  - text: "The disease spreads in the body through repeated cycles of parasite growth in blood cells."
+  - text: "Malaria affects the liver and blood, which is why it causes fatigue and other systemic symptoms."
+  - text: "The immune response to malaria is what produces fever, sweats, and body aches."
+  - text: "In simple terms, malaria works by multiplying parasites in the liver and blood, disrupting normal body functions."
+  - text: "Malaria cycles between the liver and blood cells, which explains the periodic fever patterns."
+  - text: "Parasites enter through mosquitoes, grow in the liver, then infect red blood cells to continue the cycle."
+  - text: "The parasites damage red blood cells and trigger symptoms as the body fights the infection."
+
+  utter_malaria_symptomps:
+  - text: "Common symptoms of malaria include fever, chills, and sweating."
+  - text: "People with malaria often experience headaches, fatigue, and body aches."
+  - text: "Nausea and vomiting can be signs of malaria infection."
+  - text: "Muscle pain and general weakness are typical symptoms of malaria."
+  - text: "Malaria often causes a cycle of high fever followed by sweating and shivering."
+  - text: "Some people experience abdominal pain and loss of appetite."
+  - text: "Jaundice, or yellowing of the skin and eyes, can occur in severe cases."
+  - text: "Rapid heartbeat and dizziness may be symptoms of malaria."
+  - text: "Chills and cold sensations are commonly reported by malaria patients."
+  - text: "Fatigue and extreme tiredness are common as the infection progresses."
+  - text: "Symptoms usually appear 7-30 days after being bitten by an infected mosquito."
+  - text: "People may experience recurring fever spikes during a malaria infection."
+  - text: "Sweating, headache, and body aches are classic malaria signs."
+  - text: "Malaria can cause nausea, vomiting, and diarrhea in some cases."
+  - text: "Loss of appetite and abdominal discomfort are often reported symptoms."
+  - text: "Severe malaria can affect the brain, causing confusion or seizures."
+  - text: "Early signs include mild fever, chills, and general weakness."
+  - text: "Some patients notice pale skin or anemia due to red blood cell damage."
+  - text: "Malaria affects the blood and can cause fatigue, headaches, and dizziness."
+  - text: "People often feel very unwell with fever, chills, and body aches."
+  - text: "Recurring fever cycles are a key indicator of malaria infection."
+  - text: "In children and elderly, malaria may show with unusual tiredness and weakness."
+  - text: "Symptoms can range from mild to severe, depending on the type of parasite."
+  - text: "Prompt detection of symptoms is important for recovery and preventing complications."
+
+  utter_malaria_treatment_advice:
+  - text: "Malaria requires medical attention, so visiting a doctor promptly is important."
+  - text: "Rest and staying hydrated are essential during malaria recovery."
+  - text: "Doctors can provide guidance on the best treatment plan for malaria."
+  - text: "Make sure to drink plenty of fluids to help your body fight the infection."
+  - text: "Adequate rest helps your immune system recover from malaria."
+  - text: "Eating a balanced diet with light, nutritious meals supports healing."
+  - text: "Avoid strenuous activity until you feel stronger and your doctor advises it."
+  - text: "Seek medical advice immediately if fever or symptoms worsen."
+  - text: "Malaria can become serious, so regular check-ups are important during recovery."
+  - text: "Maintaining good hydration is key to managing fatigue and fever."
+  - text: "Follow your doctor's instructions carefully for a safe recovery."
+  - text: "Even at home, proper rest and nutrition are vital for malaria patients."
+  - text: "Avoid alcohol and other substances that can stress the liver and immune system."
+  - text: "Monitor your symptoms and consult a healthcare professional if they persist."
+  - text: "Malaria can weaken your body, so pacing daily activities is important."
+  - text: "Supportive care like fluids, rest, and proper nutrition helps the body fight the infection."
+  - text: "Keep track of fever patterns and report them to your doctor."
+  - text: "Hand hygiene and mosquito prevention can prevent the spread of malaria in your household."
+  - text: "Children and elderly need extra attention and care when recovering from malaria."
+  - text: "Avoid exposure to more mosquito bites while recovering to prevent reinfection."
+  - text: "Recovery times vary, so patience and rest are important."
+  - text: "Consult your healthcare provider if you experience severe symptoms like confusion or persistent fever."
+  - text: "Malaria treatment is most effective under medical supervision combined with supportive care."
+  - text: "Ensure a comfortable environment, with plenty of rest and hydration, to aid recovery."
+
+  utter_what_is_heat_stroke:
+  - text: "Heat stroke is a serious condition caused by the body overheating, usually from prolonged exposure to high temperatures."
+  - text: "It occurs when the body's temperature regulation fails, leading to a dangerously high body temperature."
+  - text: "Heat stroke happens when your body cannot cool itself properly during extreme heat."
+  - text: "It is a life-threatening condition that requires immediate attention and cooling."
+  - text: "Heat stroke can cause symptoms like confusion, dizziness, and loss of consciousness."
+  - text: "It occurs when prolonged exposure to high temperatures overwhelms the body's cooling system."
+  - text: "Heat stroke is different from heat exhaustion and can be fatal if not treated quickly."
+  - text: "This condition often results from strenuous activity in hot weather or prolonged sun exposure."
+  - text: "Heat stroke occurs when the body temperature rises above 40°C (104°F)."
+  - text: "It can lead to organ damage if the body is not cooled promptly."
+  - text: "Heat stroke is a medical emergency caused by extreme heat exposure."
+  - text: "The condition develops when the body cannot regulate its internal temperature."
+  - text: "Heat stroke can affect the brain, heart, and other organs due to high body temperature."
+  - text: "It is often accompanied by symptoms like rapid heartbeat, headache, and nausea."
+  - text: "Heat stroke is a severe heat-related illness requiring immediate cooling and medical care."
+  - text: "It can happen during hot weather, especially if you are dehydrated or active."
+  - text: "Heat stroke is the most serious form of heat-related illness."
+  - text: "Without prompt treatment, heat stroke can be life-threatening."
+  - text: "It occurs when the body absorbs more heat than it can release."
+  - text: "Heat stroke often results from a combination of high temperature, humidity, and physical exertion."
+  - text: "It is important to recognize heat stroke early and act quickly to cool the person down."
+  - text: "Heat stroke is preventable by staying hydrated and avoiding excessive heat exposure."
+  - text: "The condition can develop rapidly and requires urgent medical attention."
+
+  utter_How_does_heat_stroke_work?:
+  - text: "Heat stroke occurs when the body absorbs more heat than it can release, causing the temperature to rise dangerously."
+  - text: "It happens when your body's cooling system fails due to prolonged exposure to high heat or strenuous activity."
+  - text: "During heat stroke, the body cannot sweat enough to cool down, leading to overheating."
+  - text: "The condition develops when heat builds up faster than the body can release it."
+  - text: "Heat stroke can affect the brain, heart, and other organs due to extreme body temperatures."
+  - text: "When the body overheats, the central nervous system may be impaired, causing confusion or fainting."
+  - text: "Prolonged exposure to hot environments or physical exertion can overwhelm the body's temperature regulation."
+  - text: "Heat stroke results from a combination of high temperature, humidity, and insufficient cooling."
+  - text: "The body normally cools itself through sweating, but during heat stroke, this mechanism fails."
+  - text: "Heat stroke causes the body's core temperature to rise above safe levels, often above 40°C (104°F)."
+  - text: "The failure to dissipate heat leads to damage to cells and organs."
+  - text: "It develops when the heat produced or absorbed by the body exceeds the heat it can release."
+  - text: "Dehydration and lack of fluids worsen the effects of heat stroke."
+  - text: "The condition can cause dizziness, rapid heartbeat, and even unconsciousness due to overheating."
+  - text: "Heat stroke affects the body's ability to maintain a normal temperature, leading to organ stress."
+  - text: "During heat stroke, blood flow may shift away from the skin, reducing heat loss and increasing core temperature."
+  - text: "The body's thermoregulation system is overwhelmed, causing severe symptoms."
+  - text: "Heat stroke can happen quickly if exposed to extreme heat without breaks or hydration."
+  - text: "The high temperature can disrupt brain function and other vital systems."
+  - text: "Heat stroke is essentially a failure of the body's temperature regulation under extreme heat."
+  - text: "Sweating alone may not be enough to cool the body, leading to dangerous overheating."
+  - text: "It's a combination of environmental heat, physical activity, and insufficient cooling mechanisms."
+
+  utter_Heat_stroke_symptomps:
+  - text: "Common symptoms of heat stroke include a very high body temperature, usually above 40°C (104°F)."
+  - text: "Heat stroke can cause confusion, dizziness, or loss of consciousness."
+  - text: "Rapid heartbeat and strong pulse are often signs of heat stroke."
+  - text: "Severe headache, nausea, and vomiting can occur during heat stroke."
+  - text: "Hot, dry, or flushed skin is a typical symptom of heat stroke."
+  - text: "Excessive sweating may occur in early stages, but skin can become dry in severe cases."
+  - text: "Muscle cramps or weakness are common symptoms."
+  - text: "Feeling faint or lightheaded is a warning sign of heat stroke."
+  - text: "Some people experience rapid breathing or shortness of breath."
+  - text: "Extreme fatigue and general weakness are often reported."
+  - text: "Irritability, anxiety, or unusual behavior can be signs of heat stroke."
+  - text: "Seizures may occur in severe cases."
+  - text: "Heat stroke can cause loss of coordination or staggering while walking."
+  - text: "Red or hot skin, often dry to the touch, is a key indicator."
+  - text: "High fever and persistent headache are classic symptoms."
+  - text: "Some may experience chills or shivering before the full onset."
+  - text: "Nausea, vomiting, and loss of appetite can appear."
+  - text: "Confusion or disorientation is a serious symptom of heat stroke."
+  - text: "Rapid pulse and low blood pressure may occur in severe cases."
+  - text: "Dizziness and fainting are warning signs that immediate help is needed."
+  - text: "Heat stroke can cause unusual sleepiness or lethargy."
+  - text: "Sweating may stop suddenly as the condition worsens."
+  - text: "Red, hot, and dry skin along with nausea indicates severe heat stroke."
+  - text: "Overall, heat stroke affects both physical and mental functions."
+
+
+  utter_Heat_Stroke_Treatment_advice:
+  - text: "Heat stroke is a medical emergency, so it's important to seek immediate medical attention."
+  - text: "Move the person to a cooler place and try to lower their body temperature immediately."
+  - text: "Remove excess clothing and fan the person to help cool them down."
+  - text: "Apply cool, wet cloths or ice packs to the armpits, neck, and groin area."
+  - text: "Encourage sipping water if the person is conscious and able to drink."
+  - text: "Do not give the person alcohol or caffeinated drinks."
+  - text: "Resting in a cool, shaded area is crucial for recovery."
+  - text: "Seek professional medical help even if the person seems to improve."
+  - text: "Monitor their temperature and symptoms while waiting for medical assistance."
+  - text: "Avoid strenuous activity until fully recovered."
+  - text: "Keep the person lying down and elevate their legs slightly if dizzy."
+  - text: "Use wet towels, cooling blankets, or a cool shower to help reduce body temperature."
+  - text: "Heat stroke can be life-threatening, so timely action is critical."
+  - text: "Ensure the person stays hydrated with small, frequent sips of water."
+  - text: "Never leave someone with heat stroke unattended."
+  - text: "If they lose consciousness, call emergency services immediately."
+  - text: "Cooling the body and seeking medical care are the most important steps."
+  - text: "Children and elderly are particularly vulnerable and should be closely monitored."
+  - text: "Avoid hot environments until fully recovered."
+  - text: "Rest, hydration, and professional medical supervision are key to recovery."
+  - text: "Heat stroke can worsen quickly, so act promptly to cool the person down."
+  - text: "Do not force fluids if the person is unconscious; wait for medical help."
+  - text: "Loosen clothing and keep them in a ventilated, cool area."
+  - text: "Use any safe cooling method while waiting for emergency care."
+
+  utter_what_is_food_poisoning:
+  - text: "Food poisoning is an illness caused by eating contaminated food or beverages."
+  - text: "It occurs when harmful bacteria, viruses, or toxins enter your digestive system through food."
+  - text: "Food poisoning happens when your stomach reacts to spoiled or contaminated food."
+  - text: "It's a condition that leads to nausea, vomiting, diarrhea, and stomach cramps after eating unsafe food."
+  - text: "Essentially, food poisoning is your body's response to harmful microbes in food."
+  - text: "Eating undercooked meat, raw eggs, or contaminated vegetables can trigger food poisoning."
+  - text: "Food poisoning is a type of gastrointestinal infection caused by bacteria like Salmonella or E. coli."
+  - text: "It's when your digestive system gets upset due to toxins or germs in the food you eat."
+  - text: "Symptoms can include stomach pain, fever, vomiting, and diarrhea after eating tainted food."
+  - text: "Food poisoning is often short-term but can be serious in children, the elderly, or people with weak immune systems."
+  - text: "Basically, food poisoning occurs when food carries pathogens that your body can't handle."
+  - text: "It's an illness that usually comes on a few hours after eating contaminated food."
+  - text: "Food poisoning can result from bacteria, viruses, parasites, or chemical toxins in food."
+  - text: "When food isn't stored, cooked, or handled properly, it can cause food poisoning."
+  - text: "Your stomach gets sick because harmful microorganisms have entered your body through food."
+  - text: "Food poisoning is your body's way of fighting off foodborne infections."
+  - text: "It's an acute condition that can cause dehydration if severe."
+  - text: "Food poisoning is preventable with proper food hygiene, cooking, and storage."
+  - text: "Contaminated food triggers a range of digestive symptoms known as food poisoning."
+  - text: "Eating spoiled or improperly prepared food can lead to food poisoning."
+  - text: "It's a temporary illness caused by bacteria, viruses, or chemicals in food."
+  - text: "Food poisoning is when you experience gastrointestinal distress due to unsafe food."
+  - text: "It can happen to anyone who consumes food that's been contaminated with germs or toxins."
+  - text: "Food poisoning is your body reacting to something harmful in the food you've eaten."
+  - text: "In short, food poisoning is a common but preventable illness from eating unsafe food."
+
+  utter_how_does_food_poisoning_work:
+  - text: "Food poisoning works when harmful bacteria, viruses, or toxins enter your digestive system through contaminated food."
+  - text: "When you eat spoiled or unsafe food, your stomach and intestines can get infected or irritated, causing illness."
+  - text: "It happens because microorganisms in the food produce toxins or directly attack your digestive system."
+  - text: "Food poisoning triggers your body's defense system, leading to symptoms like vomiting, diarrhea, and stomach cramps."
+  - text: "The harmful microbes in contaminated food release toxins that upset your digestive tract."
+  - text: "When food isn't cooked or stored properly, bacteria like Salmonella or E. coli can multiply and make you sick."
+  - text: "Your digestive system reacts to the harmful germs in food, which is why you feel nauseous or have diarrhea."
+  - text: "Basically, eating unsafe food introduces pathogens or toxins that your body tries to fight off."
+  - text: "Food poisoning occurs when your gut encounters toxins from bacteria, viruses, or parasites in contaminated food."
+  - text: "Symptoms start because your immune system reacts to the harmful substances in the food you ate."
+  - text: "Improperly handled or undercooked food can carry germs that disturb your digestive system, causing food poisoning."
+  - text: "Food poisoning works by letting harmful microbes or chemicals enter your stomach and intestines, leading to illness."
+  - text: "When your body senses dangerous bacteria or toxins in food, it triggers vomiting and diarrhea to get rid of them."
+  - text: "Essentially, food poisoning is your body's natural response to harmful substances in the food you consumed."
+  - text: "Contaminated food introduces pathogens that disrupt your digestive processes and cause sickness."
+  - text: "It happens when bacteria, viruses, or toxins in food damage your stomach or intestines."
+  - text: "Your gut gets irritated or infected by harmful microorganisms, which is why food poisoning makes you feel sick."
+  - text: "Food poisoning is the result of your body trying to fight off toxins or germs from unsafe food."
+  - text: "Eating contaminated food allows pathogens to multiply in your digestive system, causing illness."
+  - text: "In short, food poisoning works by letting harmful substances in food trigger a reaction in your body."
+
+  utter_food_poisoning_symptoms:
+  - text: "Common symptoms of food poisoning include nausea, vomiting, and diarrhea."
+  - text: "You might experience stomach cramps, abdominal pain, and a general feeling of weakness."
+  - text: "Some people get a fever, chills, or headaches along with digestive upset."
+  - text: "Loss of appetite and fatigue are also common signs of food poisoning."
+  - text: "Severe food poisoning can lead to dehydration due to excessive vomiting or diarrhea."
+  - text: "Other symptoms may include bloating, gas, and sometimes blood in the stool."
+  - text: "Symptoms usually appear a few hours to a few days after eating contaminated food."
+  - text: "In children and older adults, food poisoning can sometimes cause dizziness or confusion."
+  - text: "Some cases may include muscle aches and general body weakness."
+  - text: "The intensity of symptoms can vary depending on the type of bacteria or toxin involved."
+  - text: "Food poisoning can cause a combination of digestive, physical, and sometimes neurological symptoms."
+  - text: "Mild cases may only cause upset stomach, while severe cases can lead to dehydration and weakness."
+  - text: "Vomiting, diarrhea, stomach pain, and nausea are the most typical symptoms."
+  - text: "Symptoms often start suddenly after eating contaminated food."
+  - text: "Fatigue, weakness, and loss of appetite often accompany the digestive symptoms."
+  - text: "Some people may also experience fever or chills along with stomach upset."
+  - text: "Food poisoning can make you feel generally unwell, with aches and cramps in addition to diarrhea."
+  - text: "Dehydration from vomiting and diarrhea is one of the serious symptoms to watch for."
+  - text: "Symptoms can range from mild discomfort to severe illness requiring medical attention."
+  - text: "In short, nausea, vomiting, diarrhea, stomach cramps, and sometimes fever are key signs of food poisoning."
+
+  utter_food_poisoning_treatment_advice:
+  - text: "Most cases of food poisoning get better on their own with rest and hydration."
+  - text: "Drink plenty of fluids like water, clear broths, or oral rehydration solutions to prevent dehydration."
+  - text: "Avoid solid foods until vomiting and diarrhea have eased, then start with bland foods like toast, rice, or bananas."
+  - text: "Resting your body helps your immune system fight off the infection."
+  - text: "Avoid alcohol, caffeine, and fatty or spicy foods while recovering."
+  - text: "Over-the-counter medications like anti-diarrheal drugs can help in some cases, but check with a doctor first."
+  - text: "If you have a high fever, persistent vomiting, or blood in your stool, seek medical attention immediately."
+  - text: "Children, older adults, and people with weakened immune systems should see a doctor sooner rather than later."
+  - text: "Prevent dehydration by sipping small amounts of fluid frequently if you can't keep liquids down."
+  - text: "Gradually return to a normal diet once your symptoms improve."
+  - text: "Avoid dairy products until your stomach settles, as they can sometimes worsen diarrhea."
+  - text: "In severe cases, your doctor may prescribe antibiotics or other medications."
+  - text: "Food poisoning usually resolves within a few days with proper care."
+  - text: "Always wash your hands and practice good hygiene to prevent spreading the infection."
+  - text: "If symptoms persist for more than a few days, it's important to consult a healthcare professional."
+  - text: "Stay hydrated, rest, and eat lightly to support your recovery from food poisoning."
+  - text: "Seek medical help if you experience dizziness, severe dehydration, or prolonged illness."
+  - text: "Home care mainly focuses on hydration, rest, and gradually reintroducing foods."
+  - text: "Monitor your symptoms closely and get medical attention if they worsen or don't improve."
+  - text: "In short, rest, fluids, and a gentle diet are key to recovering from food poisoning."
+
+  utter_what_is_asthma:
+  - text: "Asthma is a chronic condition that affects the airways in your lungs, making it harder to breathe."
+  - text: "It is a respiratory disease where the airways become inflamed and narrow, causing breathing difficulties."
+  - text: "Asthma makes your lungs sensitive to triggers like allergens, exercise, or smoke."
+  - text: "People with asthma may experience wheezing, coughing, chest tightness, and shortness of breath."
+  - text: "Asthma is caused by inflammation and narrowing of the airways, which can lead to flare-ups."
+  - text: "It is a long-term condition where your airways overreact to certain triggers."
+  - text: "Asthma affects how air moves in and out of your lungs and can vary in severity."
+  - text: "It is a common condition that can start in childhood or adulthood."
+  - text: "Asthma is your body's airways reacting strongly to things like dust, pollen, or cold air."
+  - text: "The main feature of asthma is difficulty breathing due to airway inflammation."
+  - text: "It is a chronic lung condition that causes episodes of wheezing and coughing."
+  - text: "Asthma can be mild, moderate, or severe depending on the frequency of attacks."
+  - text: "In simple terms, asthma is when your lungs become temporarily blocked or inflamed."
+  - text: "It's a condition where your breathing passages are sensitive to triggers."
+  - text: "Asthma may cause occasional flare-ups or persistent symptoms if untreated."
+  - text: "It is a long-term lung condition that affects breathing and quality of life."
+  - text: "Asthma attacks happen when your airways tighten and produce extra mucus."
+  - text: "The severity of asthma varies, but it always involves airway inflammation."
+  - text: "Asthma is a chronic condition affecting breathing that can be managed with proper care."
+  - text: "It's a condition in which the lungs react strongly to environmental or internal triggers."
+  - text: "Asthma can affect anyone, and symptoms may range from mild to severe."
+  - text: "It is a lung condition that often requires monitoring and treatment."
+  - text: "Asthma is essentially the narrowing and inflammation of the respiratory airways."
+  - text: "It is a common respiratory disease that can be triggered by allergens or exercise."
+  - text: "Asthma is your lungs' airways overreacting, making it hard to breathe sometimes."
+
+  utter_how_asthma_works:
+  - text: "Asthma works by causing the airways in your lungs to become inflamed and narrow."
+  - text: "During an asthma attack, the muscles around your airways tighten, making it difficult to breathe."
+  - text: "Inflammation in asthma leads to swelling, mucus production, and narrowed air passages."
+  - text: "Triggers like allergens, smoke, or exercise can cause your airways to react and tighten."
+  - text: "Asthma makes your lungs overreact to stimuli, causing wheezing, coughing, and shortness of breath."
+  - text: "When asthma occurs, your airways become inflamed and produce extra mucus."
+  - text: "Asthma attacks happen when your lungs' airways tighten and airflow is restricted."
+  - text: "It affects the breathing process by narrowing air passages and causing inflammation."
+  - text: "The immune system responds to triggers, which can make the airways swell and tighten."
+  - text: "Airway muscles tighten and mucus builds up, making breathing difficult."
+  - text: "Asthma flare-ups occur when the lungs' airways react to a trigger."
+  - text: "During asthma, your airways are sensitive, leading to intermittent breathing difficulties."
+  - text: "It works by causing the respiratory system to overreact, which can restrict airflow."
+  - text: "Asthma affects how air moves in and out of your lungs, sometimes causing shortness of breath."
+  - text: "Triggers like dust or pollen can inflame the airways and lead to asthma symptoms."
+  - text: "In simple terms, asthma is when your lungs' airways become inflamed and constricted."
+  - text: "The narrowing of airways during an attack limits oxygen flow and causes coughing."
+  - text: "Asthma causes airway inflammation, excess mucus, and tightened muscles in the lungs."
+  - text: "It works by making the lungs' airways overly sensitive and reactive."
+  - text: "Asthma makes breathing harder because the airways are narrower than normal."
+  - text: "During asthma, small tubes in your lungs swell, making it difficult to get air in and out."
+  - text: "The body's immune response in asthma triggers airway tightening and mucus production."
+  - text: "Asthma flare-ups are a result of inflammation, constriction, and excess mucus in the lungs."
+  - text: "Airways narrow and become irritated, causing wheezing, coughing, and breathlessness."
+  - text: "Asthma affects the lungs by temporarily restricting airflow when triggered."
+
+  utter_asthma_symptomps:
+  - text: "Common symptoms of asthma include wheezing, coughing, shortness of breath, and chest tightness."
+  - text: "People with asthma often experience difficulty breathing, especially at night or after exercise."
+  - text: "Asthma can cause persistent coughing and a whistling sound when you breathe."
+  - text: "Other symptoms include fatigue, rapid breathing, and difficulty sleeping due to asthma."
+  - text: "Asthma attacks may involve chest pressure, tightness, and wheezing."
+  - text: "Shortness of breath and noisy breathing are signs of asthma."
+  - text: "Asthma symptoms can vary in severity, from mild coughing to severe breathing difficulties."
+  - text: "Children may have frequent coughing or trouble sleeping due to asthma."
+  - text: "Symptoms can be triggered by allergens, cold air, or exercise."
+  - text: "Wheezing, coughing, chest tightness, and shortness of breath are classic asthma symptoms."
+  - text: "Asthma may also cause fatigue and difficulty performing physical activities."
+  - text: "Some people experience rapid breathing or persistent cough as asthma symptoms."
+  - text: "Severe asthma can lead to pronounced wheezing and difficulty speaking."
+  - text: "Symptoms often worsen at night or early morning."
+  - text: "Coughing, wheezing, and breathlessness can indicate an asthma flare-up."
+  - text: "Chest tightness combined with difficulty breathing is common in asthma."
+  - text: "Asthma symptoms vary depending on triggers and the individual."
+  - text: "You may notice noisy or labored breathing during asthma attacks."
+  - text: "Fatigue and shortness of breath can also be signs of asthma."
+  - text: "Persistent cough or wheezing, especially after exercise, may indicate asthma."
+  - text: "Asthma may cause intermittent breathing difficulties throughout the day."
+  - text: "Early signs include coughing, wheezing, and occasional chest tightness."
+  - text: "Symptoms may increase during allergy season or exposure to triggers."
+  - text: "Asthma affects physical activity due to shortness of breath and fatigue."
+  - text: "Monitoring breathing patterns can help identify asthma symptoms early."
+
+  utter_asthma_treatments:
+  - text: "Asthma treatment includes using inhalers, medications, and avoiding triggers."
+  - text: "Short-term relief can be achieved with rescue inhalers during an asthma attack."
+  - text: "Long-term control may involve corticosteroids and other maintenance medications."
+  - text: "Lifestyle changes like avoiding allergens and quitting smoking help manage asthma."
+  - text: "Exercise and breathing exercises can improve lung function in asthma patients."
+  - text: "Doctors may prescribe bronchodilators to open airways during asthma attacks."
+  - text: "Nebulizers are sometimes used for severe asthma symptoms."
+  - text: "Asthma action plans help monitor symptoms and prevent attacks."
+  - text: "Avoiding triggers like dust, pollen, or smoke is key to controlling asthma."
+  - text: "Medications can reduce inflammation and prevent flare-ups."
+  - text: "Quick-relief treatments include short-acting bronchodilators."
+  - text: "Long-term management often involves daily controller medications."
+  - text: "Allergy treatments can help reduce asthma symptoms if triggered by allergens."
+  - text: "Regular check-ups help doctors adjust asthma medications as needed."
+  - text: "During an asthma attack, using a rescue inhaler and staying calm is important."
+  - text: "Asthma cannot be cured, but proper treatment can control symptoms effectively."
+  - text: "Lifestyle modifications and medication adherence are crucial in asthma care."
+  - text: "Preventive measures include vaccinations and avoiding respiratory irritants."
+  - text: "Asthma medications may include inhaled steroids, bronchodilators, and anti-inflammatory drugs."
+  - text: "Exercise should be done carefully with pre-exercise medications if needed."
+  - text: "A combination of quick-relief and long-term medications usually manages asthma."
+  - text: "Asthma can be controlled with proper monitoring, medications, and trigger avoidance."
+  - text: "Doctors may personalize treatment based on symptom severity and triggers."
+  - text: "Asthma treatment focuses on reducing inflammation and keeping airways open."
+  - text: "Education on asthma management helps prevent severe attacks and hospital visits."
+
+  utter_what_is_pneumonia:
+  - text: "Pneumonia is an infection that inflames the air sacs in one or both lungs, which may fill with fluid or pus."
+  - text: "It is a lung infection caused by bacteria, viruses, or fungi that affects breathing."
+  - text: "Pneumonia causes the airways and lung tissue to become inflamed and sometimes fill with fluid."
+  - text: "People with pneumonia often experience cough, fever, and difficulty breathing."
+  - text: "It is a serious respiratory infection that can range from mild to life-threatening."
+  - text: "Pneumonia affects the lungs and can reduce oxygen flow in the body."
+  - text: "In simple terms, pneumonia is a lung infection that makes it hard to breathe normally."
+  - text: "It can affect anyone, but is especially dangerous for children, older adults, and people with weak immunity."
+  - text: "Pneumonia can be caused by bacteria, viruses, or less commonly, fungi."
+  - text: "The main feature of pneumonia is inflammation in the lungs, often accompanied by cough and fever."
+  - text: "It is a common respiratory infection that can be treated effectively if diagnosed early."
+  - text: "Pneumonia can affect one lung (unilateral) or both lungs (bilateral)."
+  - text: "It is a condition where the lungs ' air sacs are inflamed, sometimes filling with fluid."
+  - text: "People with pneumonia may feel chest pain and shortness of breath."
+  - text: "The severity of pneumonia can vary from mild discomfort to serious illness."
+  - text: "Pneumonia is often referred to as a lung infection caused by germs."
+  - text: "It is a condition where your lungs are temporarily impaired due to infection."
+  - text: "Pneumonia can develop after a cold, flu, or other respiratory infection."
+  - text: "In short, pneumonia is an infection that affects the lungs and breathing."
+  - text: "Pneumonia is treatable but can be dangerous if not managed properly."
+  - text: "It is a lung infection causing symptoms like cough, fever, and fatigue."
+  - text: "Pneumonia can affect oxygen exchange in the lungs, leading to breathlessness."
+  - text: "It is a respiratory infection that requires proper medical care."
+  - text: "Pneumonia is a condition in which the lungs become inflamed and may fill with fluid."
+  - text: "It is a common but potentially serious lung infection."
+
+  utter_how_pneumonia_works:
+  - text: "Pneumonia works by infecting the lungs, causing inflammation and fluid buildup in the air sacs."
+  - text: "Bacteria, viruses, or fungi invade the lungs, triggering the immune system and inflammation."
+  - text: "The infection causes your alveoli (air sacs) to fill with pus or fluid, making breathing difficult."
+  - text: "During pneumonia, the lungs become inflamed, reducing oxygen exchange."
+  - text: "Pneumonia affects breathing by making the airways and air sacs less effective at transferring oxygen."
+  - text: "The immune system reacts to the infection, which can cause fever, coughing, and fatigue."
+  - text: "Inflammation and fluid buildup in the lungs restrict airflow and make it harder to breathe."
+  - text: "Pneumonia flare-ups occur when pathogens overwhelm the lungs ' defenses."
+  - text: "Air sacs can fill with fluid or pus, leading to shortness of breath and chest pain."
+  - text: "The lungs become congested, and oxygen intake decreases."
+  - text: "Pneumonia works by triggering an immune response that inflames lung tissue."
+  - text: "Bacterial or viral invasion causes swelling and mucus buildup in the lungs."
+  - text: "It affects oxygen flow in the body, which can lead to fatigue and low oxygen levels."
+  - text: "During pneumonia, the lungs may become stiff and inflamed, impairing breathing."
+  - text: "The infection makes the alveoli less efficient at moving oxygen into the blood."
+  - text: "Pneumonia can cause the body to produce excess mucus, which obstructs airflow."
+  - text: "It works by causing inflammation and fluid accumulation in the lungs ' air sacs."
+  - text: "Pneumonia triggers cough, fever, and difficulty breathing due to lung infection."
+  - text: "The infection may spread in the lungs, affecting oxygen supply and overall health."
+  - text: "Pneumonia flare-ups happen when lung tissue becomes inflamed and clogged with fluid."
+  - text: "It affects breathing by narrowing airways and filling alveoli with fluid or pus."
+  - text: "The immune system 's response can sometimes worsen inflammation in the lungs."
+  - text: "Pneumonia reduces lung efficiency, making oxygen delivery to the body difficult."
+  - text: "In simple terms, pneumonia makes it harder for the lungs to get oxygen to the blood."
+  - text: "The infection causes inflammation, fluid buildup, and impaired lung function."
+
+  utter_pneumonia_symptomps:
+  - text: "Common symptoms of pneumonia include cough, fever, chills, and difficulty breathing."
+  - text: "Chest pain, shortness of breath, and fatigue are typical signs of pneumonia."
+  - text: "You may experience rapid breathing, wheezing, or a persistent cough."
+  - text: "Fever, sweating, and chills often accompany pneumonia."
+  - text: "Some people notice chest tightness or discomfort when breathing."
+  - text: "Symptoms can vary depending on age and overall health."
+  - text: "Children and older adults may have subtle symptoms like weakness or confusion."
+  - text: "Severe pneumonia can cause rapid heart rate and low oxygen levels."
+  - text: "Persistent cough, sometimes with phlegm or blood, is a key pneumonia symptom."
+  - text: "Shortness of breath and fatigue are common during pneumonia infection."
+  - text: "Symptoms may appear suddenly or develop gradually over a few days."
+  - text: "Pneumonia may cause difficulty sleeping due to coughing or breathlessness."
+  - text: "Rapid or labored breathing is a warning sign of pneumonia."
+  - text: "Chills, fever, and body aches can accompany lung infection."
+  - text: "In children, symptoms may include irritability, poor appetite, or vomiting."
+  - text: "In adults, cough with green, yellow, or bloody mucus can indicate pneumonia."
+  - text: "Early signs include mild cough and low-grade fever."
+  - text: "Severe cases may cause confusion, especially in older adults."
+  - text: "Chest discomfort, wheezing, and shortness of breath are common indicators."
+  - text: "Fatigue, weakness, and rapid breathing may also signal pneumonia."
+  - text: "Monitoring oxygen levels can help detect pneumonia early."
+  - text: "Symptoms often worsen if left untreated, leading to serious complications."
+  - text: "Some people may also experience nausea or loss of appetite."
+  - text: "Frequent coughing and difficulty breathing are key pneumonia warning signs."
+  - text: "It is important to seek medical care if pneumonia symptoms are severe."
+
+  utter_pneumonia_treatment:
+  - text: "Pneumonia is treated with antibiotics if it 's bacterial, or antiviral medications if caused by a virus."
+  - text: "Rest, hydration, and proper nutrition are important during pneumonia recovery."
+  - text: "Oxygen therapy may be needed for severe pneumonia to support breathing."
+  - text: "Doctors may recommend cough suppressants or pain relievers to manage symptoms."
+  - text: "Hospitalization may be required for severe cases or for people with weak immunity."
+  - text: "Vaccinations can help prevent certain types of pneumonia."
+  - text: "Lifestyle changes, like quitting smoking, can help lungs recover faster."
+  - text: "Home care includes staying hydrated, getting plenty of rest, and monitoring symptoms."
+  - text: "Antibiotics should be taken exactly as prescribed to fully clear the infection."
+  - text: "Nebulizers or inhalers may be used to ease breathing difficulties."
+  - text: "Doctors may adjust treatment based on severity and underlying conditions."
+  - text: "Quick-relief treatments include medications to reduce inflammation in the lungs."
+  - text: "Preventing exposure to respiratory infections can reduce the risk of pneumonia."
+  - text: "Severe pneumonia may require IV antibiotics and hospital monitoring."
+  - text: "Oxygen saturation and breathing are closely monitored in hospitalized patients."
+  - text: "Recovery may take weeks, and follow-up visits are often recommended."
+  - text: "Home remedies like humidifiers can ease breathing discomfort."
+  - text: "Avoiding pollutants and allergens helps prevent pneumonia flare-ups."
+  - text: "Resting and pacing physical activity is essential during recovery."
+  - text: "Doctors may prescribe a combination of treatments for complicated pneumonia."
+  - text: "Early treatment can prevent pneumonia from becoming life-threatening."
+  - text: "Supportive care includes hydration, fever control, and proper nutrition."
+  - text: "Prompt treatment is important to avoid complications like sepsis or lung damage."
+  - text: "Mild pneumonia may only require antibiotics and home rest."
+  - text: "Treatment aims to eradicate infection, ease symptoms, and restore normal lung function."
+
+  utter_what_is_a_minor_burn:
+  - text: "A minor burn, also called a first-degree burn, affects only the outer layer of the skin and usually causes redness and pain."
+  - text: "It is a mild burn that causes skin redness, discomfort, and sometimes slight swelling."
+  - text: "Minor burns damage only the top layer of skin and usually heal without serious complications."
+  - text: "A minor burn is a superficial burn that typically causes pain, redness, and tenderness."
+  - text: "It is a burn that does not blister or penetrate deeply into the skin."
+  - text: "Minor burns are usually caused by brief contact with hot surfaces, liquids, or steam."
+  - text: "It is a mild skin injury that generally heals within a few days to a week."
+  - text: "Minor burns only affect the epidermis, the outermost skin layer."
+  - text: "These burns often result in redness, mild swelling, and discomfort."
+  - text: "A minor burn is usually treatable at home and rarely requires medical attention."
+  - text: "It is a first-degree burn that causes superficial skin damage."
+  - text: "Minor burns can be caused by hot liquids, direct heat, or brief flame exposure."
+  - text: "The severity of a minor burn is low and it typically heals without scarring."
+  - text: "Minor burns can be painful but are usually not life-threatening."
+  - text: "It is a superficial injury that affects the skin's surface."
+  - text: "These burns often cause redness, warmth, and mild pain."
+  - text: "A minor burn may feel sore but usually heals without permanent damage."
+  - text: "It is the mildest form of burn, involving only the top layer of skin."
+  - text: "Minor burns often resolve within a week with proper care."
+  - text: "They are commonly caused by heat exposure, sunburn, or brief contact with hot objects."
+  - text: "Minor burns are superficial and do not involve deep tissue damage."
+  - text: "Redness, tenderness, and slight swelling are common signs of minor burns."
+  - text: "A minor burn affects the skin's surface but usually heals fully on its own."
+  - text: "These burns can be uncomfortable but rarely require medical treatment."
+  - text: "A minor burn is a mild injury that can usually be managed at home."
+
+  utter_how_minor_burn_works:
+  - text: "A minor burn happens when the skin is briefly exposed to heat, friction, or chemicals."
+  - text: "Heat or friction damages the outer skin layer, causing redness and pain."
+  - text: "The burn causes blood vessels to dilate, leading to redness and swelling."
+  - text: "Minor burns trigger inflammation as the body responds to the skin injury."
+  - text: "Pain occurs because nerve endings in the skin are affected by the heat."
+  - text: "The skin reacts by producing redness, tenderness, and sometimes mild swelling."
+  - text: "Minor burns affect only the outer layer, so the deeper tissues remain unharmed."
+  - text: "Blistering is uncommon but can happen in slightly more severe first-degree burns."
+  - text: "Inflammation is part of the healing process for minor burns."
+  - text: "The burn damages the skin cells, which triggers repair mechanisms."
+  - text: "Heat exposure causes cell injury, which leads to pain and redness."
+  - text: "The body responds by sending blood and immune cells to the affected area."
+  - text: "Minor burns usually do not penetrate deeply and heal on their own."
+  - text: "The nerves in the skin signal pain to alert you to the injury."
+  - text: "A minor burn is superficial and triggers the skin's protective response."
+  - text: "Redness and mild swelling are part of the healing response."
+  - text: "Skin cells regenerate after the burn, replacing the damaged tissue."
+  - text: "The outer layer of skin becomes inflamed and sensitive after a minor burn."
+  - text: "Pain, redness, and tenderness occur as part of the natural healing process."
+  - text: "The skin's response helps prevent infection and promotes repair."
+  - text: "A minor burn may also feel warm to the touch due to increased blood flow."
+  - text: "The body sends fluids and cells to the injury site to start healing."
+  - text: "Minor burns usually heal without leaving scars because deeper layers are unaffected."
+  - text: "The process involves inflammation, cell repair, and tissue regeneration."
+  - text: "Skin cells gradually replace the damaged layer, restoring normal function."
+
+  utter_minor_burn_symptomps:
+  - text: "Common symptoms include redness, pain, and mild swelling at the burn site."
+  - text: "The affected skin may feel warm and tender to touch."
+  - text: "Minor burns can cause a burning or stinging sensation."
+  - text: "Some people may notice slight itching as the burn begins to heal."
+  - text: "Redness and sensitivity are typical first signs of a minor burn."
+  - text: "Blistering is rare but may occur in slightly deeper burns."
+  - text: "The skin may peel as it heals from a minor burn."
+  - text: "Pain is usually mild and localized to the area of the burn."
+  - text: "Swelling is often minimal but can appear around the burn site."
+  - text: "Discomfort and tenderness are common in minor burns."
+  - text: "The area may look red and feel sore for a few days."
+  - text: "Burns may cause a mild burning sensation immediately after the injury."
+  - text: "Itching can occur as the skin begins to regenerate."
+  - text: "Symptoms are generally confined to the outer skin layer."
+  - text: "Children may be more sensitive to minor burn pain."
+  - text: "Red, tender skin is the most common symptom."
+  - text: "Mild swelling may accompany redness and pain."
+  - text: "The burn site may feel warm or slightly hot to touch."
+  - text: "Healing minor burns may cause temporary skin peeling."
+  - text: "Symptoms usually resolve within a few days with proper care."
+  - text: "Pain may increase when pressure is applied to the affected area."
+  - text: "Burning and tenderness are the primary indicators."
+  - text: "The skin may appear shiny or slightly inflamed."
+  - text: "Minor burns rarely cause severe pain or blistering."
+  - text: "Discomfort gradually lessens as the skin heals."
+
+  utter_minor_burn_treatment:
+  - text: "Minor burns can be treated at home with cool running water and gentle cleaning."
+  - text: "Applying a soothing ointment or aloe vera can help relieve pain and promote healing."
+  - text: "Over-the-counter creams may reduce redness and discomfort."
+  - text: "Keeping the burn clean and protected prevents infection."
+  - text: "Avoid breaking any small blisters that may form."
+  - text: "Cool compresses can help reduce pain and swelling."
+  - text: "Pain relievers like acetaminophen or ibuprofen can ease discomfort."
+  - text: "Covering the burn with a sterile, non-stick bandage can protect the skin."
+  - text: "Avoid applying ice directly to the burn, as it can damage the skin."
+  - text: "Minor burns usually heal in a few days with proper care."
+  - text: "Hydrating the skin and keeping it moisturized aids recovery."
+  - text: "Natural remedies like aloe vera may speed up healing."
+  - text: "Rest the affected area and avoid friction or further heat exposure."
+  - text: "Monitor for signs of infection like pus, increased redness, or swelling."
+  - text: "Do not apply butter or oils to the burn, as this can worsen it."
+  - text: "Gentle cleansing with mild soap and water is recommended."
+  - text: "Avoid scratching or picking at the healing skin."
+  - text: "Pain and redness usually decrease within a few days with home care."
+  - text: "Consult a doctor if the burn covers a large area or shows signs of infection."
+  - text: "Minor burns respond well to cool water, topical creams, and rest."
+  - text: "Keep the burn elevated if possible to reduce swelling."
+  - text: "Use a clean, loose bandage to protect the burn from irritation."
+  - text: "Hydration and avoiding sun exposure can help the burn heal faster."
+  - text: "Over-the-counter antiseptic ointments can prevent infection."
+  - text: "Most minor burns heal without scarring if properly cared for."
+
+
+slots:
+  name:
+    type: text
+    mappings:
+      - type: from_text
+  date:
+    type: text
+    mappings:
+      - type: from_text
+  specialist:
+    type: text
+    mappings:
+      - type: from_text
+  time:
+    type: text
+    mappings:
+      - type: from_text
+
+forms:
+  appointment_form:
+    required_slots:
+      - name
+      - date
+      - specialist
+      - time
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+actions: 
+  - action_book_appointment
