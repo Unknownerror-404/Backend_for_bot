@@ -55,14 +55,15 @@ struture your directory as shown above:
 Ensure you have a python version from 3.8 to 3.11 as rasa is incompatible with recent 3.11 > versions.
 For convinience do python --version or python3 --version in your terminal (Windows).
 After ensure you have a compatible version most favourably python 3.11, install the following packages from  requirements.txt
+```
 =============== required packages ===================
 rasa
 rasa.sdk
 ==================++++++++++++========================
-
+```
 Upon completion, ensure you've located the correct directory and structure as well, change your current directroy to the main_directory as mentioned above.
 and perform the following commands:
-
+```
 ===================== cmd prompt ========================
 > rasa train
 > // store the result in the models subdirectory as shown above.
@@ -70,7 +71,7 @@ and perform the following commands:
 > // this will run the recently trained rasa model on an output port mostly preferably local-host//server.
 
 ===================== cmd prompt ========================
-
+```
 
 2] Creating a sql server:
 
@@ -80,7 +81,7 @@ https://www.microsoft.com/en-in/sql-server/sql-server-downloads/
 scroll down a bit and ensure that you download sql server express 2022. 
 Move onto installation selecting a basic server configuration when prompted.
 upon completion, close out of the setup, and go to your local cmd prompt to perform sql cmommands on it, type the following:
-
+```
 ======================= cmd prompt ============================
 > sqlcmd -S .\SQLEXPRESS -E
 ================== end of cmd prompt ===========================
@@ -113,7 +114,7 @@ upon completion, close out of the setup, and go to your local cmd prompt to perf
 >    CONSTRAINT FK_Chat_User FOREIGN KEY (UserId) REFERENCES Users(UserID)
 > );
  ======================= sqlcmd prompt =========================
-
+```
 This should create the required sql tables to work properly with the remaining code.
 
 3] Creating a local host-server for testing using app.py
