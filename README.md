@@ -57,6 +57,10 @@ After ensure you have a compatible version most favourably python 3.11, install 
 =============== required packages ===================
 rasa
 rasa.sdk
+pyodbc
+bcrypt
+flask
+Flask-Session
 ==================++++++++++++========================
 ```
 Upon completion, ensure you've located the correct directory and structure as well, change your current directroy to the main_directory as mentioned above.
