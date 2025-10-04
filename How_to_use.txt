@@ -1,0 +1,76 @@
+#Documentation: 
+1] Training the rasa model and setup to create a local server.
+
+To use this instance of rasa, install rasa and rasa.sdk from the requirements.txt file.
+Initially make sure all files have been installed properly and setup the structrue correctly as:
+========================= Structure =============================
+\ main_direcotry -
+  \ data -
+    nlu.yml
+    rules.yml
+    stories.yml
+  \ front-end -
+
+    \ static - 
+      \ css - 
+        health.css
+        logged_in_health.css
+        style._aboutus.css
+        style_chat.css
+        style_createacc.css
+        style_loginpage.css
+
+      \ images - 
+        bg.jpg
+        blurred_bg.jpg
+        healthcare.jpg
+
+    \ templates -
+      aboutus.html
+      chat_logged_in.html
+      chat.html
+      createacc.html
+      index.html
+      loginpage.html
+      logged_in_index.html
+    app.py
+
+  \ models - 
+    // the created model should be saved here. 
+    _some_model.tar
+
+  \ tests - 
+    test_stories.yml
+
+  config.yml
+  credentials.yml
+  domains.yml
+  endpoints.yml
+========================= Structure =============================
+
+struture your directory as shown above:
+
+Ensure you have a python version from 3.8 to 3.11 as rasa is incompatible with recent 3.11 > versions.
+For convinience do python --version or python3 --version in your terminal (Windows).
+After ensure you have a compatible version most favourably python 3.11, install the following packages from  requirements.txt
+=============== required packages ===================
+rasa
+rasa.sdk
+==================++++++++++++========================
+
+Upon completion, ensure you've located the correct directory and structure as well, change your current directroy to the main_directory as mentioned above.
+and perform the following commands:
+
+===================== cmd prompt ========================
+> rasa train
+> // store the result in the models subdirectory as shown above.
+> rasa run --enable-api --cors="*"  --debug
+> // this will run the recently trained rasa model on an output port mostly preferably local-host//server.
+
+===================== cmd prompt ========================
+
+
+2] Creating a sql server:
+
+After creating the rasa server, to access all features from our website please go to the following link:
+
