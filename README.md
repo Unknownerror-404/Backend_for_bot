@@ -2,8 +2,7 @@
 
 ## How to download and use:
 
-#Documentation: 
-1] Training the rasa model and setup to create a local server.
+### 1] Training the rasa model and setup to create a local server.
 
 To use this instance of rasa, install rasa and rasa.sdk from the requirements.txt file.
 Initially make sure all files have been installed properly and setup the structrue correctly as:
@@ -73,7 +72,7 @@ and perform the following commands:
 ===================== cmd prompt ========================
 ```
 
-2] Creating a sql server:
+### 2] Creating a sql server:
 
 After creating the rasa server, to access all features from our website please go to the following link:
 https://www.microsoft.com/en-in/sql-server/sql-server-downloads/
@@ -117,7 +116,7 @@ upon completion, close out of the setup, and go to your local cmd prompt to perf
 ```
 This should create the required sql tables to work properly with the remaining code.
 
-3] Creating a local host-server for testing using app.py
+### 3] Creating a local host-server for testing using app.py
 Once you have the rasa and sql servers up and running, go to your code editor, and execute the app.py file from this repo, 
 e.g. if you are using vs code, go to your working directory, and play the python script with python app.py.
 
