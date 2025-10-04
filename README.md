@@ -7,50 +7,47 @@
 
 To use this instance of rasa, install rasa and rasa.sdk from the requirements.txt file.
 Initially make sure all files have been installed properly and setup the structrue correctly as:
-========================= Structure =============================
-\ main_direcotry -
-  \ data -
-    nlu.yml
-    rules.yml
-    stories.yml
-  \ front-end -
+main_directory/
+│
+├── config.yml
+├── credentials.yml
+├── domains.yml
+├── endpoints.yml
+│
+├── data/
+│   ├── nlu.yml
+│   ├── rules.yml
+│   └── stories.yml
+│
+├── front-end/
+│   ├── app.py
+│   ├── static/
+│   │   ├── css/
+│   │   │   ├── health.css
+│   │   │   ├── logged_in_health.css
+│   │   │   ├── style_aboutus.css
+│   │   │   ├── style_chat.css
+│   │   │   ├── style_createacc.css
+│   │   │   └── style_loginpage.css
+│   │   └── images/
+│   │       ├── bg.jpg
+│   │       ├── blurred_bg.jpg
+│   │       └── healthcare.jpg
+│   └── templates/
+│       ├── aboutus.html
+│       ├── chat_logged_in.html
+│       ├── chat.html
+│       ├── createacc.html
+│       ├── index.html
+│       ├── loginpage.html
+│       └── logged_in_index.html
+│
+├── models/
+│   └── _some_model.tar
+│
+└── tests/
+    └── test_stories.yml
 
-    \ static - 
-      \ css - 
-        health.css
-        logged_in_health.css
-        style._aboutus.css
-        style_chat.css
-        style_createacc.css
-        style_loginpage.css
-
-      \ images - 
-        bg.jpg
-        blurred_bg.jpg
-        healthcare.jpg
-
-    \ templates -
-      aboutus.html
-      chat_logged_in.html
-      chat.html
-      createacc.html
-      index.html
-      loginpage.html
-      logged_in_index.html
-    app.py
-
-  \ models - 
-    // the created model should be saved here. 
-    _some_model.tar
-
-  \ tests - 
-    test_stories.yml
-
-  config.yml
-  credentials.yml
-  domains.yml
-  endpoints.yml
-========================= Structure =============================
 
 struture your directory as shown above:
 
