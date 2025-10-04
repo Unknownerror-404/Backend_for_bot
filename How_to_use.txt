@@ -86,5 +86,30 @@ upon completion, close out of the setup, and go to your local cmd prompt to perf
 
 
 ======================= sqlcmd prompt =========================
-> 
+> CREATE DATABASE model;
+> GO
+> // This will create a sql database named model, which can be used as:
+> USE model
+> GO
+> //Then create the follwing tables which are required to store user login info and chat session infos for dynamic data loading. 
+> CREATE TABLE Users (
+>    UserID INT IDENTITY(1,1) PRIMARY KEY,
+>    Email NVARCHAR(255) NOT NULL,
+>    PasswordHash NVARCHAR(255) NOT NULL,
+>    CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
+>    person_name NVARCHAR(100) NOT NULL
+> ); 
+> //Creating user data storage, currently prototype form.
+> CREATE TABLE ChatSessions (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    UserId INT NOT NULL,
+    Session_Id UNIQUEIDENTIFIER NOT NULL DEFAULT NEWID(),
+    Session_Title NVARCHAR(255) NULL,
+    User_Chat NVARCHAR(MAX) NULL,
+    Bot_Chat NVARCHAR(MAX) NULL,
+    CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
+    CONSTRAINT FK_Chat_User FOREIGN KEY (UserId) REFERENCES Users(UserID)
+);
+
+
 
