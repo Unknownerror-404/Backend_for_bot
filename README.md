@@ -1,4 +1,4 @@
-# Backend_for_bot
+# CLIN-BOT
 
 ## How to download and use:
 
