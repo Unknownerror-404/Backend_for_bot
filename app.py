@@ -1,16 +1,18 @@
-import pyodbc
+import psycopg2
 import bcrypt
 import secrets
 import uuid
 from flask import Flask, request, render_template, session
 from flask_session import Session
 
+load_dotenv()
 
-conn = pyodbc.connect(
-    'DRIVER={ODBC Driver 17 for SQL Server};'
-    'SERVER=localhost\\SQLEXPRESS;'
-    'DATABASE=model;'
-    'Trusted_Connection=yes;'
+conn = psycopg2.connect(
+    host=os.getenv("DB_HOST"),
+    dbname=os.getenv("DB_NAME"),
+    user=os.getenv("DB_USER"),
+    password=os.getenv("DB_PASSWORD"),
+    port=os.getenv("DB_PORT")
 )
 cursor = conn.cursor()
 
@@ -227,3 +229,4 @@ def logout():
  
 if __name__ == "__main__":
     app.run(debug=True, ssl_context='adhoc')
+
