@@ -1,4 +1,5 @@
-pyodbc
+psycopg2
 bcrypt
 Flask
+
 Flask-Session
