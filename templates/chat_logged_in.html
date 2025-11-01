@@ -87,7 +87,7 @@ async function sendMsg() {
 
 async function sendMessageToRasa(text) {
   try {
-    const response = await fetch("http://localhost:5005/webhooks/rest/webhook", {
+    const response = await fetch("/chat_logged_in", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ sender: "user1", message: text })
