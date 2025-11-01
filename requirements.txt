@@ -4,4 +4,3 @@ Flask
 python-dotenv
 Flask-Session
 cryptography
-os
