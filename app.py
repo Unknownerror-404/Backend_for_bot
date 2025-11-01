@@ -50,8 +50,8 @@ def logged_in_chat():
         return render_template('chat_logged_in.html', logged_in=False, all_chats=[])
 
     cursor.execute(
-        "SELECT DISTINCT Session_Id FROM ChatSessions WHERE UserId = ?",
-        (Uid,)
+    "SELECT DISTINCT Session_Id FROM ChatSessions WHERE UserId = %s",
+    (Uid,)
     )
     session_rows = cursor.fetchall()
     session_id_list = [row[0] for row in session_rows]
@@ -59,9 +59,10 @@ def logged_in_chat():
     all_chats = []
     for ses_id in session_id_list:
         cursor.execute(
-            "SELECT User_Chat, Bot_Chat FROM ChatSessions WHERE Session_Id = ? ORDER BY CreatedAt",
-            (ses_id,)
-        )
+    "SELECT User_Chat, Bot_Chat FROM ChatSessions WHERE Session_Id = %s ORDER BY CreatedAt",
+    (ses_id,)
+    )
+
         messages = cursor.fetchall()
         session_messages = [[row[0], row[1]] for row in messages]
         all_chats.append(session_messages)
@@ -87,9 +88,10 @@ def insert():
                 hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
                 cursor.execute(
-                    "INSERT INTO Users (person_name, Email, PasswordHash) VALUES (?, ?, ?)",
-                    (user, email, hashed)
+                "INSERT INTO Users (person_name, Email, PasswordHash) VALUES (%s, %s, %s)",
+                (user, email, hashed)
                 )
+
                 conn.commit()
                 return render_template('logged_in_index.html', message="Account created successfully!")
             else: 
@@ -102,8 +104,12 @@ def login():
     if request.method == 'POST':
         email = request.form.get("email")
         password = request.form.get("password")
-        cursor.execute("SELECT PasswordHash FROM Users WHERE Email = ?;", (email.strip(),))
+        cursor.execute(
+            "SELECT PasswordHash FROM Users WHERE Email = %s;",
+            (email.strip(),)
+            )
         row = cursor.fetchone()
+
         if row:  
             stored_hash = row[0] 
             if isinstance(stored_hash, str):
@@ -111,32 +117,44 @@ def login():
 
             candidate_password = password.encode('utf-8')
             if bcrypt.checkpw(candidate_password, stored_hash):
-                cursor.execute("SELECT person_name FROM Users WHERE Email = ?;", (email.strip(),))
+                cursor.execute(
+                "SELECT person_name FROM Users WHERE Email = %s;",
+                (email.strip(),)
+                )
+
                 n = cursor.fetchone()
                 n1 = n[0]
                 if isinstance(n1, str):
                     logged_in = True
                     cursor.execute(
-                        "SELECT UserID FROM Users WHERE Email = ?;", (email.strip(), )
+                    "SELECT UserID FROM Users WHERE Email = %s;",
+                    (email.strip(),)
                     )
                     uid = cursor.fetchone()
+
                     Uid = uid[0]
                     cursor.execute(
-                        "INSERT INTO ChatSessions (UserId, Session_Id) VALUES (?, ?)", (Uid, chat_sessions)
+                    "INSERT INTO ChatSessions (UserId, Session_Id) VALUES (%s, %s)",
+                    (Uid, chat_sessions)
                     )
+
                     session['user_id'] = Uid
                     conn.commit()
                     return render_template('logged_in_index.html', message="Logged in successfully!", name=n1, logged_in=logged_in)
                 else: 
                     logged_in = True
                     cursor.execute(
-                        "SELECT UserID FROM Users WHERE Email = ?;", (email.strip(), )
+                    "SELECT UserID FROM Users WHERE Email = %s;",
+                    (email.strip(),)
                     )
+
                     uid = cursor.fetchone()
                     Uid = uid[0]
                     cursor.execute(
-                        "INSERT INTO ChatSessions (UserId, Session_Id) VALUES (?, ?)", (Uid, chat_sessions)
+                    "INSERT INTO ChatSessions (UserId, Session_Id) VALUES (%s, %s)",
+                    (Uid, chat_sessions)
                     )
+
                     session['user_id'] = Uid
                     conn.commit()
                     return render_template('logged_in_index.html', message="Logged in successfully!", name="User", logged_in=logged_in)
@@ -161,9 +179,10 @@ def save_message():
         session_id = str(uuid.uuid4())
         session['session_id'] = session_id
     cursor.execute(
-        "SELECT User_Chat, Bot_Chat FROM ChatSessions WHERE UserId = ? AND Session_Id = ?",
-        (user_id, session_id)
+    "SELECT User_Chat, Bot_Chat FROM ChatSessions WHERE UserId = %s AND Session_Id = %s",
+    (user_id, session_id)
     )
+
     row = cursor.fetchone()
 
     if row:
@@ -172,25 +191,25 @@ def save_message():
         if sender == 'user':
             updated_user_chat = (current_user_chat or '') + ("\n" if current_user_chat else '') + message
             cursor.execute(
-                "UPDATE ChatSessions SET User_Chat = ? WHERE UserId = ? AND Session_Id = ?",
+                "UPDATE ChatSessions SET User_Chat = %s WHERE UserId = %s AND Session_Id = %s",
                 (updated_user_chat, user_id, session_id)
             )
         else:
             updated_bot_chat = (current_bot_chat or '') + ("\n" if current_bot_chat else '') + message
             cursor.execute(
-                "UPDATE ChatSessions SET Bot_Chat = ? WHERE UserId = ? AND Session_Id = ?",
+                "UPDATE ChatSessions SET Bot_Chat = %s WHERE UserId = %s AND Session_Id = %s",
                 (updated_bot_chat, user_id, session_id)
             )
     else:
 
         if sender == 'user':
             cursor.execute(
-                "INSERT INTO ChatSessions (UserId, Session_Id, User_Chat) VALUES (?, ?, ?)",
+                "INSERT INTO ChatSessions (UserId, Session_Id, User_Chat) VALUES (%s, %s, %s)",
                 (user_id, session_id, message)
             )
         else:
             cursor.execute(
-                "INSERT INTO ChatSessions (UserId, Session_Id, Bot_Chat) VALUES (?, ?, ?)",
+                "INSERT INTO ChatSessions (UserId, Session_Id, Bot_Chat) VALUES (%s, %s, %s)",
                 (user_id, session_id, message)
             )
 
@@ -204,7 +223,7 @@ def get_chat_history():
         return {"all_chats": []}
 
     cursor.execute(
-        "SELECT DISTINCT Session_Id FROM ChatSessions WHERE UserId = ?", (Uid,)
+        "SELECT DISTINCT Session_Id FROM ChatSessions WHERE UserId = %s", (Uid,)
     )
     session_rows = cursor.fetchall()
     session_id_list = [row[0] for row in session_rows]
@@ -212,7 +231,7 @@ def get_chat_history():
     all_chats = []
     for ses_id in session_id_list:
         cursor.execute(
-            "SELECT User_Chat, Bot_Chat FROM ChatSessions WHERE Session_Id = ? ORDER BY CreatedAt",
+            "SELECT User_Chat, Bot_Chat FROM ChatSessions WHERE Session_Id = %s ORDER BY CreatedAt",
             (ses_id,)
         )
         messages = cursor.fetchall()
@@ -229,4 +248,5 @@ def logout():
  
 if __name__ == "__main__":
     app.run(debug=True, ssl_context='adhoc')
+
 
