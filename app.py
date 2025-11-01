@@ -14,7 +14,31 @@ conn = psycopg2.connect(
     password=os.getenv("DB_PASSWORD"),
     port=os.getenv("DB_PORT")
 )
+
 cursor = conn.cursor()
+cursor.execute("""
+    CREATE TABLE Users (
+    UserID SERIAL PRIMARY KEY,
+    Email VARCHAR(255) UNIQUE NOT NULL,
+    PasswordHash VARCHAR(255) NOT NULL,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    person_name VARCHAR(255)
+);
+""")
+
+cursor.execute("""
+    CREATE TABLE Chat_sessions (
+    Id SERIAL PRIMARY KEY,
+    UserId INT NOT NULL,
+    Session_Id UUID NOT NULL,
+    Session_Title VARCHAR(255),
+    User_Chat TEXT,
+    Bot_Chat TEXT,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserId) REFERENCES users(UserID) ON DELETE CASCADE
+);
+
+""")
 
 logged_in = False
 
@@ -248,5 +272,6 @@ def logout():
  
 if __name__ == "__main__":
     app.run(debug=True, ssl_context='adhoc')
+
 
 
