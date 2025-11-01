@@ -310,9 +310,10 @@ def logout():
     return render_template('index.html', message="Successfully logged out!")
  
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Starting Flask on 0.0.0.0:{port}", flush=True)
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=port, debug=True)
+
 
 
 
