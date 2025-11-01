@@ -104,6 +104,34 @@ def logged_in_chat():
 
     return render_template('chat_logged_in.html', logged_in=True, all_chats=all_chats)
 
+@app.route("/chat_logged_in", methods=["POST"])
+def chat_logged_in_api():
+    RASA_URL = os.environ.get("RASA_URL", "http://localhost:5005/webhooks/rest/webhook")
+    user_message = request.json.get("message")
+
+    Uid = session.get('user_id')
+    if not Uid:
+        return jsonify({"error": "Not logged in"}), 403
+
+    session_id = "session_" + str(Uid)
+
+    try:
+        response = requests.post(RASA_URL, json={"sender": str(Uid), "message": user_message})
+        bot_messages = response.json()
+
+        bot_reply = bot_messages[0]["text"] if bot_messages and "text" in bot_messages[0] else ""
+
+        cursor.execute(
+            "INSERT INTO ChatSessions (UserId, Session_Id, User_Chat, Bot_Chat) VALUES (%s, %s, %s, %s)",
+            (Uid, session_id, user_message, bot_reply)
+        )
+        db.commit()
+
+        return jsonify(bot_messages)
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 @app.route('/submit', methods=['POST', 'GET'])
 def insert():
     if request.method == 'POST':
@@ -113,7 +141,7 @@ def insert():
         email = request.form.get('email')
 
         cursor.execute(
-            "SELECT * FROM Users WHERE Email = ?;",(email,)
+            "SELECT * FROM Users WHERE Email = %s;",(email,)
         )
         val = cursor.fetchone()
         if val:
@@ -286,6 +314,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     print(f"🚀 Starting Flask on 0.0.0.0:{port}", flush=True)
     app.run(host="0.0.0.0", port=port)
+
 
 
 
