@@ -4,9 +4,7 @@ import secrets
 import uuid
 from flask import Flask, request, render_template, session
 from flask_session import Session
-from dotenv import load_dotenv
-
-load_dotenv()
+import os
 
 conn = psycopg2.connect(
     host=os.getenv("DB_HOST"),
@@ -273,6 +271,7 @@ def logout():
  
 if __name__ == "__main__":
     app.run(debug=True, ssl_context='adhoc')
+
 
 
 
