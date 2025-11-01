@@ -13,7 +13,7 @@ conn = psycopg2.connect(
     password=os.getenv("DB_PASSWORD"),
     port=os.getenv("DB_PORT")
 )
-
+RASA_URL = os.environ.get("RASA_URL", "http://localhost:5005/webhooks/rest/webhook")
 cursor = conn.cursor()
 cursor.execute("""
     CREATE TABLE Users (
@@ -62,9 +62,21 @@ def loginpage():
 def about_us():
     return render_template('aboutus.html')
 
-@app.route('/chat.html', methods=['post', 'get'])
-def chat():
-    return render_template('chat.html')
+# Route for serving the chat page
+@app.route("/chat.html", methods=["GET"])
+def chat_page():
+    return render_template("chat.html")
+
+# Route for handling AJAX chat messages
+@app.route("/chat", methods=["POST"])
+def chat_api():
+    user_message = request.json.get("message")
+    try:
+        response = requests.post(RASA_URL, json={"sender": "user1", "message": user_message})
+        bot_messages = response.json()
+        return jsonify(bot_messages)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/chat_logged_in.html', methods=['post', 'get'])
 def logged_in_chat():
@@ -274,6 +286,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     print(f"🚀 Starting Flask on 0.0.0.0:{port}", flush=True)
     app.run(host="0.0.0.0", port=port)
+
 
 
 
