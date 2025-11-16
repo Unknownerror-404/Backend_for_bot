@@ -71,18 +71,19 @@ async function sendMsg() {
   scrollToBottom();
   input.value = "";
   input.focus();
-
-  try {
-    await fetch("/save_message", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: text, sender: "user" })
-    });
-  } catch (err) {
-    console.error("Error saving user message:", err);
-  }
   sendMessageToRasa(text);
 }
+  //try {
+  //  await fetch("/save_message", {
+  //    method: "POST",
+  //    headers: { "Content-Type": "application/json" },
+  //    body: JSON.stringify({ message: text, sender: "user" })
+  //  });
+  //} catch (err) {
+  //  console.error("Error saving user message:", err);
+  //}
+  //sendMessageToRasa(text);
+//}
 
 
 async function sendMessageToRasa(text) {
