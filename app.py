@@ -116,7 +116,7 @@ def insert():
     if password != confirmed:
         return render_template("createacc.html", message="Passwords do not match.")
 
-    hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+    hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
     cursor.execute(
         "INSERT INTO users (person_name, email, passwordhash) VALUES (%s, %s, %s)",
@@ -236,4 +236,5 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Flask running on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
