@@ -112,7 +112,7 @@ async function sendMessageToRasa(text) {
           await fetch("/save_message", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            credentials: "include",   // <--- also required
+            credentials: "include",
             body: JSON.stringify({ message: reply.text, sender: "bot" })
           });
         } catch (err) {
@@ -127,7 +127,7 @@ async function sendMessageToRasa(text) {
 
 async function loadChatHistory() {
   try {
-    const response = await fetch("/get_chat_history");
+    const response = await fetch("/get_chat_history", { credentials: "include"});
     const data = await response.json();
     const messages = document.getElementById("messages");
 
