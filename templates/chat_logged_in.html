@@ -88,10 +88,11 @@ async function sendMsg() {
 
 async function sendMessageToRasa(text) {
   try {
-    const response = await fetch("/chat_logged_in", {
+    const response = await fetch("https://aarogyabackend-production.up.railway.app/chat_logged_in", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ sender: "user1", message: text })
+      credentials: "include",   // <--- REQUIRED so cookies/session are sent
+      body: JSON.stringify({ message: text })
     });
 
     const data = await response.json();
@@ -102,16 +103,18 @@ async function sendMessageToRasa(text) {
       if (reply.text) {
         const botLi = document.createElement("li");
         botLi.className = "msg in";
-        botLi.innerHTML = `<div class="bubble">${escapeHtml(reply.text)}
+        botLi.innerHTML = `
+          <div class="bubble">${escapeHtml(reply.text)}
             <div class="meta"><span class="who">Bot</span> <span class="time">${getCurrentTime()}</span></div>
           </div>`;
         messages.appendChild(botLi);
         scrollToBottom();
 
         try {
-          await fetch("/save_message", {
+          await fetch("https://aarogyabackend-production.up.railway.app/save_message", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
+            credentials: "include",   // <--- also required
             body: JSON.stringify({ message: reply.text, sender: "bot" })
           });
         } catch (err) {
