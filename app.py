@@ -165,6 +165,11 @@ def login():
 # -----------------------------------------
 # LOGGED-IN CHAT
 # -----------------------------------------
+@app.route('/chat_logged_in.html')
+def logged_in_chat_page():
+    return render_template('chat_logged_in.html')
+
+
 @app.route("/chat_logged_in", methods=["POST"])
 def chat_logged_in_api():
     if "user_id" not in session:
@@ -231,3 +236,4 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Flask running on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True)
+
