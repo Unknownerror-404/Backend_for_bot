@@ -161,7 +161,33 @@ def login():
 
     return render_template("logged_in_index.html", name=name or "User")
 
-@app.route('/save_message')
+@app.route('/save_message', methods=['POST'])
+def save_message():
+    if "user_id" not in session or "session_id" not in session:
+        return jsonify({"error": "Not logged in"}), 403
+
+    userid = session["user_id"]
+    session_id = session["session_id"]
+
+    data = request.json
+    message = data.get("message")
+    sender = data.get("sender")   # "user" or "bot"
+
+    if not message or not sender:
+        return jsonify({"error": "Missing message or sender"}), 400
+
+    # Decide which column to populate
+    user_chat = message if sender == "user" else None
+    bot_chat  = message if sender == "bot"  else None
+
+    cursor.execute(
+        "INSERT INTO chat_sessions (userid, session_id, user_chat, bot_chat) VALUES (%s, %s, %s, %s)",
+        (userid, session_id, user_chat, bot_chat)
+    )
+    conn.commit()
+
+    return jsonify({"status": "saved"})
+
 # -----------------------------------------
 # LOGGED-IN CHAT
 # -----------------------------------------
@@ -236,6 +262,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Flask running on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
 
 
