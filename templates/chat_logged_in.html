@@ -71,27 +71,25 @@ async function sendMsg() {
   scrollToBottom();
   input.value = "";
   input.focus();
+    try {
+    await fetch("/save_message", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: text, sender: "user" })
+    });
+  } catch (err) {
+    console.error("Error saving user message:", err);
+  }
   sendMessageToRasa(text);
 }
-  //try {
-  //  await fetch("/save_message", {
-  //    method: "POST",
-  //    headers: { "Content-Type": "application/json" },
-  //    body: JSON.stringify({ message: text, sender: "user" })
-  //  });
-  //} catch (err) {
-  //  console.error("Error saving user message:", err);
-  //}
-  //sendMessageToRasa(text);
-//}
 
 
 async function sendMessageToRasa(text) {
   try {
-    const response = await fetch("https://aarogyabackend-production.up.railway.app/chat_logged_in", {
+    const response = await fetch("/chat_logged_in", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      credentials: "include",   // <--- REQUIRED so cookies/session are sent
+      credentials: "include", 
       body: JSON.stringify({ message: text })
     });
 
@@ -109,18 +107,17 @@ async function sendMessageToRasa(text) {
           </div>`;
         messages.appendChild(botLi);
         scrollToBottom();
-
-        //try {
-        //  await fetch("https://aarogyabackend-production.up.railway.app/save_message", {
-        //    method: "POST",
-        //    headers: { "Content-Type": "application/json" },
-        //    credentials: "include",   // <--- also required
-        //    body: JSON.stringify({ message: reply.text, sender: "bot" })
-        //  });
-        //} catch (err) {
-        //  console.error("Error saving bot message:", err);
-        //}
-      //}
+        try {
+          await fetch("/save_message", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",   // <--- also required
+            body: JSON.stringify({ message: reply.text, sender: "bot" })
+          });
+        } catch (err) {
+         console.error("Error saving bot message:", err);
+        }
+      }
     }
   } catch (err) {
     console.error("Error talking to Rasa:", err);
