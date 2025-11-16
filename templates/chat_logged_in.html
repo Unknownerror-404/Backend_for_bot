@@ -74,6 +74,7 @@ async function sendMsg() {
     try {
     await fetch("/save_message", {
       method: "POST",
+      credentials: "include", 
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: text, sender: "user" })
     });
