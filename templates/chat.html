@@ -87,7 +87,7 @@ async function sendMessageToRasa(text) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ sender: "user1", message: text })
     });
-
+    console.log("Response provided")
     const data = await response.json();
 
     await delay(2000);
