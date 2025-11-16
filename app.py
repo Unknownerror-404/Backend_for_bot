@@ -2,10 +2,14 @@ import psycopg2
 import bcrypt
 import secrets
 import uuid
-from flask import Flask, request, render_template, session
+import requests
+from flask import Flask, request, render_template, session, jsonify
 from flask_session import Session
 import os
 
+# -----------------------------------------
+# DATABASE SETUP
+# -----------------------------------------
 conn = psycopg2.connect(
     host=os.getenv("DB_HOST"),
     dbname=os.getenv("DB_NAME"),
@@ -13,313 +17,217 @@ conn = psycopg2.connect(
     password=os.getenv("DB_PASSWORD"),
     port=os.getenv("DB_PORT")
 )
-RASA_URL = os.environ.get("RASA_URL", "http://localhost:5005/webhooks/rest/webhook")
 cursor = conn.cursor()
+
+# FIXED DATABASE SCHEMA (SAFE TO RUN MULTIPLE TIMES)
 cursor.execute("""
-    CREATE TABLE Users (
-    UserID SERIAL PRIMARY KEY,
-    Email VARCHAR(255) UNIQUE NOT NULL,
-    PasswordHash VARCHAR(255) NOT NULL,
-    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+CREATE TABLE IF NOT EXISTS users (
+    userid SERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    passwordhash VARCHAR(255) NOT NULL,
+    createdat TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     person_name VARCHAR(255)
 );
 """)
 
 cursor.execute("""
-    CREATE TABLE Chat_sessions (
-    Id SERIAL PRIMARY KEY,
-    UserId INT NOT NULL,
-    Session_Id UUID NOT NULL,
-    Session_Title VARCHAR(255),
-    User_Chat TEXT,
-    Bot_Chat TEXT,
-    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (UserId) REFERENCES users(UserID) ON DELETE CASCADE
+CREATE TABLE IF NOT EXISTS chat_sessions (
+    id SERIAL PRIMARY KEY,
+    userid INT NOT NULL,
+    session_id UUID NOT NULL,
+    session_title VARCHAR(255),
+    user_chat TEXT,
+    bot_chat TEXT,
+    createdat TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (userid) REFERENCES users(userid) ON DELETE CASCADE
 );
-
 """)
 
-logged_in = False
+conn.commit()
 
+# -----------------------------------------
+# FLASK SETUP
+# -----------------------------------------
 app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 app.secret_key = secrets.token_hex(32)
+Session(app)
 
+RASA_URL = os.getenv("RASA_URL", "http://localhost:5005/webhooks/rest/webhook")
+
+# -----------------------------------------
+# ROUTES
+# -----------------------------------------
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/createacc.html', methods=['post', 'get'])
+
+@app.route('/createacc.html')
 def createacc():
     return render_template('createacc.html')
 
-@app.route('/loginpage.html', methods=['post', 'get'])
+
+@app.route('/loginpage.html')
 def loginpage():
     return render_template('loginpage.html')
 
-@app.route('/aboutus.html', methods=['post', 'get'])
+
+@app.route('/aboutus.html')
 def about_us():
     return render_template('aboutus.html')
 
-# Route for serving the chat page
-@app.route("/chat.html", methods=["GET"])
-def chat_page():
-    return render_template("chat.html")
 
-# Route for handling AJAX chat messages
+@app.route('/chat.html')
+def chat_page():
+    return render_template('chat.html')
+
+
+# -----------------------------------------
+# CHAT (NOT LOGGED IN)
+# -----------------------------------------
 @app.route("/chat", methods=["POST"])
 def chat_api():
     user_message = request.json.get("message")
+
     try:
-        response = requests.post(RASA_URL, json={"sender": "user1", "message": user_message})
+        response = requests.post(RASA_URL, json={"sender": "guest", "message": user_message})
         bot_messages = response.json()
         return jsonify(bot_messages)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@app.route('/chat_logged_in.html', methods=['post', 'get'])
-def logged_in_chat():
-    Uid = session.get('user_id')
-    if not Uid:
-        return render_template('chat_logged_in.html', logged_in=False, all_chats=[])
 
-    cursor.execute(
-    "SELECT DISTINCT Session_Id FROM ChatSessions WHERE UserId = %s",
-    (Uid,)
-    )
-    session_rows = cursor.fetchall()
-    session_id_list = [row[0] for row in session_rows]
-
-    all_chats = []
-    for ses_id in session_id_list:
-        cursor.execute(
-    "SELECT User_Chat, Bot_Chat FROM ChatSessions WHERE Session_Id = %s ORDER BY CreatedAt",
-    (ses_id,)
-    )
-
-        messages = cursor.fetchall()
-        session_messages = [[row[0], row[1]] for row in messages]
-        all_chats.append(session_messages)
-
-    return render_template('chat_logged_in.html', logged_in=True, all_chats=all_chats)
-
-@app.route("/chat_logged_in", methods=["POST"])
-def chat_logged_in_api():
-    RASA_URL = os.environ.get("RASA_URL", "http://localhost:5005/webhooks/rest/webhook")
-    user_message = request.json.get("message")
-
-    Uid = session.get('user_id')
-    if not Uid:
-        return jsonify({"error": "Not logged in"}), 403
-
-    session_id = "session_" + str(Uid)
-
-    try:
-        response = requests.post(RASA_URL, json={"sender": str(Uid), "message": user_message})
-        bot_messages = response.json()
-
-        bot_reply = bot_messages[0]["text"] if bot_messages and "text" in bot_messages[0] else ""
-
-        cursor.execute(
-            "INSERT INTO ChatSessions (UserId, Session_Id, User_Chat, Bot_Chat) VALUES (%s, %s, %s, %s)",
-            (Uid, session_id, user_message, bot_reply)
-        )
-        db.commit()
-
-        return jsonify(bot_messages)
-
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
-@app.route('/submit', methods=['POST', 'GET'])
+# -----------------------------------------
+# ACCOUNT CREATION
+# -----------------------------------------
+@app.route('/submit', methods=['POST'])
 def insert():
-    if request.method == 'POST':
-        user = request.form.get('name')
-        password = request.form.get('password')
-        confirmed = request.form.get('confirm')
-        email = request.form.get('email')
+    user = request.form.get('name')
+    password = request.form.get('password')
+    confirmed = request.form.get('confirm')
+    email = request.form.get('email')
 
-        cursor.execute(
-            "SELECT * FROM Users WHERE Email = %s;",(email,)
-        )
-        val = cursor.fetchone()
-        if val:
-            return render_template("index.html", message="An account with this email already exists.")
-        else: 
-            if password == confirmed:
-                hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+    cursor.execute("SELECT 1 FROM users WHERE email = %s", (email,))
+    if cursor.fetchone():
+        return render_template("index.html", message="Account already exists.")
 
-                cursor.execute(
-                "INSERT INTO Users (person_name, Email, PasswordHash) VALUES (%s, %s, %s)",
-                (user, email, hashed)
-                )
+    if password != confirmed:
+        return render_template("createacc.html", message="Passwords do not match.")
 
-                conn.commit()
-                return render_template('logged_in_index.html', message="Account created successfully!")
-            else: 
-                return render_template('createacc.html', message="Password is incorrect, please try again")
+    hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
-@app.route('/login', methods=['POST', 'GET'])
-def login():
-    chat_sessions = str(uuid.uuid4())
-    session['session_id'] = chat_sessions
-    if request.method == 'POST':
-        email = request.form.get("email")
-        password = request.form.get("password")
-        cursor.execute(
-            "SELECT PasswordHash FROM Users WHERE Email = %s;",
-            (email.strip(),)
-            )
-        row = cursor.fetchone()
-
-        if row:  
-            stored_hash = row[0] 
-            if isinstance(stored_hash, str):
-                stored_hash = stored_hash.encode('utf-8')
-
-            candidate_password = password.encode('utf-8')
-            if bcrypt.checkpw(candidate_password, stored_hash):
-                cursor.execute(
-                "SELECT person_name FROM Users WHERE Email = %s;",
-                (email.strip(),)
-                )
-
-                n = cursor.fetchone()
-                n1 = n[0]
-                if isinstance(n1, str):
-                    logged_in = True
-                    cursor.execute(
-                    "SELECT UserID FROM Users WHERE Email = %s;",
-                    (email.strip(),)
-                    )
-                    uid = cursor.fetchone()
-
-                    Uid = uid[0]
-                    cursor.execute(
-                    "INSERT INTO ChatSessions (UserId, Session_Id) VALUES (%s, %s)",
-                    (Uid, chat_sessions)
-                    )
-
-                    session['user_id'] = Uid
-                    conn.commit()
-                    return render_template('logged_in_index.html', message="Logged in successfully!", name=n1, logged_in=logged_in)
-                else: 
-                    logged_in = True
-                    cursor.execute(
-                    "SELECT UserID FROM Users WHERE Email = %s;",
-                    (email.strip(),)
-                    )
-
-                    uid = cursor.fetchone()
-                    Uid = uid[0]
-                    cursor.execute(
-                    "INSERT INTO ChatSessions (UserId, Session_Id) VALUES (%s, %s)",
-                    (Uid, chat_sessions)
-                    )
-
-                    session['user_id'] = Uid
-                    conn.commit()
-                    return render_template('logged_in_index.html', message="Logged in successfully!", name="User", logged_in=logged_in)
-            else:
-                conn.commit()
-                return render_template('loginpage.html', message="Incorrect password, please try again")
-        else:
-            conn.commit()
-            return render_template('createacc.html', message="Account does not exist, please create an account")
-        
-@app.route("/save_message", methods=["POST"])
-def save_message():
-    if 'user_id' not in session:
-        return {"status": "error", "message": "Not logged in"}, 401
-    data = request.get_json()
-    message = data.get("message")
-    sender = data.get("sender")
-    user_id = session['user_id']
-
-    session_id = session.get('session_id')
-    if not session_id:
-        session_id = str(uuid.uuid4())
-        session['session_id'] = session_id
     cursor.execute(
-    "SELECT User_Chat, Bot_Chat FROM ChatSessions WHERE UserId = %s AND Session_Id = %s",
-    (user_id, session_id)
+        "INSERT INTO users (person_name, email, passwordhash) VALUES (%s, %s, %s)",
+        (user, email, hashed)
     )
+    conn.commit()
 
+    return render_template("logged_in_index.html", message="Account created!")
+
+
+# -----------------------------------------
+# LOGIN
+# -----------------------------------------
+@app.route('/login', methods=['POST'])
+def login():
+    email = request.form.get("email")
+    password = request.form.get("password")
+
+    cursor.execute("SELECT userid, passwordhash, person_name FROM users WHERE email=%s", (email,))
     row = cursor.fetchone()
 
-    if row:
-        current_user_chat, current_bot_chat = row
+    if not row:
+        return render_template("createacc.html", message="Account does not exist.")
 
-        if sender == 'user':
-            updated_user_chat = (current_user_chat or '') + ("\n" if current_user_chat else '') + message
-            cursor.execute(
-                "UPDATE ChatSessions SET User_Chat = %s WHERE UserId = %s AND Session_Id = %s",
-                (updated_user_chat, user_id, session_id)
-            )
-        else:
-            updated_bot_chat = (current_bot_chat or '') + ("\n" if current_bot_chat else '') + message
-            cursor.execute(
-                "UPDATE ChatSessions SET Bot_Chat = %s WHERE UserId = %s AND Session_Id = %s",
-                (updated_bot_chat, user_id, session_id)
-            )
-    else:
+    userid, stored_hash, name = row
 
-        if sender == 'user':
-            cursor.execute(
-                "INSERT INTO ChatSessions (UserId, Session_Id, User_Chat) VALUES (%s, %s, %s)",
-                (user_id, session_id, message)
-            )
-        else:
-            cursor.execute(
-                "INSERT INTO ChatSessions (UserId, Session_Id, Bot_Chat) VALUES (%s, %s, %s)",
-                (user_id, session_id, message)
-            )
+    if isinstance(stored_hash, str):
+        stored_hash = stored_hash.encode('utf-8')
 
-    conn.commit()
-    return {"status": "ok"}
+    if not bcrypt.checkpw(password.encode('utf-8'), stored_hash):
+        return render_template("loginpage.html", message="Incorrect password.")
 
-@app.route("/get_chat_history")
-def get_chat_history():
-    Uid = session.get("user_id")
-    if not Uid:
-        return {"all_chats": []}
+    session_id = uuid.uuid4()
+    session['user_id'] = userid
+    session['session_id'] = str(session_id)
 
     cursor.execute(
-        "SELECT DISTINCT Session_Id FROM ChatSessions WHERE UserId = %s", (Uid,)
+        "INSERT INTO chat_sessions (userid, session_id) VALUES (%s, %s)",
+        (userid, session_id)
     )
-    session_rows = cursor.fetchall()
-    session_id_list = [row[0] for row in session_rows]
+    conn.commit()
+
+    return render_template("logged_in_index.html", name=name or "User")
+
+
+# -----------------------------------------
+# LOGGED-IN CHAT
+# -----------------------------------------
+@app.route("/chat_logged_in", methods=["POST"])
+def chat_logged_in_api():
+    if "user_id" not in session:
+        return jsonify({"error": "Not logged in"}), 403
+
+    userid = session['user_id']
+    session_id = session['session_id']
+    message = request.json.get("message")
+
+    # send to rasa
+    response = requests.post(RASA_URL, json={"sender": str(userid), "message": message})
+    bot_messages = response.json()
+
+    bot_reply = bot_messages[0].get("text", "") if bot_messages else ""
+
+    cursor.execute(
+        "INSERT INTO chat_sessions (userid, session_id, user_chat, bot_chat) VALUES (%s, %s, %s, %s)",
+        (userid, session_id, message, bot_reply)
+    )
+    conn.commit()
+
+    return jsonify(bot_messages)
+
+
+# -----------------------------------------
+# CHAT HISTORY
+# -----------------------------------------
+@app.route("/get_chat_history")
+def get_chat_history():
+    if "user_id" not in session:
+        return {"all_chats": []}
+
+    userid = session["user_id"]
+
+    cursor.execute("SELECT session_id FROM chat_sessions WHERE userid=%s GROUP BY session_id", (userid,))
+    session_ids = cursor.fetchall()
 
     all_chats = []
-    for ses_id in session_id_list:
+
+    for (sid,) in session_ids:
         cursor.execute(
-            "SELECT User_Chat, Bot_Chat FROM ChatSessions WHERE Session_Id = %s ORDER BY CreatedAt",
-            (ses_id,)
+            "SELECT user_chat, bot_chat FROM chat_sessions WHERE session_id=%s ORDER BY createdat",
+            (sid,)
         )
         messages = cursor.fetchall()
-        session_messages = [[row[0], row[1]] for row in messages]
-        all_chats.append(session_messages)
+        all_chats.append([[u, b] for (u, b) in messages])
 
     return {"all_chats": all_chats}
 
 
-@app.route("/logout.html", methods=["post", "get"])
+# -----------------------------------------
+# LOGOUT
+# -----------------------------------------
+@app.route("/logout.html")
 def logout():
     session.clear()
-    return render_template('index.html', message="Successfully logged out!")
- 
+    return render_template("index.html", message="Logged out!")
+
+
+# -----------------------------------------
+# RUN
+# -----------------------------------------
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
-    print(f"🚀 Starting Flask on 0.0.0.0:{port}", flush=True)
+    print(f"🚀 Flask running on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True)
-
-
-
-
-
-
-
-
-
-
