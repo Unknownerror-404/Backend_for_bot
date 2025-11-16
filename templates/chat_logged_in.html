@@ -110,17 +110,17 @@ async function sendMessageToRasa(text) {
         messages.appendChild(botLi);
         scrollToBottom();
 
-        try {
-          await fetch("https://aarogyabackend-production.up.railway.app/save_message", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            credentials: "include",   // <--- also required
-            body: JSON.stringify({ message: reply.text, sender: "bot" })
-          });
-        } catch (err) {
-          console.error("Error saving bot message:", err);
-        }
-      }
+        //try {
+        //  await fetch("https://aarogyabackend-production.up.railway.app/save_message", {
+        //    method: "POST",
+        //    headers: { "Content-Type": "application/json" },
+        //    credentials: "include",   // <--- also required
+        //    body: JSON.stringify({ message: reply.text, sender: "bot" })
+        //  });
+        //} catch (err) {
+        //  console.error("Error saving bot message:", err);
+        //}
+      //}
     }
   } catch (err) {
     console.error("Error talking to Rasa:", err);
