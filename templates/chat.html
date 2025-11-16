@@ -89,7 +89,7 @@ async function sendMessageToRasa(text) {
     });
     console.log("Response provided")
     const data = await response.json();
-
+    console.log(data)
     await delay(2000);
 
     for (const reply of data) {
