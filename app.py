@@ -161,7 +161,7 @@ def login():
 
     return render_template("logged_in_index.html", name=name or "User")
 
-
+@app.route('/save_message')
 # -----------------------------------------
 # LOGGED-IN CHAT
 # -----------------------------------------
@@ -236,5 +236,6 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Flask running on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
 
