@@ -156,7 +156,7 @@ def login():
 
     cursor.execute(
         "INSERT INTO chat_sessions (userid, session_id) VALUES (%s, %s)",
-        (userid, session_id)
+        (str(userid), str(session_id))
     )
     conn.commit()
 
@@ -263,6 +263,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Flask running on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
 
 
