@@ -212,11 +212,11 @@ def chat_logged_in_api():
 
     bot_reply = bot_messages[0].get("text", "") if bot_messages else ""
 
-    cursor.execute(
+    '''cursor.execute(
         "INSERT INTO chat_sessions (userid, session_id, user_chat, bot_chat) VALUES (%s, %s, %s, %s)",
         (userid, session_id, message, bot_reply)
     )
-    conn.commit()
+    conn.commit()'''
 
     return jsonify(bot_messages)
 
@@ -261,6 +261,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Flask running on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
 
 
