@@ -238,7 +238,7 @@ def get_chat_history():
 
     for (sid,) in session_ids:
         cursor.execute(
-            "SELECT user_chat, bot_chat FROM chat_sessions WHERE session_id=%s ORDER BY createdat",
+            "SELECT DISTINCT user_chat, bot_chat FROM chat_sessions WHERE session_id=%s ORDER BY createdat",
             (sid,)
         )
         messages = cursor.fetchall()
@@ -263,6 +263,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Flask running on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
 
 
