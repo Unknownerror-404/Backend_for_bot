@@ -241,9 +241,8 @@ def get_chat_history():
         "SELECT DISTINCT user_chat, bot_chat, createdat FROM chat_sessions WHERE session_id=%s ORDER BY createdat",
         (sid,)
         )
-       messages = cursor.fetchall()
-    all_chats.append([[u, b] for (u, b, t) in messages])
-
+        messages = cursor.fetchall()
+        all_chats.append([[u, b] for (u, b, t) in messages])
     return {"all_chats": all_chats}
 
 # -----------------------------------------
@@ -262,6 +261,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Flask running on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
 
 
