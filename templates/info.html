@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Patient Info</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_patient_info.css') }}">
+
+</head>
+
+<body>
+
+    <div class="navbar">
+        <h3>Add Patient Info</h3>
+    </div>
+
+
+    <main>
+        <div class="login-box" style="width: 380px; padding: 40px 30px;">
+
+            <h2 style="margin-bottom: 20px;">Patient Information</h2>
+
+            <form action="/add_patient" method="POST">
+
+                <input 
+                    type="text" 
+                    name="patient_name" 
+                    placeholder="Patient Name"
+                    id="patient_name-id"
+                    required>
+
+                <input 
+                    type="text" 
+                    name="patient_id" 
+                    placeholder="Patient ID"
+                    id="patient_ID-id"
+                    require>
+
+                <input 
+                    type="text" 
+                    name="disease" 
+                    placeholder="Disease"
+                    required
+                    id="disease_id">
+
+                <textarea 
+                    name="disease_info" 
+                    placeholder="Disease Information" 
+                    style="width:100%; height:120px; margin-top:10px; padding:12px; border:none; border-radius:4px; background:#d0e0dd; color:#333; font-size:14px;"
+                    required
+                    id = "diesease_info_id"
+                ></textarea>
+
+                <button type="submit" class="btn">Add Patient</button>
+
+            </form>
+
+        </div>
+    </main>
+    <div class="footer-links">
+        <p>© 2025 Aarogya AI — <a href="#">Help</a> | <a href="#">Support</a></p>
+    </div>
+<script>
+async function insert(){
+    if (!document.getElementById("patient_name-id").value ||
+        !document.getElementById("patient_ID-id").value ||
+        !document.getElementById("diesease_info_id").value ||
+        !document.getElementById("diesease_info_id").value){
+            alert("Please fill out all fields!")
+        }
+    return;
+}
+insert();
+</script>
+</body>
+</html>
