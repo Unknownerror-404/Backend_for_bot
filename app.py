@@ -269,11 +269,11 @@ def info_insert():
     if request.method == "POST":
         patient_name = request.form.get("patient_name")
         patient_id = request.form.get("patient_id")
-        diesease = request.form.get("diesease")
+        disease = request.form.get("disease")
         disease_info = request.form.get('disease_info')
         cursor.execute(
             "INSERT INTO Patient_Info (Patient_Name, Patient_ID, Disease, Disease_Info) VALUES (%s, %s, %s, %s)",
-            ()
+            (patient_name, patient_id, disease, disease_info)
         )
 # -----------------------------------------
 # RUN
@@ -282,6 +282,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Flask running on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
 
 
