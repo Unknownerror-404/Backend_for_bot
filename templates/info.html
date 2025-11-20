@@ -51,7 +51,7 @@
                     id = "diesease_info_id"
                 ></textarea>
 
-                <button type="submit" class="btn">Add Patient</button>
+                <button type="submit" class="btn" onclick="Button_click">Add Patient</button>
 
             </form>
 
@@ -68,7 +68,11 @@ async function insert(){
         !document.getElementById("diesease_info_id").value){
             alert("Please fill out all fields!")
         }
-    return;
+        return;
+}
+
+function Button_click(){
+window.location.href = "/info_insert";
 }
 insert();
 </script>
