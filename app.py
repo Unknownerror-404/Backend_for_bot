@@ -263,7 +263,7 @@ def logout():
     session.clear()
     return render_template("index.html", message="Logged out!")
 
-@app.route("/add_patient", methods=["POST"])
+@app.route("/info", methods=["POST"])
 def info_insert():
     patient_name = request.form.get("patient_name")
     patient_id = request.form.get("patient_id")
@@ -280,7 +280,7 @@ def info_insert():
     return redirect(url_for("info"))
 
 
-@app.route("/info", methods=["GET"])
+@app.route("/add_patient", methods=["GET"])
 def info():
     return render_template("info.html")
 # -----------------------------------------
@@ -290,6 +290,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Flask running on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
 
 
