@@ -263,22 +263,24 @@ def logout():
     session.clear()
     return render_template("index.html", message="Logged out!")
 
-@app.route("/add_patient", methods=["post", "get"])
+@app.route("/add_patient", methods=["POST"])
 def info_insert():
-    if request.method == "POST":
-        patient_name = request.form.get("patient_name")
-        patient_id = request.form.get("patient_id")
-        disease = request.form.get("disease")
-        disease_info = request.form.get('disease_info')
-        cursor.execute(
-            "INSERT INTO Patient_Info (patient_name, patient_id, disease, disease_info) VALUES (%s, %s, %s, %s)",
-            (patient_name, patient_id, disease, disease_info)
-        )
-        return True
-    else:
-        return False
+    patient_name = request.form.get("patient_name")
+    patient_id = request.form.get("patient_id")
+    disease = request.form.get("disease")
+    disease_info = request.form.get("disease_info")
 
-@app.route("/info.html", methods=["post", "get"])
+    cursor.execute("""
+        INSERT INTO patient_info (patient_name, patient_id, disease, disease_info)
+        VALUES (%s, %s, %s, %s)
+    """, (patient_name, patient_id, disease, disease_info))
+
+    db.commit()
+
+    return redirect(url_for("info"))
+
+
+@app.route("/info", methods=["GET"])
 def info():
     return render_template("info.html")
 # -----------------------------------------
@@ -288,6 +290,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Flask running on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
 
 
