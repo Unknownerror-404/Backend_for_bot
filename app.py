@@ -274,9 +274,9 @@ def info_insert():
             "INSERT INTO Patient_Info (patient_name, patient_id, disease, disease_info) VALUES (%s, %s, %s, %s)",
             (patient_name, patient_id, disease, disease_info)
         )
-    return True
-else:
-    return False
+        return True
+    else:
+        return False
 
 @app.route("/info.html", methods=["post", "get"])
 def info():
@@ -288,6 +288,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Flask running on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
 
 
