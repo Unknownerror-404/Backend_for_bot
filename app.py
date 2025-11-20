@@ -43,6 +43,17 @@ CREATE TABLE IF NOT EXISTS chat_sessions (
 );
 """)
 
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS patient_info (
+    id SERIAL PRIMARY KEY,
+    patient_name VARCHAR(255) NOT NULL,
+    patient_id VARCHAR(255) NOT NULL,
+    disease VARCHAR(255) NOT NULL,
+    disease_info TEXT NOT NULL,
+    createdat TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+""")
+
 conn.commit()
 
 # -----------------------------------------
@@ -271,6 +282,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Flask running on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
 
 
