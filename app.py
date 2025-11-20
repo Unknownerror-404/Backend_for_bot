@@ -19,7 +19,6 @@ conn = psycopg2.connect(
 )
 cursor = conn.cursor()
 
-# FIXED DATABASE SCHEMA (SAFE TO RUN MULTIPLE TIMES)
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS users (
     userid SERIAL PRIMARY KEY,
@@ -282,6 +281,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Flask running on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
 
 
