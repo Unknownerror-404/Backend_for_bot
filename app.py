@@ -277,7 +277,7 @@ def info_insert():
 
     db.commit()
 
-    return redirect(url_for("info"))
+    return redirect(url_for("add_patient"))
 
 
 @app.route("/add_patient", methods=["GET"])
@@ -290,6 +290,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Flask running on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
 
 
