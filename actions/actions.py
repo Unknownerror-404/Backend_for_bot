@@ -7,7 +7,9 @@ class ActionGetPatientInfo(Action):
         return "action_get_patient_info"
 
     def run(self, dispatcher, tracker, domain):
-
+        patient_name = NULL
+        patient_id = NULL
+        disease = NULL
         # Example slot value (patient name taken from user)
         if tracker.get_slot("patient_name"):
             patient_name = tracker.get_slot("patient_name")
@@ -17,7 +19,7 @@ class ActionGetPatientInfo(Action):
             disease = tracker.get_slot("disease")
         else: 
             return ("Please provide either the Patient's name, Id or Disease category.")
-    
+        
         try:
             # Connect to PostgreSQL
             conn = psycopg2.connect(
@@ -27,14 +29,28 @@ class ActionGetPatientInfo(Action):
                 password="mypassword"
             )
             cursor = conn.cursor()
-
-            # Query your table
+            if(patient_id, disease == NULL):
             query = """
-                SELECT name, age, diagnosis
+                SELECT patient_id, disease, disease_info
                 FROM patients
-                WHERE name = %s
+                WHERE patient_name = %s
             """
-            cursor.execute(query, (patient_name,))
+            elif(patient_name, patient_id == NULL):
+            query = """
+                SELECT DISTINCT patient_name,
+                FROM patients
+                WHERE disease = %s
+            """
+            cursor.execute(query, (disease,))
+            elif(patient_name, disease == NULL):
+            """
+                SELECT patient_name, disease, disease_info
+                FROM patients
+                WHERE patient_id = %s
+            """
+            cursor.execute(query, (patient_id,))
+
+            
             result = cursor.fetchone()
 
             if result:
