@@ -275,7 +275,7 @@ def info_insert():
         VALUES (%s, %s, %s, %s)
     """, (patient_name, patient_id, disease, disease_info))
 
-    db.commit()
+    conn.commit()
 
     return redirect("/add_patient")
 
@@ -290,6 +290,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Flask running on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
 
 
