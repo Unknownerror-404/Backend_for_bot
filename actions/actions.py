@@ -1,95 +1,81 @@
+import os
 import psycopg2
-from rasa_sdk import Action, Tracker
+from rasa_sdk import Action
 from rasa_sdk.executor import CollectingDispatcher
 
+
 class ActionGetPatientInfo(Action):
+
     def name(self) -> str:
         return "action_get_patient_info"
 
     def run(self, dispatcher, tracker, domain):
-        patient_name = None
-        patient_id = None
-        disease = None
-        # Example slot value (patient name taken from user)
-        if tracker.get_slot("patient_name"):
-            patient_name = tracker.get_slot("patient_name")
-        elif tracker.get_slot("patient_id"):
-            patient_id = tracker.get_slot("patient_id")
-        elif tracker.get_slot("disease"):
-            disease = tracker.get_slot("disease")
-        else: 
-            return ("Please provide either the Patient's name, Id or Disease category.")
-        
+
+        # Get slot values
+        patient_name = tracker.get_slot("patient_name")
+        patient_id = tracker.get_slot("patient_id")
+        disease = tracker.get_slot("disease")
+
+        # At least one must be provided
+        if not (patient_name or patient_id or disease):
+            dispatcher.utter_message(
+                text="Please provide a patient name, ID, or disease."
+            )
+            return []
+
         try:
-            # Connect to PostgreSQL
             conn = psycopg2.connect(
-            host=os.getenv("DB_HOST"),
-            dbname=os.getenv("DB_NAME"),
-            user=os.getenv("DB_USER"),
-            password=os.getenv("DB_PASSWORD"),
-            port=os.getenv("DB_PORT")
+                host=os.getenv("DB_HOST"),
+                dbname=os.getenv("DB_NAME"),
+                user=os.getenv("DB_USER"),
+                password=os.getenv("DB_PASSWORD"),
+                port=os.getenv("DB_PORT")
             )
             cursor = conn.cursor()
-            if disease is not None:
-                if(patient_id is None and disease is None):
-                    query = """
-                    SELECT patient_name, patient_id, disease, disease_info
-                    FROM patient_info 
-                    WHERE patient_name = %s
-                    """
-                    cursor.execute(query, (patient_name,))
-                          
-                elif(patient_name is None and disease is None):
-                    query = """
-                    SELECT patient_name, patient_id, disease, disease_info
-                    FROM patient_info 
-                    WHERE patient_id = %s
-                    """
-                    cursor.execute(query, (patient_id,))
-                
-                elif(patient_name is None):
-                    query = """
-                    SELECT patient_name, patient_id, disease, disease_info
-                    FROM patient_info
-                    WHERE patient_id = %s AND disease = %s
-                    """
-                    cursor.execute(query, (patient_id, disease,))
-                
-                elif(patient_id is None):
-                    query = """
-                    SELECT patient_name, patient_id, disease, disease_info
-                    FROM patient_info
-                    WHERE patient_name = %s AND disease = %s
-                    """
-                    cursor.execute(query, (patient_id, disease,))
-                
-                elif(disease is None):
-                    query = """
-                    SELECT patient_name, patient_id, disease, disease_info
-                    FROM patient_info
-                    WHERE patient_id = %s AND patient_name = %s
-                    """
-                    cursor.execute(query, (patient_id, disease,))
-            else:
-                elif(patient_name is None and patient_id is None):
-                query = """
-                SELECT DISTINCT patient_name,
-                FROM patient_info 
-                WHERE disease = %s
-                """
-                cursor.execute(query, (disease,))
-                result = cursor.fetchone()
+
+            conditions = []
+            params = []
+
+            if patient_name:
+                conditions.append("patient_name = %s")
+                params.append(patient_name)
+
+            if patient_id:
+                conditions.append("patient_id = %s")
+                params.append(patient_id)
+
+            if disease:
+                conditions.append("disease = %s")
+                params.append(disease)
+
+            where_clause = " AND ".join(conditions)
+
+            query = f"""
+                SELECT patient_name, patient_id, disease, disease_info, createdat
+                FROM patient_info
+                WHERE {where_clause}
+                LIMIT 1
+            """
+
+            cursor.execute(query, tuple(params))
+            result = cursor.fetchone()
 
             if result:
-               NAME, PID, DISEASE, INFO, = result
+                NAME, PID, DISEASE, INFO, CREATION = result
 
-                # Send info back to user
                 dispatcher.utter_message(
-                    text=f" User found,\n Name: {NAME}\nPatient ID: {PID}\nDiagnosis: {DISEASE}\n Additional Patient History: {INFO}.\n The User Registration is found from {CREATION}"
+                    text=(
+                        f"Patient Found:\n"
+                        f"Name: {NAME}\n"
+                        f"ID: {PID}\n"
+                        f"Disease: {DISEASE}\n"
+                        f"Info: {INFO}\n"
+                        f"Created: {CREATION}"
+                    )
                 )
             else:
                 dispatcher.utter_message(
-                    text="I couldn't find that patient in the system."
+                    text="No patient matches the information provided."
                 )
 
         except Exception as e:
