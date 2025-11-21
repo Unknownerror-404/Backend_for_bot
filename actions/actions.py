@@ -23,10 +23,11 @@ class ActionGetPatientInfo(Action):
         try:
             # Connect to PostgreSQL
             conn = psycopg2.connect(
-                host="localhost",
-                database="mydatabase",
-                user="myuser",
-                password="mypassword"
+            host=os.getenv("DB_HOST"),
+            dbname=os.getenv("DB_NAME"),
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASSWORD"),
+            port=os.getenv("DB_PORT")
             )
             cursor = conn.cursor()
             if(patient_id, disease == NULL):
