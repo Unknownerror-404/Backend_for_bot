@@ -30,20 +30,20 @@ class ActionGetPatientInfo(Action):
             port=os.getenv("DB_PORT")
             )
             cursor = conn.cursor()
-            if(patient_id, disease == NULL):
+            if(patient_id and disease == NULL):
             query = """
                 SELECT patient_name, patient_id, disease, disease_info
                 FROM patient_info 
                 WHERE patient_name = %s
             """
-            elif(patient_name, patient_id == NULL):
+            elif(patient_name and patient_id == NULL):
             query = """
                 SELECT DISTINCT patient_name,
                 FROM patient_info 
                 WHERE disease = %s
             """
             cursor.execute(query, (disease,))
-            elif(patient_name, disease == NULL):
+            elif(patient_name and disease == NULL):
              query = """
                 SELECT patient_name, disease, disease_info
                 FROM patient_info 
