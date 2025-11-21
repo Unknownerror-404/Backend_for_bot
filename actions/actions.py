@@ -7,9 +7,9 @@ class ActionGetPatientInfo(Action):
         return "action_get_patient_info"
 
     def run(self, dispatcher, tracker, domain):
-        patient_name = NULL
-        patient_id = NULL
-        disease = NULL
+        patient_name = None
+        patient_id = None
+        disease = None
         # Example slot value (patient name taken from user)
         if tracker.get_slot("patient_name"):
             patient_name = tracker.get_slot("patient_name")
@@ -30,49 +30,55 @@ class ActionGetPatientInfo(Action):
             port=os.getenv("DB_PORT")
             )
             cursor = conn.cursor()
-            if(patient_id and disease == NULL):
-            query = """
-                SELECT patient_name, patient_id, disease, disease_info
-                FROM patient_info 
-                WHERE patient_name = %s
-            """
-            elif(patient_name and patient_id == NULL):
-            query = """
+            if disease is not None:
+                if(patient_id is None and disease is None):
+                    query = """
+                    SELECT patient_name, patient_id, disease, disease_info
+                    FROM patient_info 
+                    WHERE patient_name = %s
+                    """
+                    cursor.execute(query, (patient_name,))
+                          
+                elif(patient_name is None and disease is None):
+                    query = """
+                    SELECT patient_name, patient_id, disease, disease_info
+                    FROM patient_info 
+                    WHERE patient_id = %s
+                    """
+                    cursor.execute(query, (patient_id,))
+                
+                elif(patient_name is None):
+                    query = """
+                    SELECT patient_name, patient_id, disease, disease_info
+                    FROM patient_info
+                    WHERE patient_id = %s AND disease = %s
+                    """
+                    cursor.execute(query, (patient_id, disease,))
+                
+                elif(patient_id is None):
+                    query = """
+                    SELECT patient_name, patient_id, disease, disease_info
+                    FROM patient_info
+                    WHERE patient_name = %s AND disease = %s
+                    """
+                    cursor.execute(query, (patient_id, disease,))
+                
+                elif(disease is None):
+                    query = """
+                    SELECT patient_name, patient_id, disease, disease_info
+                    FROM patient_info
+                    WHERE patient_id = %s AND patient_name = %s
+                    """
+                    cursor.execute(query, (patient_id, disease,))
+            else:
+                elif(patient_name is None and patient_id is None):
+                query = """
                 SELECT DISTINCT patient_name,
                 FROM patient_info 
                 WHERE disease = %s
-            """
-            cursor.execute(query, (disease,))
-            elif(patient_name and disease == NULL):
-             query = """
-                SELECT patient_name, disease, disease_info
-                FROM patient_info 
-                WHERE patient_id = %s
-            """
-            cursor.execute(query, (patient_id,))
-            elif(patient_name == NULL):
-             query = """
-                SELECT patient_name, patient_id, disease, disease_info
-                FROM patient_info
-                WHERE patient_id, disease = %s, %s
-            """
-            cursor.execute(query, (patient_id, disease,))
-            elif(patient_id == NULL):
-             query = """
-                SELECT patient_name, patient_id, disease, disease_info
-                FROM patient_info
-                WHERE patient_name, disease = %s, %s
-            """
-            cursor.execute(query, (patient_id, disease,))
-            elif(disease == NULL):
-             query = """
-                SELECT patient_name, patient_id, disease, disease_info
-                FROM patient_info
-                WHERE patient_id, patient_name = %s, %s
-            """
-            cursor.execute(query, (patient_id, disease,))
-            
-            result = cursor.fetchone()
+                """
+                cursor.execute(query, (disease,))
+                result = cursor.fetchone()
 
             if result:
                NAME, PID, DISEASE, INFO, = result
