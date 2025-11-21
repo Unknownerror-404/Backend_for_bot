@@ -1250,7 +1250,16 @@ slots:
     type: text
     mappings:
       - type: from_text
-
+  patient_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: patient_name
+  patient_info:
+    type: any
+    mappings: 
+      - type: 
+        custom
 forms:
   appointment_form:
     required_slots:
