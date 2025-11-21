@@ -1232,6 +1232,8 @@ responses:
   - text: "Over-the-counter antiseptic ointments can prevent infection."
   - text: "Most minor burns heal without scarring if properly cared for."
 
+  utter_show_patient:
+    - text: "Patient {patient_name} Found!."
 
 slots:
   name:
