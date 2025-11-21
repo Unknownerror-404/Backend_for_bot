@@ -280,7 +280,7 @@ def info_insert():
     return redirect("/add_patient")
 
 
-@app.route("/add_patient", methods=["GET"])
+@app.route("/add_patient", methods=["POST", "GET"])
 def info():
     return render_template("info.html")
 # -----------------------------------------
@@ -290,6 +290,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Flask running on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
 
 
