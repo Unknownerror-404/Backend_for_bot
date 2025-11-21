@@ -32,7 +32,7 @@ class ActionGetPatientInfo(Action):
             cursor = conn.cursor()
             if(patient_id, disease == NULL):
             query = """
-                SELECT patient_id, disease, disease_info
+                SELECT patient_name, patient_id, disease, disease_info
                 FROM patient_info 
                 WHERE patient_name = %s
             """
@@ -44,21 +44,42 @@ class ActionGetPatientInfo(Action):
             """
             cursor.execute(query, (disease,))
             elif(patient_name, disease == NULL):
-            """
+             query = """
                 SELECT patient_name, disease, disease_info
                 FROM patient_info 
                 WHERE patient_id = %s
             """
             cursor.execute(query, (patient_id,))
+            elif(patient_name == NULL):
+             query = """
+                SELECT patient_name, patient_id, disease, disease_info
+                FROM patient_info
+                WHERE patient_id, disease = %s, %s
+            """
+            cursor.execute(query, (patient_id, disease,))
+            elif(patient_id == NULL):
+             query = """
+                SELECT patient_name, patient_id, disease, disease_info
+                FROM patient_info
+                WHERE patient_name, disease = %s, %s
+            """
+            cursor.execute(query, (patient_id, disease,))
+            elif(disease == NULL):
+             query = """
+                SELECT patient_name, patient_id, disease, disease_info
+                FROM patient_info
+                WHERE patient_id, patient_name = %s, %s
+            """
+            cursor.execute(query, (patient_id, disease,))
             
             result = cursor.fetchone()
 
             if result:
-                name, age, diagnosis = result
+               NAME, PID, DISEASE, INFO, = result
 
                 # Send info back to user
                 dispatcher.utter_message(
-                    text=f"Name: {name}\nAge: {age}\nDiagnosis: {diagnosis}"
+                    text=f" User found,\n Name: {NAME}\nPatient ID: {PID}\nDiagnosis: {DISEASE}\n Additional Patient History: {INFO}.\n The User Registration is found from {CREATION}"
                 )
             else:
                 dispatcher.utter_message(
