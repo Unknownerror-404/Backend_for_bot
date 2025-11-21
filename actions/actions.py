@@ -32,24 +32,23 @@ class ActionGetPatientInfo(Action):
             if(patient_id, disease == NULL):
             query = """
                 SELECT patient_id, disease, disease_info
-                FROM patients
+                FROM patient_info 
                 WHERE patient_name = %s
             """
             elif(patient_name, patient_id == NULL):
             query = """
                 SELECT DISTINCT patient_name,
-                FROM patients
+                FROM patient_info 
                 WHERE disease = %s
             """
             cursor.execute(query, (disease,))
             elif(patient_name, disease == NULL):
             """
                 SELECT patient_name, disease, disease_info
-                FROM patients
+                FROM patient_info 
                 WHERE patient_id = %s
             """
             cursor.execute(query, (patient_id,))
-
             
             result = cursor.fetchone()
 
