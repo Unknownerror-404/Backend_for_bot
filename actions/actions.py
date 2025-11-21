@@ -9,8 +9,15 @@ class ActionGetPatientInfo(Action):
     def run(self, dispatcher, tracker, domain):
 
         # Example slot value (patient name taken from user)
-        patient_name = tracker.get_slot("patient_name")
-
+        if tracker.get_slot("patient_name"):
+            patient_name = tracker.get_slot("patient_name")
+        elif tracker.get_slot("patient_id"):
+            patient_id = tracker.get_slot("patient_id")
+        elif tracker.get_slot("disease"):
+            disease = tracker.get_slot("disease")
+        else: 
+            return ("Please provide either the Patient's name, Id or Disease category.")
+    
         try:
             # Connect to PostgreSQL
             conn = psycopg2.connect(
