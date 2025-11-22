@@ -91,7 +91,7 @@ def about_us():
 
 @app.route('/chat.html')
 def chat_page():
-    return render_template('chat.html')
+    return render_template('chat.html', user_id=session.get("user_id"))
 
 
 # -----------------------------------------
@@ -315,6 +315,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Flask running on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
 
 
