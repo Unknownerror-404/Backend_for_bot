@@ -53,7 +53,8 @@
 <script>
 const messages = document.getElementById("messages");
 const input = document.getElementById("inputMsg");
-
+const Uid = "{{ user_id }}";
+window.userId = Uid
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
