@@ -3,7 +3,6 @@ import pyodbc
 from rasa_sdk import Action
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
-import requests
 
 class ActionGetPatientInfo(Action):
 
@@ -16,17 +15,23 @@ class ActionGetPatientInfo(Action):
         patient_name = tracker.get_slot("patient_name")
         patient_id = tracker.get_slot("patient_id")
         disease = tracker.get_slot("disease")
-        meta = tracker.get_latest_input_metadata()
-        user_id = meta.get("user_id") if meta else None
 
+        # Correct metadata extraction
+        meta = tracker.latest_message.get("metadata", {})
+        user_id = meta.get("user_id")
+
+        # Require authentication
+        if not user_id:
+            dispatcher.utter_message("You must be logged in to access patient information.")
+            return []
+
+        # Ensure at least one filter is provided
         if not (patient_name or patient_id or disease):
-            dispatcher.utter_message(
-                text="Please provide a patient name, ID, or disease."
-            )
+            dispatcher.utter_message("Please provide a patient name, ID, or disease.")
             return []
 
         try:
-            # ---------- SQL EXPRESS CONNECTION ----------
+            # SQL Server connection
             conn = pyodbc.connect(
                 'DRIVER={ODBC Driver 17 for SQL Server};'
                 'SERVER=localhost\\SQLEXPRESS;'
@@ -35,9 +40,9 @@ class ActionGetPatientInfo(Action):
             )
             cursor = conn.cursor()
 
-            # ---------- Build WHERE Clause ----------
-            conditions = []
-            params = []
+            # Build dynamic WHERE clause
+            conditions = ["user_id = ?"]
+            params = [user_id]
 
             if patient_name:
                 conditions.append("patient_name = ?")
@@ -50,31 +55,20 @@ class ActionGetPatientInfo(Action):
             if disease:
                 conditions.append("disease = ?")
                 params.append(disease)
-            
-            if user_id:
-                conditions.append("user_id = ?")
-                params.append(user_id)
-            else:
-                conditions.append("user_id = ?")
-                params.append('Guest')
 
-                dispatcher.utter_message(
-                    text="You must be logged in to access patient information."
-                )
-                return []
             where_clause = " AND ".join(conditions)
 
-            # ---------- If unique identifier (patient_id) -> fetch ONE ----------
-            if patient_id:
-                query = f"""
+            query = f"""
                 SELECT patient_name, patient_id, disease, disease_info, createdat
                 FROM patient_db
                 WHERE {where_clause}
-                """
-                
-                cursor.execute(query, params)
-                result = cursor.fetchone()
+            """
 
+            cursor.execute(query, params)
+
+            # fetchone if ID given; else many
+            if patient_id:
+                result = cursor.fetchone()
                 if result:
                     NAME, PID, DISEASE, INFO, CREATION = result
                     dispatcher.utter_message(
@@ -88,23 +82,15 @@ class ActionGetPatientInfo(Action):
                         )
                     )
                 else:
-                    dispatcher.utter_message(text="No patient matches the information provided.")
+                    dispatcher.utter_message("No patient matches the information provided.")
 
             else:
-                # ---------- No patient_id -> return ALL matching rows ----------
-                query = f"""
-                    SELECT patient_name, patient_id, disease, disease_info, createdat
-                    FROM patient_db
-                    WHERE {where_clause}
-                    """
-
-                cursor.execute(query, params)
                 results = cursor.fetchall()
-
-                if results:
+                if not results:
+                    dispatcher.utter_message("No patient matches the information provided.")
+                else:
                     msg = "Patients found:\n\n"
-                    for row in results:
-                        NAME, PID, DISEASE, INFO, CREATION = row
+                    for NAME, PID, DISEASE, INFO, CREATION in results:
                         msg += (
                             f"Name: {NAME}\n"
                             f"ID: {PID}\n"
@@ -113,12 +99,10 @@ class ActionGetPatientInfo(Action):
                             f"Record Created: {CREATION}\n"
                             "-------------------------\n"
                         )
-                    dispatcher.utter_message(text=msg)
-                else:
-                    dispatcher.utter_message(text="No patient matches the information provided.")
+                    dispatcher.utter_message(msg)
 
         except Exception as e:
-            dispatcher.utter_message(text=f"Database error: {str(e)}")
+            dispatcher.utter_message(f"Database error: {str(e)}")
 
         finally:
             try:
@@ -127,15 +111,15 @@ class ActionGetPatientInfo(Action):
                 pass
 
         return []
-    
+
+
 class ActionExtractMetaData(Action):
     def name(self) -> str:
         return "action_extract_metadata"
     
     def run(self, dispatcher: CollectingDispatcher, tracker, domain):
-        metadata = tracker.latest_message.get("metadata") or {}
+        metadata = tracker.latest_message.get("metadata", {})
         user_id = metadata.get("user_id")
         if user_id:
             return [SlotSet("user_id", user_id)]
-        else:
-            return []
+        return []
