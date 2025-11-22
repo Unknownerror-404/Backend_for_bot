@@ -213,23 +213,48 @@ def chat_logged_in_api():
         return jsonify({"error": "Not logged in"}), 403
 
     userid = session['user_id']
-    session_id = session['session_id']
+    session_id = session.get('session_id')
     message = request.json.get("message")
 
-    # send to rasa
-    response = requests.post(RASA_URL, json={"sender": str(userid), "message": message})
-    bot_messages = response.json()
+    if not message:
+        return jsonify({"error": "Missing message"}), 400
 
-    bot_reply = bot_messages[0].get("text", "") if bot_messages else ""
+    try:
 
-    '''cursor.execute(
-        "INSERT INTO chat_sessions (userid, session_id, user_chat, bot_chat) VALUES (%s, %s, %s, %s)",
-        (userid, session_id, message, bot_reply)
-    )
-    conn.commit()'''
+        payload = {
+            "sender": str(userid),
+            "message": message,
+            "metadata": {"user_id": str(userid)}
+        }
+
+        resp = requests.post(RASA_URL, json=payload, timeout=10)
+        resp.raise_for_status()
+        bot_messages = resp.json()
+    except requests.RequestException as e:
+        return jsonify({"error": f"Rasa request failed: {str(e)}"}), 502
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+    try:
+        # Save user message
+        cursor.execute(
+            "INSERT INTO chat_sessions (userid, session_id, user_chat) VALUES (%s, %s, %s)",
+            (userid, session_id, message)
+        )
+
+        for bot_msg in bot_messages:
+            text = bot_msg.get("text") or ""
+            if text:
+                cursor.execute(
+                    "INSERT INTO chat_sessions (userid, session_id, bot_chat) VALUES (%s, %s, %s)",
+                    (userid, session_id, text))
+        conn.commit()
+    except Exception as db_e:
+
+        print("DB save error:", db_e)
+        conn.rollback()
 
     return jsonify(bot_messages)
-
 
 # -----------------------------------------
 # CHAT HISTORY
@@ -290,6 +315,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     print(f"🚀 Flask running on port {port}")
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
 
 
